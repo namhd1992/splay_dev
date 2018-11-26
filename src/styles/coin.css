@@ -1,0 +1,200 @@
+select {
+
+    /* styling */
+    background-color: white;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  
+  /* arrows */
+  
+  select.selectGame {
+    text-align: center;
+    text-align-last: center;
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position:
+      calc(100% - 20px) calc(1em),
+      calc(100% - 10px) calc(1em),
+      100% 0;
+    background-size:
+      10px 10px,
+      10px 10px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+  }
+
+  select.selectOptionCoin {
+    background-image:
+      linear-gradient(45deg, transparent 50%, #fff 50%),
+      linear-gradient(135deg, #fff 50%, transparent 50%);
+      background-position:
+      calc(100% - 20px) calc(1em),
+      calc(100% - 10px) calc(1em),
+      100% 0;
+    background-size:
+      10px 10px,
+      10px 10px,
+      2.5em 2.5em;
+    background-repeat: no-repeat;
+  }
+  
+.selectGame{
+    width:100%;
+    text-align:center;
+    height:40px;
+    color: #e6e6e6;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    background: #212933;
+}
+.infoUserCoin{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.titleUser{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.contentUser{
+    color: #fff;
+    width:50%;
+    float:left
+}
+.selectOptionCoin{
+    width:100%;
+    text-align:center;
+    height:40px;
+    border: 1px solid #12cdd4;
+    border-radius: 5px;
+    color: #12cdd4;
+    background: #212933;
+}
+.pakageCoin{
+    height: 40px;
+}
+.verifyPhoneCoin{
+    width:48%;
+    height:40px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #212933;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    
+}
+
+.verifyNow{
+    width:48%;
+    height:40px;
+    float: right;
+    color: #fff;
+    border-radius: 5px;
+    border: 0px;
+    background: #f24726;
+    text-align: center;
+    line-height: 40px;
+}
+.verifyNow:hover{
+    background: #f57156;
+    cursor: pointer;
+}
+.btnChange{
+    width:100%;
+    height:40px;
+    color: #fff;
+    border-radius: 5px;
+    border: 0px;
+    background: #12cdd4;
+}
+.btnChange:hover{
+
+    background: #43e9ef;
+}
+.valueXu{
+    text-align:center;
+    margin:0px;
+    margin-top:7px;
+    float:right;
+    width:95%
+}
+.divOptionCoin{
+    width:48%;
+    float:left
+}
+.divPrice{
+    width:50%;
+    float:right;
+    text-align:right;
+    color:#fff;
+    padding-right:15px;
+    line-height:40px;
+}
+.notePhone{
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+@media only screen and (max-width:600px){
+	.infoUserCoin{
+        width:100%;
+    }
+    .divOptionCoin{
+        width:100%;
+    }
+    .divPrice{
+        width:100%;
+        float:none;
+        text-align:left;
+    }
+    .btnChange{
+        margin-top: 20px;
+    }
+    .verifyPhoneCoin{
+        width:100% !important;
+        margin-bottom: 10px;
+    }
+
+    .verifyNow{
+        width:100% !important;
+    }
+    .pakageCoin{
+        height: 60px;
+    }
+}
+@media only screen and (max-width:414px){
+
+
+}
+
+@media only screen and (max-width:375px){
+
+}
+
+@media only screen and (max-width:320px){
+    .titleUser{
+        width:40% !important;
+    }
+    .contentUser{
+        width:60% !important;
+    }
+}

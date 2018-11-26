@@ -1,0 +1,88 @@
+.infoTitle{
+    width: 570px;
+    padding-bottom:50px;
+}
+.takeTurn{
+    width:50%;
+    color:#00b4bd;
+    float:left
+}
+.valueUser{
+    width:50%;
+    float:left;
+    padding-left:15px
+}
+.optionLeft{
+    width:48%;
+    float:left;
+}
+.optionRight{
+    width:48%;
+    float:right;
+}
+
+.closeBuy{
+    color: #808080;
+    border: 0px solid;
+    background: #232936;
+    padding: 10px 25px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+.action{
+    float:right;
+     margin-top:20px;
+}
+.buy{
+    color: #fff;
+    border: 0px solid;
+    background: #00ccd4;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+.buy:hover{
+    background: #1af7ff;
+}
+
+@media only screen and (max-width:600px){
+    .infoTitle{
+        width: auto;
+        text-align: center;
+        padding-bottom:0px;
+    }
+    .takeTurn{
+        width:100%;
+    }
+    .valueUser{
+        width:100%;
+        padding: 20px 0px;
+    }
+    .optionLeft{
+        width:100%;
+    }
+    .optionRight{
+        width:100%;
+    }
+    .closeBuy{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .buy{
+        width: 100%;
+    }
+    .action{
+       width: 100%;
+    }
+}
+@media only screen and (max-width:414px){
+
+
+}
+
+@media only screen and (max-width:375px){
+
+}
+
+@media only screen and (max-width:320px){
+
+}
