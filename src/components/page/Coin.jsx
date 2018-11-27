@@ -177,7 +177,7 @@ class CoinComponent extends React.Component {
                                                     <div className="divPrice">
                                                         <span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
                                                     </div>
-                                                </div>):(<div><p>Không tìm thấy tài khoản TOPGAME, vui lòng tham gia để khởi tạo.</p></div>)}
+                                                </div>):(<div><p style={{color:"red"}}>Không tìm thấy tài khoản TOPGAME, vui lòng tham gia để khởi tạo.</p></div>)}
                                     
                                 </Grid>
                                 {/* <Grid item xs={12}>
