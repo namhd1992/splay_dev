@@ -62,16 +62,17 @@ class Ultilities {
 				end = decodeURIComponent(results[2].replace(/\+/g, " "));
 			}
 		}
-		if (end === "dev") {
-			window.localStorage.setItem("env", "dev");
-		} else if (end === "pro") {
+		if (end === "pro") {
+			window.localStorage.setItem("env", "pro");
+		} else if (end === "dev") {
 			window.localStorage.removeItem("env");
 		}
 		var env = window.localStorage.getItem("env");
-		if (env === "dev") {
-			return "https://dev.splay.vn/";
-		} else {
+		if (env === "pro") {
 			return "https://server.splay.vn/";
+		} else {
+			return "https://dev.splay.vn/";
+			
 		}
 	}
 
