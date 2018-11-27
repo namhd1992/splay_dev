@@ -445,7 +445,7 @@ class HomeComponent extends React.Component {
 									<HeadMenu></HeadMenu>
 								</Grid>
 								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
-									<Link to={"./typechangecoin"} >
+									<Link to={"./doi"} >
 										<div style={{height:"40px"}}>
 											<div style={{width:"40%", float:"left"}}>
 												<img className="imgLogoGame" src="../lg-topgame.png"/>

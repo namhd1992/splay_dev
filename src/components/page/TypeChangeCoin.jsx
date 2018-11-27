@@ -40,13 +40,13 @@ class TypeChangeCoinComponent extends React.Component {
 									</select>
 								</Grid>
                                 <Grid item xs={12}>
-                                    <Link to={"./coin"}>
+                                    <Link to={"./chitiet"}>
                                         <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} onClick={()=>this.nextToCoin(2)}><span style={{color:"#12cdd4"}}>ĐỔI XO </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> Xu</span><img style={{float:"right"}} alt="just alt"
 									src="../keyboard_arrow_right.png" /></button>
                                     </Link>
                                 </Grid>    
                                 <Grid item xs={12}>
-                                    <Link to={"./coin"}>
+                                    <Link to={"./chitiet"}>
                                         <button style={{width:"100%", height:"45px",border:"1px solid #12cdd4", background:"#212933"}} onClick={()=>this.nextToCoin(1)}><span style={{color:"#12cdd4"}}>ĐỔI Xu </span><img src="../arrow_green.png" style={{ width: "24px", height:"20px", paddingTop:"10px"}}/><span style={{color:"#12cdd4"}}> XO</span><img style={{float:"right"}} alt="just alt"
 									src="../keyboard_arrow_right.png" /></button>						
                                     </Link>

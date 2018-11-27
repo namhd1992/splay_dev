@@ -108,6 +108,10 @@ class CoinComponent extends React.Component {
     handleCloseErrorServer=()=>{
         this.props.handleCloseErrorServer();
     }
+    openTopGame=()=> {
+        var win = window.open("http://171.244.14.215:2999/", '_blank');
+        win.focus();
+    }
 
     render() {
         const {data, waiting,server,dialogLoginOpen, dataProfile,message, snackVariant, openSnack, openSnackErrorServer, messageServer}=this.props;
@@ -139,32 +143,35 @@ class CoinComponent extends React.Component {
                                     </select>
                                 </Grid>
                                 <Grid item xs={12}>
-									{(data!==null)?(<div className="infoUserCoin">
+									<div className="infoUserCoin">
 											<div className="titleUser">
 												<p>Topgame ID:</p>
 												<p>Số dư XO:</p>
 											</div>
-											<div className="contentUser">
+											{(data!==null)?(<div className="contentUser">
 												<p>@abc123</p>
 												<p><img src="../XO.png" style={{ width: "24px", height:"24px",margin:"0px 5px -4px 0px"}}/>{this.props.data.userBalance ? this.props.data.userBalance.toLocaleString(): "0"} XO</p>
-											</div>
-										</div>):(<div></div>)}
+											</div>):(<div className="contentUser">
+												<p>Chưa có dữ liệu</p>
+												<p>Chưa có dữ liệu</p>
+											</div>)}
+										</div>
                                 </Grid>
                                 <Grid item xs={12} style={{marginBottom:"40px"}}>
-									<div className="pakageCoin">
-										<div className="divOptionCoin">
-											<select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
-												<option value="" selected disabled hidden>{this.state.value}</option>
-												{(pakageCoin !== undefined) ? pakageCoin.map((obj,key) => {
-														return <option key={key}
-														value={obj}>{obj.toLocaleString()}</option>;
-													}) : (<div></div>)}
-											</select>
-										</div>
-										<div className="divPrice">
-											<span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
-										</div>
-									</div>
+                                {(data!==null)?(<div className="pakageCoin">
+                                                    <div className="divOptionCoin">
+                                                        <select className="selectOptionCoin" onChange={(event)=>this.selectOptionCoin(event)}>
+                                                            <option value="" selected disabled hidden>{this.state.value}</option>
+                                                            {(pakageCoin !== undefined) ? pakageCoin.map((obj,key) => {
+                                                                    return <option key={key}
+                                                                    value={obj}>{obj.toLocaleString()}</option>;
+                                                                }) : (<div></div>)}
+                                                        </select>
+                                                    </div>
+                                                    <div className="divPrice">
+                                                        <span>Giá:</span> <div style={{display:"inline"}}><img src={this.state.srcImg} style={{ width: "24px", height:"24px", margin:"0px 5px -5px 8px"}}/></div> <span>{this.state.price ? this.state.price.toLocaleString(): ""} {this.state.from}</span>
+                                                    </div>
+                                                </div>):(<div><p>Không tìm thấy tài khoản TOPGAME, vui lòng tham gia để khởi tạo.</p></div>)}
                                     
                                 </Grid>
                                 {/* <Grid item xs={12}>
@@ -175,6 +182,7 @@ class CoinComponent extends React.Component {
                                     
                                 </Grid> */}
                                 <Grid item xs={12}>
+                                {(data!==null)?(<div>
                                     {(dataProfile.phoneNumber!=="" && dataProfile.phoneNumber!==null && dataProfile.phoneNumber!==undefined)?(<div></div>):(
                                         <div>	
                                             <div className="btnVerify">
@@ -184,11 +192,10 @@ class CoinComponent extends React.Component {
                                                 </a>
                                             </div>
                                         <div className="notePhone"><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></div></div>
-								    )}
-                                    
+								    )}</div>):(<div></div>)}
                                 </Grid>
                                 <Grid item xs={12} style={{marginTop:"20px"}}>
-                                    <button className="btnChange" onClick={this.changeCoin}>ĐỔI</button>
+                                {(data!==null)?(<button className="btnChange" onClick={this.changeCoin}>ĐỔI</button>):(<button className="btnChange" onClick={this.openTopGame}>CHƠI TOPGAME</button>)}
                                 </Grid>
                                 {(waiting) ? (<Grid item xs={12} md={8}>
                                     <div className="global-loadmore">
