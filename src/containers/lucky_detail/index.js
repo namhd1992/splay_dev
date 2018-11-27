@@ -49,7 +49,6 @@ class Lucky_detail extends React.Component {
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
 			this.props.getDetailData(user.access_token, this.props.match.params.id).then(function () {
-				_this.props.changeTitle(_this.props.dataDetail.luckyspin.name);
 				var new_arr = [];
 				_this.props.dataDetail.itemOfSpin.forEach(function (item, key) {
 					new_arr.push({ id: item.item.id, status: true });

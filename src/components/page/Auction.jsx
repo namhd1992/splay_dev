@@ -185,7 +185,7 @@ class AuctionComponent extends React.Component {
 											
 										</div>
 										<div className="detail">
-											<label>Chi tiết</label>
+											<label className="titleDetail">Chi tiết</label>
 											<img className="img_avatar" src="../play_arrow_black.png"/>
 										</div>
 									</div>

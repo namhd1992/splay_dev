@@ -62,13 +62,19 @@ class CoinComponent extends React.Component {
 		var coin=localStorage.getItem("Coin");
         var pakageCoin=+event.target.value;
         var ratioExchange=this.props.data.ratioExchange;
-        if(+coin===1){
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
-        }else if(+coin===2){
-            this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+        var packageExchangeXUs=this.props.data.packageExchangeXUs;
+        if(packageExchangeXUs.indexOf(pakageCoin)===-1){
+            alert("Gói bạn chọn không tồn tại");
         }else{
-			this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            if(+coin===1){
+                this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
+            }else if(+coin===2){
+                this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            }else{
+                this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
+            }
         }
+       
     }
 
     verifyPhone=()=>{

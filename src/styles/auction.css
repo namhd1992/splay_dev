@@ -22,13 +22,13 @@
 	width: 24px; 
     height: 24px;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 .detail{
     display: flex;
     background: #585c61;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 7px 7px 0px;
 }
 .detail label{
     display: none;
@@ -73,6 +73,9 @@ marquee p {
 .marquee marquee:hover {
     cursor: pointer;
     animation-play-state: paused
+}
+.titleDetail{
+    margin-top: 2px;
 }
 
 /* @keyframes marquee {

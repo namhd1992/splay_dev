@@ -54,8 +54,8 @@ class LuckyDetailComponent extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			intValue:null,
-			whenSelect:null,
+			intValue:1,
+			whenSelect:"1px solid #00ccd4",
 		};
 	}
 	showItem=()=>{
