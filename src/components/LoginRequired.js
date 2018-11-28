@@ -38,7 +38,7 @@ class LoginRequired extends React.Component {
 				<DialogActions>
 					<div>
 						<Link to="../">
-							<Button onClick={this.handleCloseDialogLogin} style={{ color: "#fe8731" }}>
+							<Button onClick={this.handleCloseDialogLogin} style={{ color: "#888787" }}>
 								Đóng
                 </Button>
 						</Link>

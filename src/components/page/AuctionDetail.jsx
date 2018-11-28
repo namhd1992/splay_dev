@@ -311,7 +311,7 @@ class AuctionDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div className="popup-button">
-							<Button onClick={this.handleCloseDialog} style={{ color: "#fe8731", borderRadius:"20px" }}>
+							<Button onClick={this.handleCloseDialog} style={{ color: "#888787", borderRadius:"20px" }}>
 								Đóng
               </Button>
 							<Button style={{

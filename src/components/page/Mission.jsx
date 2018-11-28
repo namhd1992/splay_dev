@@ -254,7 +254,7 @@ class MissionComponent extends React.Component {
 				</DialogContent>
 				<DialogActions>
 					<div>
-						<Button onClick={this.handleCloseDialogDetail} style={{ color: "#fe8731", borderRadius:"20px" }}>
+						<Button onClick={this.handleCloseDialogDetail} style={{ color: "#888787", borderRadius:"20px" }}>
 							Đóng
 		  </Button>
 					</div>

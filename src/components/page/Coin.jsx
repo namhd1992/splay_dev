@@ -62,21 +62,27 @@ class CoinComponent extends React.Component {
 		var coin=localStorage.getItem("Coin");
         var pakageCoin=+event.target.value;
         var ratioExchange=this.props.data.ratioExchange;
+        var packageExchangeXUs=this.props.data.packageExchangeXUs;
         if(+coin===1){
+            if(packageExchangeXUs.indexOf(pakageCoin/ratioExchange)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
             this.setState({pakage:pakageCoin, value:pakageCoin, price:(pakageCoin/ratioExchange), type:"scoinToGame",packageXO:pakageCoin, packageXU:(pakageCoin/ratioExchange)});
         }else if(+coin===2){
+            if(packageExchangeXUs.indexOf(pakageCoin)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
             this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }else{
+            if(packageExchangeXUs.indexOf(pakageCoin)===-1){
+                alert("Gói bạn chọn không tồn tại");
+                return;
+            }
             this.setState({pakage:pakageCoin, value:pakageCoin, price:ratioExchange*pakageCoin, type:"gameToScoin",packageXU:pakageCoin, packageXO:pakageCoin*ratioExchange});
         }
        
-    }
-
-    verifyPhone=()=>{
-
-    }
-    verifyNow=()=>{
-        
     }
     changeCoin=()=>{
         var coin=localStorage.getItem("Coin");
@@ -189,7 +195,7 @@ class CoinComponent extends React.Component {
                                             <div className="btnVerify">
                                                 <div className="verifyPhoneCoin">Chưa xác thực số điện thoại</div>
                                                 <a href="http://sandbox.scoin.vn/thong-tin-ca-nhan/" target="_blank">
-                                                    <div className="verifyNow" onClick={this.verifyNow()}>Xác thực ngay</div>
+                                                    <div className="verifyNow">Xác thực ngay</div>
                                                 </a>
                                             </div>
                                         <div className="notePhone"><span style={{color:"red"}}>(*)</span> <span style={{color:"#fff"}}>Bạn cần xác thực để chuyển ra Xu</span></div></div>
@@ -224,7 +230,7 @@ class CoinComponent extends React.Component {
                         </DialogContent>
                         <DialogActions>
                             <div>
-                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731", borderRadius:"20px" }}>
+                                <Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>
                                     Đóng
                                 </Button>
                                 {(this.state.from === "Xu") ? (<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"5px"}}>

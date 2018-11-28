@@ -129,7 +129,7 @@ class Giftcode_plugin extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseDialogLogin} style={{color:"primary", borderRadius:"20px"}}>
+							<Button onClick={this.handleCloseDialogLogin} style={{color:"888787", borderRadius:"20px"}}>
 								Đóng
             	</Button>
 						</div>

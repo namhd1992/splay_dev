@@ -525,7 +525,7 @@ class GameDetailComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 								<div>
-									<Button onClick={this.dialogYoutubeClose} style={{ color: "#fe8731", borderRadius: "30px" }}>
+									<Button onClick={this.dialogYoutubeClose} style={{ color: "#888787", borderRadius: "30px" }}>
 										Đóng
               </Button>
 								</div>
@@ -551,7 +551,7 @@ class GameDetailComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 								<div>
-									<Button onClick={this.dialogRatingClose} style={{ color: "#fe8731", borderRadius: "20px" }}>
+									<Button onClick={this.dialogRatingClose} style={{ color: "#888787", borderRadius: "20px" }}>
 										Hủy bỏ
               </Button>
 									<Button onClick={this.ratingAction}

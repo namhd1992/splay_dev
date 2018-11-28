@@ -243,7 +243,7 @@ class LuckyDetailComponent extends React.Component {
 							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>
 								Mua lượt
               </Button>
-							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#fe8731", borderRadius:"20px" }}>
+							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#888787", borderRadius:"20px" }}>
 								Đóng
               </Button>
 						</div>
@@ -329,7 +329,7 @@ class LuckyDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseDialogItem} style={{ color: "#fe8731", borderRadius:"20px" }}>
+							<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>
 								Đóng
               </Button>
 						</div>
