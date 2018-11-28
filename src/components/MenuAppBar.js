@@ -356,15 +356,15 @@ class MenuAppBar extends React.Component {
 									<a href="https://scoin.vn/nap-game" target="_blank" style={{ textDecoration: "none", color: "#f8b03c", marginRight: "20px", padding: "5px" }}>
 										<div className="valueCoin">
 											<img className="imgScoin" src="/../scoin.png" />
-											<span>{this.props.data.scoinBalance ? this.props.data.scoinBalance.toLocaleString(): "0"}</span>
+											<span style={{marginRight:"2px"}}>{this.props.data.scoinBalance ? this.props.data.scoinBalance.toLocaleString(): "0"}</span>
 											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../addScoin.png"
 												alt="just alt"/>
 										</div>
 									</a>
-									<a target="_blank" style={{ textDecoration: "none", color: "#515151", marginRight: "20px", padding: "5px" }}>
+									<a target="_blank" style={{ textDecoration: "none", color: "#999999", marginRight: "20px", padding: "5px" }}>
 										<div className="valueCoin">
 											<img className="imgXu" src="/../Xu.png" />
-											<span>{this.props.data.balanceXU ? this.props.data.balanceXU.toLocaleString(): "0"}</span>
+											<span style={{marginRight:"2px"}}>{this.props.data.balanceXU ? this.props.data.balanceXU.toLocaleString(): "0"}</span>
 											<img style={{float:"right", border:"1px solid", borderRadius:"50%", marginTop:"2px"}} src="../addXu.png"
 												alt="just alt"/>
 										</div>
