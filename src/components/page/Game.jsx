@@ -435,7 +435,7 @@ class GameComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.searchAction} color="primary">
+							<Button onClick={this.searchAction} style={{color:"primary", borderRadius:"20px"}}>
 								Tìm kiếm
               </Button>
 						</div>
