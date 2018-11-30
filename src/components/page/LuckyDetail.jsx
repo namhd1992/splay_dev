@@ -206,8 +206,7 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonGreen} onClick={this.start}>Chơi
-              ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</Button>
+								<Button className={classes.buttonGreen} onClick={this.start}>Chơi ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</Button>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
 								<Button className={classes.buttonOrange} onClick={this.showItem}>Phần thưởng</Button>
@@ -240,12 +239,8 @@ class LuckyDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>
-								Mua lượt
-              </Button>
-							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#888787", borderRadius:"20px" }}>
-								Đóng
-              </Button>
+							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>Mua lượt</Button>
+							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#888787", borderRadius:"20px", marginRight:"15px" }}>Đóng</Button>
 						</div>
 					</DialogActions>
 				</Dialog>
@@ -329,9 +324,7 @@ class LuckyDetailComponent extends React.Component {
 					</DialogContent>
 					<DialogActions>
 						<div>
-							<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>
-								Đóng
-              </Button>
+							<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>Đóng</Button>
 						</div>
 					</DialogActions>
 				</Dialog>
