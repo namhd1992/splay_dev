@@ -30,6 +30,9 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 import Notification from '../../components/Notification'
 import LoginRequired from '../../components/LoginRequired'
 import HeadMenu from '../HeadMenu'
+import SnakeGame from '../game/snake/SnakeGame'
+import NumberGame from '../game/number/NumberGame'
+// import PacmanGame from '../game/pacman/PacmanGame'
 import '../../styles/imageServerError.css'
 
 const styles = {
@@ -135,7 +138,9 @@ class MiniGameDetailComponent extends React.Component {
 								<Grid item xs={12}>
 									<Grid container className="lucky-detail-root" spacing={8}>
 										<Grid item xs={12}>
-											
+											{/* <SnakeGame/> */}
+											<NumberGame />
+											{/* <PacmanGame /> */}
 										</Grid>
 										<Grid item xs={12} sm={6} className="lucky-button">
 											<Button  onClick={this.showItem}>Phần thưởng</Button>
@@ -197,29 +202,29 @@ class MiniGameDetailComponent extends React.Component {
 								</div>
 								<div>
 									<div className="optionLeft">
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 1)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(1)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 1)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(1)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>1 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 2,000 Thịt</span></span></div>
 										</div>
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 5)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(5)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 5)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(5)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>5 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 10,000 Thịt</span></span></div>
 										</div>
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 10)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(10)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 10)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(10)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>10 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 20,000 Thịt</span></span></div>
 										</div>
 									</div>
 									<div className="optionRight">
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 20)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(20)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 20)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(20)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>20 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 40,000 Thịt</span></span></div>
 										</div>
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(50)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(50)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>50 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 100,000 Thịt</span></span></div>
 										</div>
-										<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(100)}>
+										<div style={{background:"#2b303b", borderRadius:"10px", height:"70px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(100)}>
 											<div style={{color:"#fff", padding:"5px 10px"}}>100 lượt</div>
 											<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../Xu.png" /> <span style={{ color: "#fff" }} > 200,000 Thịt</span></span></div>
 										</div>
@@ -304,7 +309,7 @@ class MiniGameDetailComponent extends React.Component {
 							</div>
 						</DialogActions>
 					</Dialog>
-					<LoginRequired open={dialogLoginOpen}></LoginRequired>
+					{/* <LoginRequired open={dialogLoginOpen}></LoginRequired> */}
 					<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
 				</div>
 			)
