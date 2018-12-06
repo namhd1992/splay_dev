@@ -32,6 +32,8 @@ import LoginRequired from '../../components/LoginRequired'
 import HeadMenu from '../HeadMenu'
 import SnakeGame from '../game/snake/SnakeGame'
 import NumberGame from '../game/number/NumberGame'
+import FlappyBirdGame from '../game/flappy_bird/FlappyBird'
+import TetrisGame from '../game/tetris/Tetris'
 // import PacmanGame from '../game/pacman/PacmanGame'
 import '../../styles/imageServerError.css'
 
@@ -138,8 +140,10 @@ class MiniGameDetailComponent extends React.Component {
 								<Grid item xs={12}>
 									<Grid container className="lucky-detail-root" spacing={8}>
 										<Grid item xs={12}>
+											{/* <TetrisGame /> */}
+											<FlappyBirdGame />
 											{/* <SnakeGame/> */}
-											<NumberGame />
+											{/* <NumberGame /> */}
 											{/* <PacmanGame /> */}
 										</Grid>
 										<Grid item xs={12} sm={6} className="lucky-button">

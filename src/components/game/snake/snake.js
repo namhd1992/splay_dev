@@ -49,7 +49,6 @@ function Snake(mapCols,mapRows){
         // eat food: return 1
         if(x == food.x && y == food.y)
         {
-            console.log("AAAAAAAa",data.length);
             data.unshift(food);
             return [1, data.length];
         }
