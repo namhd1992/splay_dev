@@ -29,30 +29,30 @@ const styles = theme => ({
 class GiftCodeDetailComponent extends React.Component {
 
 
-	loginAction=()=>{
+	loginAction = () => {
 		this.props.loginAction();
 	}
 
-	copyText=(text)=>{
+	copyText = (text) => {
 		this.props.copyText(text);
 	}
 
-	linkClicked=()=>{
+	linkClicked = () => {
 		this.props.linkClicked();
 	}
-					
-	handleCloseSnack=()=>{
+
+	handleCloseSnack = () => {
 		this.props.handleCloseSnack();
-	
+
 	}
-	
-	takeGiftcode=(id)=>{
+
+	takeGiftcode = (id) => {
 		this.props.takeGiftcode(id);
 	}
 
 	render() {
 		var user = JSON.parse(localStorage.getItem("user"));
-		const {data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged, server}=this.props;
+		const { data, value, openSnack, message, snackVariant, dialogLoginOpen, shared, logged, server } = this.props;
 		return (this.props.data.length === 1) ? (
 			<div>
 				<Grid container spacing={8}>
@@ -158,12 +158,12 @@ class GiftCodeDetailComponent extends React.Component {
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
 														<ListItemText primary={(<span style={{ color: "#fff" }}>Đăng nhập Splay</span>)} >
 														</ListItemText>
-														<ListItemText primary={(user !== null) ? 
-															"" : (<Button variant="raised" 
+														<ListItemText primary={(user !== null) ?
+															"" : (<Button variant="raised"
 																style={{
 																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
+																	background: "#232b36",
+																	float: "right",
 																	color: "#00948d",
 																	border: "1px solid #00948d",
 																	padding: "10px",
@@ -186,34 +186,34 @@ class GiftCodeDetailComponent extends React.Component {
 														{(isShared) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Chia sẻ Link trên Facebook</span>
+														<span style={{ color: "#1f95e7", marginLeft: "15px" }}>Chia sẻ Link trên Facebook</span>
 														<ListItemText primary={(user !== null) ? (<FacebookShareButton
 															url={data[0].giftcodeEvent.urlShareFB}>
 															<Button style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
+																borderRadius: "20px",
+																background: "#232b36",
+																float: "right",
+																color: "#00948d",
+																border: "1px solid #00948d",
+																padding: "10px",
+																fontSize: "0.7em",
+																whiteSpace: "nowrap",
+																minWidth: "auto",
+																minHeight: "auto"
+															}}
 																onClick={this.linkClicked}>THỰC HIỆN
 															</Button></FacebookShareButton>) : (<Button style={{
-																	borderRadius: "20px",
-																	background:"#232b36",
-																	float:"right",
-																	color: "#00948d",
-																	border: "1px solid #00948d",
-																	padding: "10px",
-																	fontSize: "0.7em",
-																	whiteSpace: "nowrap",
-																	minWidth: "auto",
-																	minHeight: "auto"
-																}}
+																borderRadius: "20px",
+																background: "#232b36",
+																float: "right",
+																color: "#00948d",
+																border: "1px solid #00948d",
+																padding: "10px",
+																fontSize: "0.7em",
+																whiteSpace: "nowrap",
+																minWidth: "auto",
+																minHeight: "auto"
+															}}
 																onClick={this.linkClicked}>THỰC HIỆN
 															</Button>)}></ListItemText>
 														<div className="giftcode-check"></div>
@@ -224,12 +224,12 @@ class GiftCodeDetailComponent extends React.Component {
 														{(obj.loginGame) ? (<Avatar
 															style={{ backgroundColor: green[700], width: "30px", height: "30px" }}><CheckIcon></CheckIcon></Avatar>) : (
 																<Avatar style={{ width: "30px", height: "30px" }}><CloseIcon></CloseIcon></Avatar>)}
-														<span style={{ color: "#1f95e7", marginLeft:"15px" }}>Đăng nhập vào game</span>
+														<span style={{ color: "#1f95e7", marginLeft: "15px" }}>Đăng nhập vào game</span>
 														<ListItemText primary={(
 															<Button style={{
 																borderRadius: "20px",
-																background:"#232b36",
-																float:"right",
+																background: "#232b36",
+																float: "right",
 																color: "#00948d",
 																border: "1px solid #00948d",
 																padding: "10px",
@@ -238,7 +238,7 @@ class GiftCodeDetailComponent extends React.Component {
 																minWidth: "auto",
 																minHeight: "auto"
 															}}
-															href={data[0].giftcodeEvent.scoinGameObject.website}>THỰC HIỆN
+																href={data[0].giftcodeEvent.scoinGameObject.website}>THỰC HIỆN
 														</Button>
 														)}></ListItemText>
 														<div className="giftcode-check"></div>
@@ -272,12 +272,12 @@ class GiftCodeDetailComponent extends React.Component {
 				</Grid>
 			</div>
 		) : (<div className="global-loading" style={{ backgroundColor: "#232b36", marginTop: "8px" }}>
-			{(server !== true) ? (												
-				<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
-				src="../baotri.png" />)}
+			{(server !== true) ? (
+				<CircularProgress style={{ color: "#fff" }} size={50} />) : (<img className="error" alt="just alt"
+					src="../baotri.png" />)}
 			<LoginRequired open={dialogLoginOpen}></LoginRequired>
 		</div>)
-		
+
 	}
 }
 

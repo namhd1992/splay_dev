@@ -124,25 +124,25 @@ const styles = theme => ({
 	},
 });
 
-function intervalTrigger(arr, key){
+function intervalTrigger(arr, key) {
 	var count = 0;
-	var arrColor=['#b92e2e','#00c9b7'];
-	return setInterval(function() {
+	var arrColor = ['#b92e2e', '#00c9b7'];
+	return setInterval(function () {
 		if (count >= arr.length) count = 0;
 		var rand = arr[count];
-		var color=arrColor[count];
-		document.getElementById("home"+key).src = rand;
-		document.getElementById("imgHome"+key).style.backgroundColor=color
-		count=count+1;
-	}, 1000); 
+		var color = arrColor[count];
+		document.getElementById("home" + key).src = rand;
+		document.getElementById("imgHome" + key).style.backgroundColor = color
+		count = count + 1;
+	}, 1000);
 }
 
 class TitleContainer extends React.Component {
 
 	render() {
-		const { title ,classes, link} = this.props;
+		const { title, classes, link } = this.props;
 		return (
-			<div style={{width:"100%"}}>
+			<div style={{ width: "100%" }}>
 				<Grid item xs={12}>
 					<div className={classes.homeHead}>
 						<Hidden mdUp>
@@ -158,119 +158,118 @@ class TitleContainer extends React.Component {
 					</div>
 				</Grid>
 			</div>
-			
+
 		);
 	}
-  }
+}
 
-  class MissionContainer extends React.Component {
-	
-	
-	doMission=(action, id, value, scoinGameId,condition)=>{
-		if(condition===false){
+class MissionContainer extends React.Component {
+
+
+	doMission = (action, id, value, scoinGameId, condition) => {
+		if (condition === false) {
 			this.props.showDetail("Rất tiếc bạn không đủ điều kiện nhận thưởng.", "");
-		}else{
+		} else {
 			this.props.doMission(action, id, value, scoinGameId);
 		}
 	}
 
-	showDetail=(detail, title)=>{
+	showDetail = (detail, title) => {
 		this.props.showDetail(detail, title);
 	}
 
-	reward=(id)=>{
+	reward = (id) => {
 		this.props.reward(id);
 	}
 
-	openPopupMission=(obj)=>{
+	openPopupMission = (obj) => {
 		this.props.handleOpenPopupMission(obj);
 	}
-	add3Dots=(string, limit)=>{
+	add3Dots = (string, limit) => {
 		var dots = "...";
-		if(string.length > limit)
-		{
-			string = string.substring(0,limit) + dots;
+		if (string.length > limit) {
+			string = string.substring(0, limit) + dots;
 		}
 
 		return string;
 	}
-	getSrcImage(obj, key){
-		var arr=["../hot_1.png" ,"../lucky_icon.png", "../check_icon.png", "../auction_icon.png", "../giftcode_icon.png", "../check_level_icon.png", "../like_icon.png", "../share_icon.png"];
-		var src="";
-		if(obj.highLights === true){
-			
-			if(obj.actionName === "1"){
-				var list=[arr[0],arr[1]];
+	getSrcImage(obj, key) {
+		var arr = ["../hot_1.png", "../lucky_icon.png", "../check_icon.png", "../auction_icon.png", "../giftcode_icon.png", "../check_level_icon.png", "../like_icon.png", "../share_icon.png"];
+		var src = "";
+		if (obj.highLights === true) {
+
+			if (obj.actionName === "1") {
+				var list = [arr[0], arr[1]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "2"){
-				var list=[arr[0],arr[2]];
+			} else if (obj.actionName === "2") {
+				var list = [arr[0], arr[2]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "3"){
-				var list=[arr[0],arr[3]];
+			} else if (obj.actionName === "3") {
+				var list = [arr[0], arr[3]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "6"){
-				var list=[arr[0],arr[6]];
+			} else if (obj.actionName === "6") {
+				var list = [arr[0], arr[6]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "7"){
-				var list=[arr[0],arr[7]];
+			} else if (obj.actionName === "7") {
+				var list = [arr[0], arr[7]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "8"){
-				var list=[arr[0],arr[5]];
+			} else if (obj.actionName === "8") {
+				var list = [arr[0], arr[5]];
 				intervalTrigger(list, key);
-			}else if(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10"){
-				var list=[arr[0],arr[4]];
+			} else if (obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10") {
+				var list = [arr[0], arr[4]];
 				intervalTrigger(list, key);
 			}
-			
-		}else{
-			if(obj.actionName === "1"){
-				src=arr[1];
-			}else if(obj.actionName === "2"){
-				src=arr[2];
-			}else if(obj.actionName === "3"){
-				src=arr[3];
-			}else if(obj.actionName === "6"){
-				src=arr[6];
-			}else if(obj.actionName === "7"){
-				src=arr[7];
-			}else if(obj.actionName === "8"){
-				src=arr[5];
-			}else if(obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10"){
-				src=arr[4];
+
+		} else {
+			if (obj.actionName === "1") {
+				src = arr[1];
+			} else if (obj.actionName === "2") {
+				src = arr[2];
+			} else if (obj.actionName === "3") {
+				src = arr[3];
+			} else if (obj.actionName === "6") {
+				src = arr[6];
+			} else if (obj.actionName === "7") {
+				src = arr[7];
+			} else if (obj.actionName === "8") {
+				src = arr[5];
+			} else if (obj.actionName === "4" || obj.actionName === "5" || obj.actionName === "9" || obj.actionName === "10") {
+				src = arr[4];
 			}
 			return src;
 		}
-		
+
 	}
-	setId(key){
-		return "imgHome"+key;
+	setId(key) {
+		return "imgHome" + key;
 	}
-	setIdImg(key){
-		return "home"+key;
+	setIdImg(key) {
+		return "home" + key;
 	}
-		
+
 
 	render() {
-		const {classes, dataMission} = this.props;
+		const { classes, dataMission } = this.props;
 		var data;
-		if(dataMission!==undefined){
-			data=dataMission.sort((a, b) => (a.fromDate > b.fromDate ? -1 : 1));
+		if (dataMission !== undefined) {
+			data = dataMission.sort((a, b) => (a.fromDate > b.fromDate ? -1 : 1));
 		}
 		return (
 			<div className="mission_home_container">
 				{data.slice(0, 8).map((obj, key) => (
 					// <div className={(obj.highLights === true) ? "mission": ""}>
-						<div className="mission_home_content">
-							<Grid key={key}> 
-								<ListItem key={key} className={classes.giftcodeItem}>
-									{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
-										<div id={this.setId(key)} className="avatar">
-											{/* {(obj.actionName === "1") ? ( */}
-												<img className="img_avatar" src={this.getSrcImage(obj,key)}
-													id={this.setIdImg(key)}
-													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />
-													{/* ) : (<div></div>)} */}
-											{/* {(obj.actionName === "2") ? (
+					<div className="mission_home_content">
+						<Grid key={key}>
+							<ListItem key={key} className={classes.giftcodeItem}>
+								{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
+								<div id={this.setId(key)} className="avatar">
+									{/* {(obj.actionName === "1") ? ( */}
+									<img className="img_avatar" src={this.getSrcImage(obj, key)}
+										id={this.setIdImg(key)}
+										onClick={() => this.showDetail(obj.description, "Chi tiết nhiệm vụ")} />
+									{/* ) : (<div></div>)} */}
+									{/* {(obj.actionName === "2") ? (
 												<img  className="img_avatar" src="../check_icon.png"
 													alt="just alt"
 													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (
@@ -285,143 +284,143 @@ class TitleContainer extends React.Component {
 													onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)}
 											{(obj.actionName === "6") ? (
 												<LikeIcon onClick={() => this.showDetail(obj.description,"Chi tiết nhiệm vụ")} />) : (<div></div>)} */}
-										</div>
-									{/* </div> */}
-									{(obj.award === "Thịt") ? (
-									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+								</div>
+								{/* </div> */}
+								{(obj.award === "Thịt") ? (
+									<ListItemText style={{ width: "50%", padding: "0 7px" }} disableTypography={true}
 										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
-												src="../thit.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
-									{(obj.award === "giftcode") ? (
-									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+												src="../thit.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? (<span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+								{(obj.award === "giftcode") ? (
+									<ListItemText style={{ width: "50%", padding: "0 7px" }} disableTypography={true}
 										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
-											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">Giftcode</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
-									{(obj.award === "XO") ? (
-									<ListItemText style={{width:"50%", padding:"0 7px"}} disableTypography={true}
+											<span className="global-thit" style={{ color: "#fe8731" }}><span className="valueBonus">Giftcode</span>{(obj.awardAvailable !== null) ? (<span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+								{(obj.award === "XO") ? (
+									<ListItemText style={{ width: "50%", padding: "0 7px" }} disableTypography={true}
 										primary={(<div className="mission_home_title">{obj.missionName}</div>)}
 										secondary={(
 											<span className="global-thit" style={{ color: "#fe8731" }}><img alt="just alt"
-												src="../XO.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? ( <span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
-								
-									<div className="mission_home_action">
-										<button
-												className="buttonCircle"
-												onClick={() => this.openPopupMission(obj)}>?</button>
-										{(obj.finish && !obj.received && obj.missionStatus ==="active" && obj.awardAvailable !==0) ? (
+												src="../XO.png" /> <span className="valueBonus">{obj.valueAward}</span>{(obj.awardAvailable !== null) ? (<span className="numberBonus">Còn lại hôm nay: {obj.awardAvailable}</span>) : (<div></div>)} </span>)} />) : (<div></div>)}
+
+								<div className="mission_home_action">
+									<button
+										className="buttonCircle"
+										onClick={() => this.openPopupMission(obj)}>?</button>
+									{(obj.finish && !obj.received && obj.missionStatus === "active" && obj.awardAvailable !== 0) ? (
 										<button onClick={() => this.reward(obj.missionId)}
 											className="buttonFull"
-												>Nhận</button>) : (<div></div>)}
-										{(!obj.finish && !obj.received && obj.missionStatus ==="active" && obj.awardAvailable !==0) ? (
-											<button
-												className="buttonGhost"
-												onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId,obj.condition)}>Thực Hiện</button>
-										) : (<div></div>)}
-										{(obj.finish && obj.received && obj.missionStatus ==="active") ? (
-											<Button style={{ color: "#888787",textTransform:"none" }} disabled>
-												Đã Nhận
+										>Nhận</button>) : (<div></div>)}
+									{(!obj.finish && !obj.received && obj.missionStatus === "active" && obj.awardAvailable !== 0) ? (
+										<button
+											className="buttonGhost"
+											onClick={() => this.doMission(obj.actionName, obj.objectId, obj.objectValue, obj.scoinGameId, obj.condition)}>Thực Hiện</button>
+									) : (<div></div>)}
+									{(obj.finish && obj.received && obj.missionStatus === "active") ? (
+										<Button style={{ color: "#888787", textTransform: "none" }} disabled>
+											Đã Nhận
 											</Button>
-											// <button className="received" disabled>Đã nhận</button>
-										) : (<div></div>)}
-										{(obj.awardAvailable ===0 && obj.missionStatus ==="active") ? (
-											<Button style={{ color: "#888787",textTransform:"none" }} disabled>
-												Đã Hết
+										// <button className="received" disabled>Đã nhận</button>
+									) : (<div></div>)}
+									{(obj.awardAvailable === 0 && obj.missionStatus === "active") ? (
+										<Button style={{ color: "#888787", textTransform: "none" }} disabled>
+											Đã Hết
 											</Button>
-											// <button className="received" disabled>Đã hết</button>
-										) : (<div></div>)}
-										{(obj.missionStatus ==="inactive") ? (
-											<Button style={{ color: "#888787",textTransform:"none" }} disabled>
-												Hết Hạn
+										// <button className="received" disabled>Đã hết</button>
+									) : (<div></div>)}
+									{(obj.missionStatus === "inactive") ? (
+										<Button style={{ color: "#888787", textTransform: "none" }} disabled>
+											Hết Hạn
 											</Button>
-											// <button className="received" disabled>Hết hạn</button>
-										) : (<div></div>)}
-									</div>
-								</ListItem>
-							</Grid>
-						</div>
+										// <button className="received" disabled>Hết hạn</button>
+									) : (<div></div>)}
+								</div>
+							</ListItem>
+						</Grid>
+					</div>
 					// </div>
 				))}
 			</div>
-			
+
 		);
 	}
-  }
+}
 
 
 class HomeComponent extends React.Component {
 
-	constructor(){
+	constructor() {
 		super();
 		this.state = {
-			openPopupMission:false,
+			openPopupMission: false,
 		};
 	}
 
-	handlePointerMove=()=>{
+	handlePointerMove = () => {
 		this.props.handlePointerMove();
 	}
-	
-	handlePointerUp=(url)=>{
+
+	handlePointerUp = (url) => {
 		this.props.handlePointerUp(url);
 	}
-	
-	handlePointerDown=()=>{
+
+	handlePointerDown = () => {
 		this.props.handlePointerDown();
 	}
-	
-	handleCloseDialogDetail=()=>{
+
+	handleCloseDialogDetail = () => {
 		this.props.handleCloseDialogDetail();
 	}
 
-	handleOpenPopupMission=(obj)=>{
-		this.setState({openPopupMission:true, dataMission:obj});
+	handleOpenPopupMission = (obj) => {
+		this.setState({ openPopupMission: true, dataMission: obj });
 	}
-	handleClosePopupMission=()=>{
-		this.setState({openPopupMission:false});
+	handleClosePopupMission = () => {
+		this.setState({ openPopupMission: false });
 	}
-	
-	loginAction=()=>{
+
+	loginAction = () => {
 		this.props.loginAction();
 	}
 
-	getTheLoai=(obj)=>{
-		var tagsList=obj.tagsList;
-		var theloai="";
+	getTheLoai = (obj) => {
+		var tagsList = obj.tagsList;
+		var theloai = "";
 		if (tagsList !== undefined) {
-			for(var i=0; i<tagsList.length;i++){
+			for (var i = 0; i < tagsList.length; i++) {
 				if (tagsList[i].typeName === "theloai") {
-					theloai=tagsList[i].name;
+					theloai = tagsList[i].name;
 					break;
 				}
 			};
 		}
 		return theloai;
 	}
-	getStatusAuction=(obj)=>{
-		var status="";
-		var color="";
-		var distance=6 * 3600 * 1000;
+	getStatusAuction = (obj) => {
+		var status = "";
+		var color = "";
+		var distance = 6 * 3600 * 1000;
 		var now = moment(new Date());
-		var start=obj.fromDate;
-		var end=obj.toDate;
-		var duration=end-now;
+		var start = obj.fromDate;
+		var end = obj.toDate;
+		var duration = end - now;
 		if (duration > distance && start < now) {
 			status = "ĐANG DIỄN RA";
-			color="#00e24d";
+			color = "#00e24d";
 		}
 		if (duration < distance) {
 			status = "SẮP KẾT THÚC";
-			color="#de352f";
+			color = "#de352f";
 		}
 		if (duration < 0) {
 			status = "HẾT HẠN";
-			color="#888787";
+			color = "#888787";
 		}
-		return {status,color};
+		return { status, color };
 	}
 	render() {
-		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
+		const { data, articleData, dataMission, logged, dialogDetailOpen, dialogContent, server, title_dialog } = this.props;
 		const { theme } = this.props;
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
@@ -434,7 +433,7 @@ class HomeComponent extends React.Component {
 			})
 			newGames = newGames.slice(0, 6);
 		}
-		
+
 		return (data.carousel !== undefined) ? (
 				<div className={classes.homeRoot + " home-root"}>
 					<Grid container style={{width: "100%", margin: "0px",overflow: "hidden",}} spacing={8}>
@@ -456,311 +455,354 @@ class HomeComponent extends React.Component {
 										</div>
 									</Link>
 								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8}>
-									<Hidden smDown>
-										<Grid item xs={12}>
-											<Link to={"./article_detail/129"}>
-												<img src="/../1.gif" style={{ width: "100%", borderRadius: "5px" }} />
-											</Link>
-										</Grid>
-									</Hidden>
-									<Hidden mdUp>
-										<Grid item xs={12}>
-											<Link to={"./article_detail/129"}>
-												<img src="/../2.gif" style={{ width: "100%", borderRadius: "5px" }} />
-											</Link>
-										</Grid>
-									</Hidden>
-								</Grid>
-								<TitleContainer
-									classes={classes}
-									title="Game Hot"
-									link="/game"
-								/>
-								<Grid item xs={12}>
-									<div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
-										<div style={{ display: "flex" }}>
-											{data.splayGame.map((obj, key) => {
-												if (Ultilities.object_exist(obj.tagsList, "name", "HOT")) {
-													return (
-														<div
-															key={key}
-															style={{ padding: "0px", marginRight: "10px", cursor: "pointer", position: "relative", width: "250px", paddingTop: "3px", paddingBottom: "3px" }}>
-															<a href={"/gamedetail/" + obj.id} target="_blank">
-																{(obj.numberGiftcodeOfGame > 0) ? (<div style={{ position: "absolute", width: "32px", height: "50px", top: "0px", right: "10px", backgroundImage: "url(/../giftcodetag.png)", backgroundSize: "contain", backgroundRepeat: "no-repeat" }}></div>) : (<div></div>)}
-																<div className={classes.gameHotItem}>
-																	<Grid container spacing={8} style={{ margin: "0px", width: "100%" }}>
-																		<Grid item xs={12} style={{ padding: "0px" }}>
-																			<div style={{
-																				backgroundImage: "url(" + obj.bigImage + ")",
-																				backgroundSize: "cover",
-																				backgroundPostition: "center middle",
-																				paddingBottom: "40%",
-																				height: "0",
-																				width: "250px",
-																			}}></div>
-																		</Grid>
-																		<Grid item xs={12} className={classes.gameHead}
-																			style={{ padding: "1px" }}>{obj.name}</Grid>
-																		<Grid item xs={12} style={{
-																			overflow: "hidden",
-																			whiteSpace: "nowrap",
-																			color: "gray",
-																			padding: "1px",
-																			boxSizing: "border-box",
-																			textAlign: "center"
-																		}}>
-																			{obj.tagsList.map((objtag, keytag) => {
-																				var textColor = '#000';
-																				var bgColor = objtag.backgroundColor;
-																				if (parseInt(bgColor.replace('#', ''), 16) > 0xffffff / 2) {
-																					textColor = "#151c24";
-																				} else {
-																					textColor = "#fff";
-																				}
-																				if (objtag.typeName === "theloai") {
-																					return (
-																						<div key={keytag} style={{
-																							border: "1px solid " + bgColor,
-																							display: "inline-block",
-																							padding: "2px",
-																							margin: "5px",
-																							borderRadius: "20px",
-																							fontSize: "0.6em",
-																							color: bgColor
-																						}}>{objtag.name}</div>)
-																				}
-																				return null;
-																			}
-																			)}
-																		</Grid>
+							<Grid container className={classes.homeBlock} spacing={8}>
+								<Hidden smDown>
+									<Grid item xs={12}>
+										<Link to={"./article_detail/129"}>
+											<img src="/../1.gif" style={{ width: "100%", borderRadius: "5px" }} />
+										</Link>
+									</Grid>
+								</Hidden>
+								<Hidden mdUp>
+									<Grid item xs={12}>
+										<Link to={"./article_detail/129"}>
+											<img src="/../2.gif" style={{ width: "100%", borderRadius: "5px" }} />
+										</Link>
+									</Grid>
+								</Hidden>
+							</Grid>
+							<TitleContainer
+								classes={classes}
+								title="Game Hot"
+								link="/game"
+							/>
+							<Grid item xs={12}>
+								<div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+									<div style={{ display: "flex" }}>
+										{data.splayGame.map((obj, key) => {
+											if (Ultilities.object_exist(obj.tagsList, "name", "HOT")) {
+												return (
+													<div
+														key={key}
+														style={{ padding: "0px", marginRight: "10px", cursor: "pointer", position: "relative", width: "250px", paddingTop: "3px", paddingBottom: "3px" }}>
+														<a href={"/gamedetail/" + obj.id} target="_blank">
+															{(obj.numberGiftcodeOfGame > 0) ? (<div style={{ position: "absolute", width: "32px", height: "50px", top: "0px", right: "10px", backgroundImage: "url(/../giftcodetag.png)", backgroundSize: "contain", backgroundRepeat: "no-repeat" }}></div>) : (<div></div>)}
+															<div className={classes.gameHotItem}>
+																<Grid container spacing={8} style={{ margin: "0px", width: "100%" }}>
+																	<Grid item xs={12} style={{ padding: "0px" }}>
+																		<div style={{
+																			backgroundImage: "url(" + obj.bigImage + ")",
+																			backgroundSize: "cover",
+																			backgroundPostition: "center middle",
+																			paddingBottom: "40%",
+																			height: "0",
+																			width: "250px",
+																		}}></div>
 																	</Grid>
-																</div>
-															</a>
-														</div>)
-												}
-												return null;
-											})}
-										</div>
+																	<Grid item xs={12} className={classes.gameHead}
+																		style={{ padding: "1px" }}>{obj.name}</Grid>
+																	<Grid item xs={12} style={{
+																		overflow: "hidden",
+																		whiteSpace: "nowrap",
+																		color: "gray",
+																		padding: "1px",
+																		boxSizing: "border-box",
+																		textAlign: "center"
+																	}}>
+																		{obj.tagsList.map((objtag, keytag) => {
+																			var textColor = '#000';
+																			var bgColor = objtag.backgroundColor;
+																			if (parseInt(bgColor.replace('#', ''), 16) > 0xffffff / 2) {
+																				textColor = "#151c24";
+																			} else {
+																				textColor = "#fff";
+																			}
+																			if (objtag.typeName === "theloai") {
+																				return (
+																					<div key={keytag} style={{
+																						border: "1px solid " + bgColor,
+																						display: "inline-block",
+																						padding: "2px",
+																						margin: "5px",
+																						borderRadius: "20px",
+																						fontSize: "0.6em",
+																						color: bgColor
+																					}}>{objtag.name}</div>)
+																			}
+																			return null;
+																		}
+																		)}
+																	</Grid>
+																</Grid>
+															</div>
+														</a>
+													</div>)
+											}
+											return null;
+										})}
 									</div>
-								</Grid>
+								</div>
 							</Grid>
-							
-							<Grid container className={classes.homeBlock} spacing={8} justify="center">
-								<TitleContainer
-									classes={classes}
-									title="Game Mới"
-									link="/game"
-								/>
-								{newGames.map((obj, key) => {
-									if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
-										return (
-											<Grid key={key} item xs={3} sm={2} md={2} style={{ padding: "0px" }}>
-												<Link to={"/gamedetail/" + obj.id} className={classes.homeBlockLink}>
-													<div className={classes.gameItem}>
-														<div><img className={classes.gameImage} alt="game icon"
-															src={obj.defaultImage} /></div>
-														<div className={classes.gameName} style={{ width: "64px", margin: "auto" }}>{obj.name}</div>
-													</div>
-												</Link>
-											</Grid>)
-									}
-									return null;
-								}
-								)}
-							</Grid>
-							<Grid container style={{ margin: "0px", width: "100%" }} spacing={8}>
-								<TitleContainer
-									classes={classes}
-									title="Games"
-									link="/game"
-								/>
-								{data.splayGame.slice(0, 8).map((obj, key) => (
-									<Grid key={key} item xs={12}>
-										<Link to={"/gamedetail/" + obj.id} style={{ textDecoration: "none" }}>
-											<ListItem style={{ padding: "8px 0px" }}>
-												<div style={{
-													backgroundImage: "url(" + obj.defaultImage + ")",
-													backgroundSize: "contain",
-													width: "64px",
-													height: "64px",
-													backgroundPosition: "center",
-													backgroundRepeat: "no-repeat",
-													position: "relative",
-													overflow: "hidden"
-												}}>
+						</Grid>
+
+						<Grid container className={classes.homeBlock} spacing={8} justify="center">
+							<TitleContainer
+								classes={classes}
+								title="Game Mới"
+								link="/game"
+							/>
+							{newGames.map((obj, key) => {
+								if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
+									return (
+										<Grid key={key} item xs={3} sm={2} md={2} style={{ padding: "0px" }}>
+											<Link to={"/gamedetail/" + obj.id} className={classes.homeBlockLink}>
+												<div className={classes.gameItem}>
+													<div><img className={classes.gameImage} alt="game icon"
+														src={obj.defaultImage} /></div>
+													<div className={classes.gameName} style={{ width: "64px", margin: "auto" }}>{obj.name}</div>
 												</div>
-												<ListItemText style={{ textAlign: "left" }} primary={(<span><b><span style={{ color: secondary.main }}>{obj.name}</span></b>{(obj.subTitle !== "" && obj.subTitle !== null) ? (<span style={{
-													"borderRadius": "5px",
-													"background": (obj.subTitle === "NEW") ? "#24b9a9" : "#fe8731",
-													"color": "white",
-													"padding": "0px 5px",
-													"marginLeft": "5px",
-												}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
-													secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
-													<div style={{marginTop:"5px"}}>
+											</Link>
+										</Grid>)
+								}
+								return null;
+							}
+							)}
+						</Grid>
+						<Grid container style={{ margin: "0px", width: "100%" }} spacing={8}>
+							<TitleContainer
+								classes={classes}
+								title="Games"
+								link="/game"
+							/>
+							{data.splayGame.slice(0, 8).map((obj, key) => (
+								<Grid key={key} item xs={12}>
+									<Link to={"/gamedetail/" + obj.id} style={{ textDecoration: "none" }}>
+										<ListItem style={{ padding: "8px 0px" }}>
+											<div style={{
+												backgroundImage: "url(" + obj.defaultImage + ")",
+												backgroundSize: "contain",
+												width: "64px",
+												height: "64px",
+												backgroundPosition: "center",
+												backgroundRepeat: "no-repeat",
+												position: "relative",
+												overflow: "hidden"
+											}}>
+											</div>
+											<ListItemText style={{ textAlign: "left" }} primary={(<span><b><span style={{ color: secondary.main }}>{obj.name}</span></b>{(obj.subTitle !== "" && obj.subTitle !== null) ? (<span style={{
+												"borderRadius": "5px",
+												"background": (obj.subTitle === "NEW") ? "#24b9a9" : "#fe8731",
+												"color": "white",
+												"padding": "0px 5px",
+												"marginLeft": "5px",
+											}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
+												secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
+													<div style={{ marginTop: "5px" }}>
 														<Rating point={obj.pointReview}></Rating>
 														<span style={{
-																marginLeft:"20px",
-																fontSize:"11px",
-																border: "1px solid #23c9b6",
-																padding:"1px 2px",
-																borderRadius: "20px"}}>
-																<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
+															marginLeft: "20px",
+															fontSize: "11px",
+															border: "1px solid #23c9b6",
+															padding: "1px 2px",
+															borderRadius: "20px"
+														}}>
+															<label style={{ color: "#23c9b6" }}>{this.getTheLoai(obj)}</label>
 														</span>
-														</div>
-													</span>)} />
-												<button className="buttonGhost">Chơi</button>
-											</ListItem>
-										</Link>
-										<Divider />
-									</Grid>
-								))}
+													</div>
+												</span>)} />
+											<button className="buttonGhost">Chơi</button>
+										</ListItem>
+									</Link>
+									<Divider />
+								</Grid>
+							))}
+							<Grid item xs={12}>
+								<div style={{ textAlign: "center" }}>
+									<Link to="/game">
+										<Button
+											style={{
+												borderRadius: "20px",
+												background: "transparent",
+												color: "#fff",
+												padding: "8px",
+												fontSize: "0.8em",
+												whiteSpace: "nowrap",
+												minWidth: "auto",
+												minHeight: "auto"
+											}}>Xem thêm</Button>
+									</Link>
+								</div>
+							</Grid>
+						</Grid>
+						<Hidden mdUp>
+							<Grid container className={classes.homeBlock} spacing={8}>
+								<TitleContainer
+									classes={classes}
+									title="Giftcode"
+									link="/giftcode"
+								/>
+								{data.splayGiftcodeWeb.map((obj, key) => {
+									return (obj.giftcodeEvent.showing === 2 || obj.giftcodeEvent.showing === 3) ? (
+										<Grid key={key} item xs={12}>
+											<Link to={"/giftcodedetail/" + obj.giftcodeEvent.id}>
+												<ListItem key={key} className={classes.giftcodeItem}>
+													<div className="giftcode-item-image">
+														<div style={{
+															backgroundImage: "url(" + obj.defaultImage + ")",
+															backgroundSize: "contain",
+															width: "64px",
+															height: "64px",
+															backgroundPosition: "center",
+															backgroundRepeat: "no-repeat"
+														}}></div>
+													</div>
+													<ListItemText disableTypography={true}
+														primary={(<div style={{
+															fontWeight: "400",
+															color: "#fff",
+															whiteSpace: "nowrap",
+															overflow: "hidden",
+															textOverflow: "ellipsis"
+														}}>{obj.title}</div>)}
+														secondary={(
+															<span style={{ color: "#666", fontSize: "0.8em" }}
+																className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
+													<div>
+														<button color="primary" className="buttonGhost">
+															Chi tiết
+															</button>
+													</div>
+												</ListItem>
+											</Link>
+										</Grid>
+									) : (<div key={key}></div>)
+								})}
+							</Grid>
+							<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
+								<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
+									<span style={{ marginTop: "5px" }}>Thiếu <span className="global-thit" style={{ color: "#fe8731" }}> <img alt="just alt" src="../thit.png" /> Thịt </span> để tham gia hoạt động?	</span><Link to={"./article_detail/129"} >
+										<button className="buttonFull">Nhận ngay</button></Link>
+								</Grid>
+							</Grid>
+							<Grid container className={classes.homeBlock} spacing={8} justify="center">
 								<Grid item xs={12}>
-									<div style={{ textAlign: "center" }}>
-										<Link to="/game">
-											<Button
-												style={{
-													borderRadius: "20px",
-													background: "transparent",
-													color: "#fff",
-													padding: "8px",
-													fontSize: "0.8em",
-													whiteSpace: "nowrap",
-													minWidth: "auto",
-													minHeight: "auto"
-												}}>Xem thêm</Button>
-										</Link>
+									<div className={classes.homeHead}>
+										<div className={classes.homeLink}></div>
+										<div className={classes.homeTitle}><span style={{ color: "#23c9b6", fontWeight: "bold" }}>-</span> Tin tức <span
+											style={{ color: "#23c9b6", fontWeight: "bold" }}>-</span></div>
+										<div className={classes.homeLink}><Link to="/article"><KeyboardArrowRight
+											style={{ color: "#555" }}></KeyboardArrowRight></Link></div>
+									</div>
+								</Grid>
+								<Grid item xs={12}>
+									{articleData.map((obj, key) => {
+										return (
+											<ListItem key={key} style={{ padding: "10px 0px" }}>
+												{(obj.articleType == "event") ? (<div className="articleEvent">Sự kiện</div>) : (<div className="articleNew">Tin tức</div>)}
+												<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
+													{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
+												</Link></span>)} ></ListItemText>
+												<span style={{ color: "#555", fontSize: "0.8em" }}>
+													{moment(new Date(obj.createOn)).format("DD.MM")}
+												</span>
+											</ListItem>)
+									}
+									)}
+								</Grid>
+							</Grid>
+							<Grid container className={classes.homeBlock} spacing={8}>
+								<TitleContainer
+									classes={classes}
+									title="Đấu Giá"
+									link="/auction"
+								/>
+								<Grid item xs={12} style={{ overflow: "hidden" }}>
+									<div style={{ borderRadius: "5px" }}>
+										<Grid container spacing={8} >
+											{data.auction.slice(0, 4).map((obj, key) => (
+												<Grid key={key} item xs={12} sm={6}>
+													<Link to={"/auctiondetail/" + obj.id} key={key} className={classes.gridLink}>
+														<div className={classes.gridItem}>
+															<div style={{ width: "70%", position: "relative" }}>
+																<div className="auction-name" style={{
+																	textAlign: "left",
+																	width: "100%",
+																	overflow: "hidden",
+																	textOverflow: "ellipsis",
+																	whiteSpace: "nowrap",
+																	color: "#fff",
+																	padding: "5px"
+																}}>{obj.name}</div>
+																<div className="auction-name" style={{
+																	textAlign: "left",
+																	width: "100%",
+																	overflow: "hidden",
+																	textOverflow: "ellipsis",
+																	whiteSpace: "nowrap",
+																	color: "#000",
+																	padding: "5px"
+																}}><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
+															</div>
+															<div style={{
+																width: "80px",
+																paddingBottom: "80px",
+																backgroundImage: "url(" + obj.defaultImage + ")",
+																backgroundSize: "contain",
+																backgroundRepeat: "no-repeat",
+																margin: "auto",
+																backgroundPosition: "center"
+															}}></div>
+														</div>
+													</Link>
+												</Grid>
+											))}
+										</Grid>
 									</div>
 								</Grid>
 							</Grid>
-							<Hidden mdUp>
-								<Grid container className={classes.homeBlock} spacing={8}>
-									<TitleContainer
-										classes={classes}
-										title="Giftcode"
-										link="/giftcode"
-									/>
-									{data.splayGiftcodeWeb.map((obj, key) => {
-										return (obj.giftcodeEvent.showing === 2 || obj.giftcodeEvent.showing === 3) ? (
-											<Grid key={key} item xs={12}>
-												<Link to={"/giftcodedetail/" + obj.giftcodeEvent.id}>
-													<ListItem key={key} className={classes.giftcodeItem}>
-														<div className="giftcode-item-image">
-															<div style={{
-																backgroundImage: "url(" + obj.defaultImage + ")",
-																backgroundSize: "contain",
-																width: "64px",
-																height: "64px",
-																backgroundPosition: "center",
-																backgroundRepeat: "no-repeat"
-															}}></div>
-														</div>
-														<ListItemText disableTypography={true}
-															primary={(<div style={{
-																fontWeight: "400",
-																color: "#fff",
-																whiteSpace: "nowrap",
-																overflow: "hidden",
-																textOverflow: "ellipsis"
-															}}>{obj.title}</div>)}
-															secondary={(
-																<span style={{ color: "#666", fontSize: "0.8em" }}
-																	className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
-														<div>
-															<button color="primary" className="buttonGhost">
-																Chi tiết
-															</button>
-														</div>
-													</ListItem>
-												</Link>
-											</Grid>
-										) : (<div key={key}></div>)
-									})}
-								</Grid>
-								<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
-									<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
-										<span style={{ marginTop: "5px" }}>Thiếu <span className="global-thit" style={{ color: "#fe8731" }}> <img alt="just alt" src="../thit.png" /> Thịt </span> để tham gia hoạt động?	</span><Link to={"./article_detail/129"} >
-											<button className="buttonFull">Nhận ngay</button></Link>
-									</Grid>
-								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8} justify="center">
-									<Grid item xs={12}>
-										<div className={classes.homeHead}>
-											<div className={classes.homeLink}></div>
-											<div className={classes.homeTitle}><span style={{ color: "#23c9b6", fontWeight: "bold" }}>-</span> Tin tức <span
-												style={{ color: "#23c9b6", fontWeight: "bold" }}>-</span></div>
-											<div className={classes.homeLink}><Link to="/article"><KeyboardArrowRight
-												style={{ color: "#555" }}></KeyboardArrowRight></Link></div>
+							{(logged) ? (<Grid container className={classes.homeBlock} spacing={8}>
+								<TitleContainer
+									classes={classes}
+									title="Nhiệm Vụ"
+									link="/mission"
+								/>
+								<MissionContainer
+									dataMission={dataMission}
+									classes={classes}
+									showDetail={this.props.showDetail}
+									reward={this.props.reward}
+									doMission={this.props.doMission}
+									handleOpenPopupMission={this.handleOpenPopupMission}
+								/>
+
+								<Dialog
+									fullScreen={false}
+									open={dialogDetailOpen}
+									onClose={this.handleCloseDialogDetail}
+									aria-labelledby="responsive-dialog-title"
+									classes={{ paper: classes.paper }}
+								>
+									<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>{title_dialog}</span></DialogTitle>
+									<DialogContent>
+										<div style={{ color: "#fff" }}>
+											{dialogContent}
 										</div>
-									</Grid>
-									<Grid item xs={12}>
-										{articleData.map((obj, key) => {
-											return (
-												<ListItem key={key} style={{ padding: "10px 0px" }}>
-													{(obj.articleType == "event") ? (<div className="articleEvent">Sự kiện</div>) : (<div className="articleNew">Tin tức</div>)}
-													<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
-														{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
-													</Link></span>)} ></ListItemText>
-													<span style={{ color: "#555", fontSize: "0.8em" }}>
-														{moment(new Date(obj.createOn)).format("DD.MM")}
-													</span>
-												</ListItem>)
-										}
-										)}
-									</Grid>
-								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8}>
-									<TitleContainer
-										classes={classes}
-										title="Đấu Giá"
-										link="/auction"
-									/>
-									<Grid item xs={12} style={{ overflow: "hidden" }}>
-										<div style={{ borderRadius: "5px" }}>
-											<Grid container spacing={8} >
-												{data.auction.slice(0, 4).map((obj, key) => (
-													<Grid key={key} item xs={12} sm={6}>
-														<Link to={"/auctiondetail/" + obj.id} key={key} className={classes.gridLink}>
-															<div className={classes.gridItem}>
-																<div style={{ width: "70%", position: "relative" }}>
-																	<div className="auction-name" style={{
-																		textAlign: "left",
-																		width: "100%",
-																		overflow: "hidden",
-																		textOverflow: "ellipsis",
-																		whiteSpace: "nowrap",
-																		color: "#fff",
-																		padding: "5px"
-																	}}>{obj.name}</div>
-																	<div className="auction-name" style={{
-																		textAlign: "left",
-																		width: "100%",
-																		overflow: "hidden",
-																		textOverflow: "ellipsis",
-																		whiteSpace: "nowrap",
-																		color: "#000",
-																		padding: "5px"
-																	}}><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
-																</div>
-																<div style={{
-																	width: "80px",
-																	paddingBottom: "80px",
-																	backgroundImage: "url(" + obj.defaultImage + ")",
-																	backgroundSize: "contain",
-																	backgroundRepeat: "no-repeat",
-																	margin: "auto",
-																	backgroundPosition: "center"
-																}}></div>
-															</div>
-														</Link>
-													</Grid>
-												))}
-											</Grid>
+									</DialogContent>
+									<DialogActions>
+										<div>
+											<Button onClick={this.handleCloseDialogDetail} style={{ color: "#888787", borderRadius: "20px" }}>
+												Đóng
+					  							</Button>
 										</div>
-									</Grid>
-								</Grid>
-								{(logged) ? (<Grid container className={classes.homeBlock} spacing={8}>
+									</DialogActions>
+								</Dialog>
+							</Grid>) : (<div></div>)}
+						</Hidden>
+					</Grid>
+					<Hidden smDown>
+						<Grid item xs={4}>
+							{(logged) ? (
+								<Grid container spacing={8}>
 									<TitleContainer
 										classes={classes}
 										title="Nhiệm Vụ"
@@ -774,7 +816,6 @@ class HomeComponent extends React.Component {
 										doMission={this.props.doMission}
 										handleOpenPopupMission={this.handleOpenPopupMission}
 									/>
-	
 									<Dialog
 										fullScreen={false}
 										open={dialogDetailOpen}
@@ -790,258 +831,217 @@ class HomeComponent extends React.Component {
 										</DialogContent>
 										<DialogActions>
 											<div>
-												<Button onClick={this.handleCloseDialogDetail} style={{ color: "#888787", borderRadius:"20px" }}>
+												<Button onClick={this.handleCloseDialogDetail} style={{ color: "#888787", borderRadius: "20px" }}>
 													Đóng
-					  							</Button>
+													</Button>
 											</div>
 										</DialogActions>
 									</Dialog>
-								</Grid>) : (<div></div>)}
-							</Hidden>
-						</Grid>
-						<Hidden smDown>
-							<Grid item xs={4}>
-								{(logged) ? (
-									<Grid container spacing={8}>
-										<TitleContainer
-											classes={classes}
-											title="Nhiệm Vụ"
-											link="/mission"
-										/>
-										<MissionContainer
-											dataMission={dataMission}
-											classes={classes}
-											showDetail={this.props.showDetail}
-											reward={this.props.reward}
-											doMission={this.props.doMission}
-											handleOpenPopupMission={this.handleOpenPopupMission}
-										/>
-										<Dialog
-											fullScreen={false}
-											open={dialogDetailOpen}
-											onClose={this.handleCloseDialogDetail}
-											aria-labelledby="responsive-dialog-title"
-											classes={{ paper: classes.paper }}
-										>
-											<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }}>{title_dialog}</span></DialogTitle>
-											<DialogContent>
-												<div style={{ color: "#fff" }}>
-													{dialogContent}
-												</div>
-											</DialogContent>
-											<DialogActions>
-												<div>
-													<Button onClick={this.handleCloseDialogDetail} style={{ color: "#888787", borderRadius:"20px" }}>
-														Đóng
-													</Button>
-												</div>
-											</DialogActions>
-										</Dialog>
-									</Grid>
-								) : (
-										<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
-											<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
-												<span style={{ marginTop: "5px" }}>
-													Đăng nhập để nhận nhiệm vụ
+								</Grid>
+							) : (
+									<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
+										<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
+											<span style={{ marginTop: "5px" }}>
+												Đăng nhập để nhận nhiệm vụ
 												</span>
-												<Button
-													style={{
-														borderRadius: "20px",
-														background: "linear-gradient(90deg,#fe8731,#ff984e)",
-														color: "#fff",
-														padding: "10px",
-														fontSize: "0.8em",
-														whiteSpace: "nowrap",
-														minWidth: "auto",
-														minHeight: "auto",
-														padding: "8px"
-													}}
-													onClick={this.loginAction}
-												>Đăng nhập</Button>
-											</Grid>
+											<Button
+												style={{
+													borderRadius: "20px",
+													background: "linear-gradient(90deg,#fe8731,#ff984e)",
+													color: "#fff",
+													padding: "10px",
+													fontSize: "0.8em",
+													whiteSpace: "nowrap",
+													minWidth: "auto",
+													minHeight: "auto",
+													padding: "8px"
+												}}
+												onClick={this.loginAction}
+											>Đăng nhập</Button>
 										</Grid>
-									)}
-	
-								<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
-									<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
-										<span style={{ marginTop: "5px" }}>Thiếu
+									</Grid>
+								)}
+
+							<Grid container style={{ margin: "16px 0px", width: "100%" }} spacing={16}>
+								<Grid item xs={12} style={{ display: "flex", justifyContent: "space-between", borderRadius: "15px", padding: "15px", border: "solid 1px #333", color: "#fff" }}>
+									<span style={{ marginTop: "5px" }}>Thiếu
 											<span className="global-thit" style={{ color: "#fe8731" }}>
-												<img alt="just alt" src="../thit.png" /> Thịt
+											<img alt="just alt" src="../thit.png" /> Thịt
 											</span> để tham gia hoạt động?
 										</span>
-										<Link to={"./article_detail/129"} ><button className="buttonFull">Nhận ngay</button></Link>
-									</Grid>
-								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8}>
-									<TitleContainer
-										classes={classes}
-										title="Giftcode"
-										link="/giftcode"
-									/>
-									{data.splayGiftcodeWeb.map((obj, key) => {
-										return (obj.giftcodeEvent.showing === 2 || obj.giftcodeEvent.showing === 3) ? (
-											<Grid key={key} item xs={12}>
-												<Link to={"/giftcodedetail/" + obj.giftcodeEvent.id}>
-													<ListItem key={key} className={classes.giftcodeItem}>
-														<div className="giftcode-item-image">
-															<div style={{
-																backgroundImage: "url(" + obj.defaultImage + ")",
-																backgroundSize: "contain",
-																width: "64px",
-																height: "64px",
-																backgroundPosition: "center",
-																backgroundRepeat: "no-repeat"
-															}}></div>
-														</div>
-														<ListItemText disableTypography={true}
-															primary={(<div style={{
-																fontWeight: "400",
-																color: "#fff",
-																whiteSpace: "nowrap",
-																overflow: "hidden",
-																textOverflow: "ellipsis"
-															}}>{obj.title}</div>)}
-															secondary={(
-																<span style={{ color: "#666", fontSize: "0.8em" }}
-																	className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
-														<div>
-															<button color="primary" className="buttonGhost">
-																Chi tiết
-															</button>
-														</div>
-													</ListItem>
-												</Link>
-											</Grid>
-										) : (<div key={key}></div>)
-									})}
-								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8} justify="center">
-									<TitleContainer
-										classes={classes}
-										title="Tin Tức"
-										link="/article"
-									/>
-									<Grid item xs={12}>
-										{articleData.map((obj, key) => {
-											return (
-												<ListItem key={key} style={{ padding: "10px 0px" }}>
-													{(obj.articleType == "event") ? (<div style={{
-														border: "solid 1px #fe8731",
-														display: "inline-block",
-														padding: "5px",
-														margin: "2px",
-														borderRadius: "5px",
-														fontSize: "0.6em",
-														color: "#fe8731",
-														whiteSpace: "nowrap"
-													}}>Sự kiện</div>) : (<div style={{
-														border: "solid 1px #24b9a9",
-														display: "inline-block",
-														padding: "5px",
-														margin: "2px",
-														borderRadius: "5px",
-														fontSize: "0.6em",
-														color: "#24b9a9",
-														whiteSpace: "nowrap"
-													}}>Tin tức</div>)}
-													<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
-														{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
-													</Link></span>)} ></ListItemText>
-													<span style={{ color: "#555", fontSize: "0.8em" }}>
-														{moment(new Date(obj.createOn)).format("DD.MM")}
-													</span>
-												</ListItem>)
-										}
-										)}
-									</Grid>
-								</Grid>
-								<Grid container className={classes.homeBlock} spacing={8}>
-									<TitleContainer
-										classes={classes}
-										title="Đấu Giá"
-										link="/auction"
-									/>
-									<Grid item xs={12} style={{ overflow: "hidden" }}>
-										<div style={{ borderRadius: "5px" }}>
-											<Grid container spacing={8} >
-												{data.auction.slice(0, 4).map((obj, key) => (
-													<Grid key={key} item xs={12} >
-														<Link to={"/auctiondetail/" + obj.id} key={key} className={classes.gridLink}>
-															<div className={classes.gridItem}>
-																<div style={{ width: "70%", position: "relative" }}>
-																	<div className="auction-name" style={{
-																		textAlign: "left",
-																		width: "100%",
-																		overflow: "hidden",
-																		textOverflow: "ellipsis",
-																		whiteSpace: "nowrap",
-																		color: "#fff",
-																		padding: "5px"
-																	}}>{obj.name}</div>
-																	<div className="auction-name" style={{
-																		textAlign: "left",
-																		width: "100%",
-																		overflow: "hidden",
-																		textOverflow: "ellipsis",
-																		whiteSpace: "nowrap",
-																		color: "#000",
-																		padding: "5px"
-																	}}><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
-																	<div className="auction-name" style={{
-																		textAlign: "left",
-																		width: "100%",
-																		overflow: "hidden",
-																		fontSize:"11px",
-																		textOverflow: "ellipsis",
-																		whiteSpace: "nowrap",
-																		color: this.getStatusAuction(obj).color,
-																		padding: "5px"
-																	}}>{this.getStatusAuction(obj).status}</div>
-																</div>
-																<div style={{
-																	width: "80px",
-																	paddingBottom: "80px",
-																	backgroundImage: "url(" + obj.defaultImage + ")",
-																	backgroundSize: "contain",
-																	backgroundRepeat: "no-repeat",
-																	margin: "auto",
-																	backgroundPosition: "center"
-																}}></div>
-															</div>
-														</Link>
-													</Grid>
-												))}
-											</Grid>
-										</div>
-									</Grid>
+									<Link to={"./article_detail/129"} ><button className="buttonFull">Nhận ngay</button></Link>
 								</Grid>
 							</Grid>
-						</Hidden>
-					</Grid>
-					<PopupMission
-						handleClosePopupMission={this.handleClosePopupMission}
-						openPopupMission={this.state.openPopupMission}
-						dataMission={this.state.dataMission}
-						reward={this.props.reward}
-						doMission={this.props.doMission}
-					/>
-				</div >
-			) :
-				(<Grid item xs={12} style={{ marginTop: "8px" }}>
-					<div className="global-loadmore">
-					{(server !== true) ? (												
-						<CircularProgress style={{ color: "#fff" }} size={50} />):(<img className="error" alt="just alt"
-						src="../baotri.png" />)}
-					</div>
-					<PopupMission
-						handleClosePopupMission={this.handleClosePopupMission}
-						openPopupMission={this.state.openPopupMission}
-						dataMission={this.state.dataMission}
-						reward={this.props.reward}
-						doMission={this.props.doMission}
-					/>
+							<Grid container className={classes.homeBlock} spacing={8}>
+								<TitleContainer
+									classes={classes}
+									title="Giftcode"
+									link="/giftcode"
+								/>
+								{data.splayGiftcodeWeb.map((obj, key) => {
+									return (obj.giftcodeEvent.showing === 2 || obj.giftcodeEvent.showing === 3) ? (
+										<Grid key={key} item xs={12}>
+											<Link to={"/giftcodedetail/" + obj.giftcodeEvent.id}>
+												<ListItem key={key} className={classes.giftcodeItem}>
+													<div className="giftcode-item-image">
+														<div style={{
+															backgroundImage: "url(" + obj.defaultImage + ")",
+															backgroundSize: "contain",
+															width: "64px",
+															height: "64px",
+															backgroundPosition: "center",
+															backgroundRepeat: "no-repeat"
+														}}></div>
+													</div>
+													<ListItemText disableTypography={true}
+														primary={(<div style={{
+															fontWeight: "400",
+															color: "#fff",
+															whiteSpace: "nowrap",
+															overflow: "hidden",
+															textOverflow: "ellipsis"
+														}}>{obj.title}</div>)}
+														secondary={(
+															<span style={{ color: "#666", fontSize: "0.8em" }}
+																className="giftcode-item-left">{"Số lượng " + obj.giftcodeEvent.numberGiftcode}</span>)} />
+													<div>
+														<button color="primary" className="buttonGhost">
+															Chi tiết
+															</button>
+													</div>
+												</ListItem>
+											</Link>
+										</Grid>
+									) : (<div key={key}></div>)
+								})}
+							</Grid>
+							<Grid container className={classes.homeBlock} spacing={8} justify="center">
+								<TitleContainer
+									classes={classes}
+									title="Tin Tức"
+									link="/article"
+								/>
+								<Grid item xs={12}>
+									{articleData.map((obj, key) => {
+										return (
+											<ListItem key={key} style={{ padding: "10px 0px" }}>
+												{(obj.articleType == "event") ? (<div style={{
+													border: "solid 1px #fe8731",
+													display: "inline-block",
+													padding: "5px",
+													margin: "2px",
+													borderRadius: "5px",
+													fontSize: "0.6em",
+													color: "#fe8731",
+													whiteSpace: "nowrap"
+												}}>Sự kiện</div>) : (<div style={{
+													border: "solid 1px #24b9a9",
+													display: "inline-block",
+													padding: "5px",
+													margin: "2px",
+													borderRadius: "5px",
+													fontSize: "0.6em",
+													color: "#24b9a9",
+													whiteSpace: "nowrap"
+												}}>Tin tức</div>)}
+												<ListItemText style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#fff", fontSize: "0.8em" }} disableTypography={true} primary={(<span><Link style={{ color: "#fff" }} to={"/article_detail/" + obj.id} className={classes.homeBlockLink}>
+													{(obj.splayGameName !== "" && obj.splayGameName !== null) ? "[" + obj.splayGameName + "]" : ""} {obj.title}
+												</Link></span>)} ></ListItemText>
+												<span style={{ color: "#555", fontSize: "0.8em" }}>
+													{moment(new Date(obj.createOn)).format("DD.MM")}
+												</span>
+											</ListItem>)
+									}
+									)}
+								</Grid>
+							</Grid>
+							<Grid container className={classes.homeBlock} spacing={8}>
+								<TitleContainer
+									classes={classes}
+									title="Đấu Giá"
+									link="/auction"
+								/>
+								<Grid item xs={12} style={{ overflow: "hidden" }}>
+									<div style={{ borderRadius: "5px" }}>
+										<Grid container spacing={8} >
+											{data.auction.slice(0, 4).map((obj, key) => (
+												<Grid key={key} item xs={12} >
+													<Link to={"/auctiondetail/" + obj.id} key={key} className={classes.gridLink}>
+														<div className={classes.gridItem}>
+															<div style={{ width: "70%", position: "relative" }}>
+																<div className="auction-name" style={{
+																	textAlign: "left",
+																	width: "100%",
+																	overflow: "hidden",
+																	textOverflow: "ellipsis",
+																	whiteSpace: "nowrap",
+																	color: "#fff",
+																	padding: "5px"
+																}}>{obj.name}</div>
+																<div className="auction-name" style={{
+																	textAlign: "left",
+																	width: "100%",
+																	overflow: "hidden",
+																	textOverflow: "ellipsis",
+																	whiteSpace: "nowrap",
+																	color: "#000",
+																	padding: "5px"
+																}}><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
+																<div className="auction-name" style={{
+																	textAlign: "left",
+																	width: "100%",
+																	overflow: "hidden",
+																	fontSize: "11px",
+																	textOverflow: "ellipsis",
+																	whiteSpace: "nowrap",
+																	color: this.getStatusAuction(obj).color,
+																	padding: "5px"
+																}}>{this.getStatusAuction(obj).status}</div>
+															</div>
+															<div style={{
+																width: "80px",
+																paddingBottom: "80px",
+																backgroundImage: "url(" + obj.defaultImage + ")",
+																backgroundSize: "contain",
+																backgroundRepeat: "no-repeat",
+																margin: "auto",
+																backgroundPosition: "center"
+															}}></div>
+														</div>
+													</Link>
+												</Grid>
+											))}
+										</Grid>
+									</div>
+								</Grid>
+							</Grid>
+						</Grid>
+					</Hidden>
 				</Grid>
-		)
+				<PopupMission
+					handleClosePopupMission={this.handleClosePopupMission}
+					openPopupMission={this.state.openPopupMission}
+					dataMission={this.state.dataMission}
+					reward={this.props.reward}
+					doMission={this.props.doMission}
+				/>
+			</div >
+		) :
+			(<Grid item xs={12} style={{ marginTop: "8px" }}>
+				<div className="global-loadmore">
+					{(server !== true) ? (
+						<CircularProgress style={{ color: "#fff" }} size={50} />) : (<img className="error" alt="just alt"
+							src="../baotri.png" />)}
+				</div>
+				<PopupMission
+					handleClosePopupMission={this.handleClosePopupMission}
+					openPopupMission={this.state.openPopupMission}
+					dataMission={this.state.dataMission}
+					reward={this.props.reward}
+					doMission={this.props.doMission}
+				/>
+			</Grid>
+			)
 	}
 }
 
