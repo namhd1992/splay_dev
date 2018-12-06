@@ -34,7 +34,7 @@ import SnakeGame from '../game/snake/SnakeGame'
 import NumberGame from '../game/number/NumberGame'
 import FlappyBirdGame from '../game/flappy_bird/FlappyBird'
 import TetrisGame from '../game/tetris/Tetris'
-// import PacmanGame from '../game/pacman/PacmanGame'
+import PacmanGame from '../game/pacman/PacmanGame'
 import '../../styles/imageServerError.css'
 
 const styles = {
@@ -73,8 +73,14 @@ class MiniGameDetailComponent extends React.Component {
 			page: 0,
 			rowsPerPage: 10,
 			value: 0,
+			game:'snake'
 		};
 	}
+	componentWillMount(){
+		var game=localStorage.getItem("game")
+		this.setState({game:game});
+	}
+
 	showItem=()=>{
 		this.props.showItem();
 	}
@@ -140,8 +146,12 @@ class MiniGameDetailComponent extends React.Component {
 								<Grid item xs={12}>
 									<Grid container className="lucky-detail-root" spacing={8}>
 										<Grid item xs={12}>
-											{/* <TetrisGame /> */}
-											<FlappyBirdGame />
+										{(this.state.game==="tetris")?(<TetrisGame />):(<div></div>)}
+										{(this.state.game==="flappy bird")?(<FlappyBirdGame />):(<div></div>)}
+										{(this.state.game==="snake")?(<SnakeGame />):(<div></div>)}
+										{(this.state.game==="2048")?(<NumberGame />):(<div></div>)}
+										{(this.state.game==="pacman")?(<PacmanGame />):(<div></div>)}
+											{/* <FlappyBirdGame /> */}
 											{/* <SnakeGame/> */}
 											{/* <NumberGame /> */}
 											{/* <PacmanGame /> */}

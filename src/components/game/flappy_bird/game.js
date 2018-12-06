@@ -17,18 +17,7 @@ function Game(myCanvas) {
     this.init = function () {
         myCanvas.width = WIDTH;
         myCanvas.height = HEIGHT;
-
-        myCanvas.onkeydown = function (e) {
-            e.preventDefault();
-            if (e.keyCode == 13) // Enter key
-            {
-                console
-                if (!_running)
-                    startGame();
-            } else if (_running) {
-                _pressedKey = e.keyCode;
-            }
-        };
+        startGame();
 
         // draw the welcome screen
 
@@ -94,14 +83,10 @@ function Game(myCanvas) {
         }
         MyEvent.preventDefault();
     }
-    myCanvas.onkeydown = function (e) {
-        e.preventDefault();
-        if (e.keyCode == 32) 
-        {
-            if (_running)
-            Got_Player_Input(e)
-        }
-    };
+
+    myCanvas.addEventListener("touchstart", Got_Player_Input);
+    myCanvas.addEventListener("mousedown", Got_Player_Input);
+    document.addEventListener("keydown", Got_Player_Input);
 
     function make_bird_slow_and_fall() {
         if (bird.velocity_y < max_fall_speed) {

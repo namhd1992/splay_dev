@@ -20,7 +20,7 @@ class MiniGameComponent extends React.Component {
     }
 
 	render() {
-        var listGame=["snake","tetris","flappy bird","pacman", "racing monster"]
+        var listGame=["snake","flappy bird","pacman","2048"]
 		const {data, waiting,server}=this.props;
 		return (
 				<div style={{ marginTop: "8px", marginBottom: "5px", borderRadius: "5px", padding: "5px" }}>
