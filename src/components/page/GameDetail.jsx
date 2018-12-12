@@ -166,8 +166,8 @@ class GameDetailComponent extends React.Component {
 				{
 					breakpoint: 520,
 					settings: {
-						slidesToShow: 3,
-						slidesToScroll: 3
+						slidesToShow: 1,
+						slidesToScroll: 1
 					}
 				}
 			]
@@ -294,7 +294,7 @@ class GameDetailComponent extends React.Component {
 								<Slider dotsClass={"slick-dots carousel-dot"} {...settings} >
 									{arrScreenShot.map((obj, key) => (
 										<div key={key} style={{}}>
-											<div onClick={() => this.openLightBox(key)} style={{
+											<div onClick={() => this.i7(key)} style={{
 												backgroundImage: "url(" + obj + ")",
 												backgroundRepeat: "no-repeat",
 												backgroundPosition: "center",
@@ -491,9 +491,7 @@ class GameDetailComponent extends React.Component {
 																whiteSpace: "nowrap",
 																minWidth: "auto",
 																minHeight: "auto",
-															}}>
-																Nhận
-                          </Button>
+															}}>Nhận</Button>
 														</div>
 													</ListItem>
 												</Link>

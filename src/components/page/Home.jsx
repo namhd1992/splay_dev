@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { CircularProgress } from 'material-ui/Progress'
 import Button from 'material-ui/Button'
 import Carousel from '../../components/Carousel'
+import ReactResizeDetector from 'react-resize-detector'
 import { Link } from 'react-router-dom'
 import { ListItem, ListItemText } from 'material-ui/List'
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight'
@@ -354,9 +355,24 @@ class HomeComponent extends React.Component {
 		super();
 		this.state = {
 			openPopupMission: false,
+			compact:false,
 		};
 	}
+	componentWillMount(){
+		if (document.body.offsetWidth < 768) {
+			this.setState({ compact: true });
+		} else {
+			this.setState({ compact: false });
+		}
+	}
 
+	onResize=()=>{
+		if (document.body.offsetWidth < 768) {
+			this.setState({ compact: true });
+		} else {
+			this.setState({ compact: false });
+		}
+	}
 	handlePointerMove = () => {
 		this.props.handlePointerMove();
 	}
@@ -425,13 +441,23 @@ class HomeComponent extends React.Component {
 		const { secondary } = theme.palette;
 		const { classes } = this.props;
 		var newGames = [];
+		var sizeImgGame="";
+		var fontsize="";
 		if (data.carousel !== undefined) {
 			data.splayGame.map((obj, key) => {
 				if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
 					newGames.push(obj);
 				}
 			})
-			newGames = newGames.slice(0, 6);
+			if(this.state.compact){
+				newGames = newGames.slice(0, 5);
+				sizeImgGame="40px";
+				fontsize="12px";
+			}else{
+				newGames = newGames.slice(0, 6);
+				sizeImgGame="64px";
+				fontsize="15px";
+			}
 		}
 
 		return (data.carousel !== undefined) ? (
@@ -554,12 +580,12 @@ class HomeComponent extends React.Component {
 							{newGames.map((obj, key) => {
 								if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
 									return (
-										<Grid key={key} item xs={3} sm={2} md={2} style={{ padding: "0px" }}>
+										<Grid key={key} item xs={2} sm={2} md={2} style={{ padding: "0px" }}>
 											<Link to={"/gamedetail/" + obj.id} className={classes.homeBlockLink}>
 												<div className={classes.gameItem}>
-													<div><img className={classes.gameImage} alt="game icon"
-														src={obj.defaultImage} /></div>
-													<div className={classes.gameName} style={{ width: "64px", margin: "auto" }}>{obj.name}</div>
+												<div><img width={sizeImgGame} height={sizeImgGame} alt="game icon"
+															src={obj.defaultImage} /></div>
+														<div className={classes.gameName} style={{ margin: "auto" }} width= {sizeImgGame}>{obj.name}</div>
 												</div>
 											</Link>
 										</Grid>)
@@ -581,27 +607,28 @@ class HomeComponent extends React.Component {
 											<div style={{
 												backgroundImage: "url(" + obj.defaultImage + ")",
 												backgroundSize: "contain",
-												width: "64px",
-												height: "64px",
+												width: "50px",
+												height: "50px",
 												backgroundPosition: "center",
 												backgroundRepeat: "no-repeat",
 												position: "relative",
 												overflow: "hidden"
 											}}>
 											</div>
-											<ListItemText style={{ textAlign: "left" }} primary={(<span><b><span style={{ color: secondary.main }}>{obj.name}</span></b>{(obj.subTitle !== "" && obj.subTitle !== null) ? (<span style={{
+											<ListItemText style={{ textAlign: "left" }} primary={(<span><b><span style={{ color: secondary.main, fontSize:"14px" }}>{obj.name}</span></b>{(obj.subTitle !== "" && obj.subTitle !== null) ? (<span style={{
 												"borderRadius": "5px",
 												"background": (obj.subTitle === "NEW") ? "#24b9a9" : "#fe8731",
 												"color": "white",
+												"fontSize":"14px",
 												"padding": "0px 5px",
 												"marginLeft": "5px",
 											}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
-												secondary={(<span>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
+												secondary={(<span fontSize={fontsize}>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
 													<div style={{ marginTop: "5px" }}>
 														<Rating point={obj.pointReview}></Rating>
 														<span style={{
-															marginLeft: "20px",
-															fontSize: "11px",
+															marginLeft: "10px",
+															fontSize: "9px",
 															border: "1px solid #23c9b6",
 															padding: "1px 2px",
 															borderRadius: "20px"
@@ -650,8 +677,8 @@ class HomeComponent extends React.Component {
 														<div style={{
 															backgroundImage: "url(" + obj.defaultImage + ")",
 															backgroundSize: "contain",
-															width: "64px",
-															height: "64px",
+															width: "50px",
+															height: "50px",
 															backgroundPosition: "center",
 															backgroundRepeat: "no-repeat"
 														}}></div>
@@ -1018,6 +1045,7 @@ class HomeComponent extends React.Component {
 						</Grid>
 					</Hidden>
 				</Grid>
+				<ReactResizeDetector handleWidth={true} handleHeight={true} onResize={this.onResize} />
 				<PopupMission
 					handleClosePopupMission={this.handleClosePopupMission}
 					openPopupMission={this.state.openPopupMission}
