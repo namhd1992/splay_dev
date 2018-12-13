@@ -43,6 +43,43 @@ const styles = {
 
 
 class GameDetailComponent extends React.Component {
+	
+	constructor(props){
+		super(props);
+		this.state={
+			data:props.data,
+			numberImgDestop:0,
+			numberImgTablet:0,
+			numberImgMoble:0,
+			width:"",
+			height:"",
+			paddingBottom:"",
+			margin:""
+		}
+	}
+
+	UNSAFE_componentWillReceiveProps(nextProps){
+		if(this.props.data !== nextProps.data){
+			const _this=this;
+			var arrScreenShot = [];
+			if (nextProps.data !== undefined && nextProps.data.length === 1) {
+				if (nextProps.data[0].screenShot !== null && nextProps.data[0].screenShot !== "") {
+					arrScreenShot = nextProps.data[0].screenShot.split(",");
+				}
+			}
+			var link=arrScreenShot[0];
+			var img = new Image();
+			img.onload = function() {
+				if(this.width>this.height){
+					_this.setState({numberImgDestop:2, numberImgTablet: 2, numberImgMoble: 1, height:"200px", margin:"0px 2px"})
+				}else{
+					_this.setState({numberImgDestop:5, numberImgTablet: 4, numberImgMoble: 3, paddingBottom:"160%"})	
+				}
+				// _this.setState({width:this.width, height: this.height})
+			}
+			img.src = link.replace("=download","");
+		}
+	}
 
 	goToLightBoxPrev=()=>{
 		this.props.goToLightBoxPrev();
@@ -136,6 +173,8 @@ class GameDetailComponent extends React.Component {
 		}
 		var articlesData = gameArticles;
 		var arrImages = [];
+		
+
 		arrScreenShot.map((obj, key) => {
 			arrImages.push({ src: obj, caption: 'Screen shot' });
 			return 0;
@@ -144,29 +183,29 @@ class GameDetailComponent extends React.Component {
 			dots: true,
 			infinite: true,
 			speed: 500,
-			slidesToShow: 5,
-			slidesToScroll: 5,
+			slidesToShow: this.state.numberImgDestop,
+			slidesToScroll: 1,
 			autoplay: false,
 			autoplaySpeed: 2000,
 			responsive: [
 				{
 					breakpoint: 1080,
 					settings: {
-						slidesToShow: 5,
-						slidesToScroll: 5,
+						slidesToShow: this.state.numberImgDestop,
+						slidesToScroll: 1,
 					}
 				},
 				{
 					breakpoint: 768,
 					settings: {
-						slidesToShow: 4,
-						slidesToScroll: 4
+						slidesToShow: this.state.numberImgTablet,
+						slidesToScroll: 1
 					}
 				},
 				{
 					breakpoint: 520,
 					settings: {
-						slidesToShow: 1,
+						slidesToShow: this.state.numberImgMoble,
 						slidesToScroll: 1
 					}
 				}
@@ -289,18 +328,21 @@ class GameDetailComponent extends React.Component {
 							</Grid>
 							<Grid item xs={12} style={{
 								width: "100%",
-								overflow: "hidden"
+								overflow: "hidden",
+								padding:"0px 30px"
 							}}>
 								<Slider dotsClass={"slick-dots carousel-dot"} {...settings} >
 									{arrScreenShot.map((obj, key) => (
 										<div key={key} style={{}}>
-											<div onClick={() => this.i7(key)} style={{
+											<div onClick={() => this.openLightBox(key)} style={{
 												backgroundImage: "url(" + obj + ")",
 												backgroundRepeat: "no-repeat",
 												backgroundPosition: "center",
 												backgroundSize: "contain",
 												with: "100%",
-												paddingBottom: "160%"
+												height:this.state.height,
+												margin:this.state.margin,
+												paddingBottom: this.state.paddingBottom
 											}}>
 											</div>
 										</div>
@@ -491,7 +533,9 @@ class GameDetailComponent extends React.Component {
 																whiteSpace: "nowrap",
 																minWidth: "auto",
 																minHeight: "auto",
-															}}>Nhận</Button>
+															}}>
+																Nhận
+                          </Button>
 														</div>
 													</ListItem>
 												</Link>
@@ -523,7 +567,7 @@ class GameDetailComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 								<div>
-									<Button onClick={this.dialogYoutubeClose} style={{ color: "#888787", borderRadius: "30px" }}>
+									<Button onClick={this.dialogYoutubeClose} style={{ color: "#888787", borderRadius: "20px" }}>
 										Đóng
               </Button>
 								</div>
