@@ -60,6 +60,7 @@ class Giftcode_detail extends React.Component {
 				_this.props.changeTitle(_this.props.data[0].title);
 			});
 		} else {
+			_this.setState({ dialogLoginOpen: true });
 			this.props.getDataId(this.props.match.params.id).then(function () {
 				_this.props.changeTitle(_this.props.data[0].title);
 			});
