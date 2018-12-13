@@ -35,9 +35,9 @@ import KeyboardArrowUp from 'material-ui-icons/KeyboardArrowUp';
 import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
-import MiniGame from '../mini_game';
-import MiniGameDetail from '../mini_game_detail'
 import TypeChangeCoin from '../type_change_coin';
+import MiniGame from '../mini_game';
+// import MiniGameDetail from '../mini_game_detail';
 
 
 class App extends React.Component {
@@ -144,7 +144,7 @@ class App extends React.Component {
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
 						<Route exact path="/mini-game" component={MiniGame} />
-						<Route exact path="/mini-game-detail" component={MiniGameDetail} />
+						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
 					</main>
 					{(!this.state.fullscreen) ? (<Footer></Footer>) : (<div></div>)}
 					<ScrollToTop style={{ bottom: 90, right: "10px" }} showUnder={160}>
