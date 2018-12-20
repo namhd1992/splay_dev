@@ -51,7 +51,7 @@ class App extends React.Component {
 			fullscreen: false,
 			title: "",
 			isMobile: false,
-			scrollPos: 100,
+			scrollPos: 0,
 			message:"Đã có lỗi từ hệ thống.",
 			snackVariant: "info",
 			server:null
