@@ -466,11 +466,9 @@ class HomeComponent extends React.Component {
 						<Grid item xs={12} md={8}>
 							<Grid container style={{width: "100%", margin: "0px", overflow: "hidden",}} spacing={8}>
 								<Grid item xs={12} style={{marginBottom:"15px"}}>
-									<div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch", zIndex:"1"}}>
-										<Carousel data={data.carousel[1]}></Carousel>
-									</div>
-									<HeadMenu></HeadMenu>
+									<Carousel data={data.carousel[1]}></Carousel>	
 								</Grid>
+								<HeadMenu></HeadMenu>
 								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
 									<Link to={"./doi"} >
 										<div style={{height:"40px"}}>
