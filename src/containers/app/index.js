@@ -36,7 +36,7 @@ import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
-import MiniGame from '../mini_game';
+// import MiniGame from '../mini_game';
 // import MiniGameDetail from '../mini_game_detail';
 
 
@@ -51,7 +51,7 @@ class App extends React.Component {
 			fullscreen: false,
 			title: "",
 			isMobile: false,
-			scrollPos: 0,
+			scrollPos: 100,
 			message:"Đã có lỗi từ hệ thống.",
 			snackVariant: "info",
 			server:null
@@ -92,7 +92,7 @@ class App extends React.Component {
 			this.setState({ compact: false });
 		}
 
-		if (document.body.getBoundingClientRect().top > this.state.scrollPos){
+		if (document.body.getBoundingClientRect().top >= this.state.scrollPos){
 			// console.log("UP")
 			this.setState({ scrolling: false });
 		}else{
@@ -143,7 +143,7 @@ class App extends React.Component {
 						<Route exact path="/phonecard" component={Phone_card} />
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
-						<Route exact path="/mini-game" component={MiniGame} />
+						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
 					</main>
 					{(!this.state.fullscreen) ? (<Footer></Footer>) : (<div></div>)}
