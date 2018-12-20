@@ -92,8 +92,8 @@ class App extends React.Component {
 			this.setState({ compact: false });
 		}
 
-		if (document.body.getBoundingClientRect().top >= this.state.scrollPos){
-			// console.log("UP")
+		if (document.body.getBoundingClientRect().top >= this.state.scrollPos || document.body.getBoundingClientRect().top>-150){
+			console.log("UP", document.body.getBoundingClientRect().top)
 			this.setState({ scrolling: false });
 		}else{
 			// console.log('DOWN');
