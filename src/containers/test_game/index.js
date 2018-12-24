@@ -11,10 +11,10 @@ import '../../styles/imageServerError.css'
 class TestGame extends React.Component {
 
     componentDidMount(){
-        var user = JSON.parse(localStorage.getItem("user"));
+        var user = localStorage.getItem("user");
         if (user !== null) {
             console.log('USER:', user);
-            document.getElementById("myIframe").src = 'http://103.252.253.87:8000/?user='+JSON.stringify(user);
+            document.getElementById("myIframe").src = 'http://103.252.253.87:8000/?user='+user;
         }
     }
 
