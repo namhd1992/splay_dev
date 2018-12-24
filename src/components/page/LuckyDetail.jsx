@@ -206,13 +206,13 @@ class LuckyDetailComponent extends React.Component {
 								</div>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonGreen} onClick={this.start}>Chơi ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</Button>
+								<button className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonOrange} onClick={this.showItem}>Phần thưởng</Button>
+								<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
 							</Grid>
 							<Grid item xs={12} sm={4} className="lucky-button">
-								<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>Mua Lượt</Button>
+								<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
 							</Grid>
 						</Grid>
 					</Grid>
