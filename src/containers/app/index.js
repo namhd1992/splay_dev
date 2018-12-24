@@ -36,6 +36,7 @@ import Avatar from 'material-ui/Avatar';
 import Phone_card from '../phone_card';
 import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
+import TestGame from '../test_game';
 // import MiniGame from '../mini_game';
 // import MiniGameDetail from '../mini_game_detail';
 
@@ -143,6 +144,7 @@ class App extends React.Component {
 						<Route exact path="/phonecard" component={Phone_card} />
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
+						<Route exact path="/test-game" component={TestGame} />
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
 					</main>
