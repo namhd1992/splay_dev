@@ -325,7 +325,7 @@ class MenuAppBar extends React.Component {
 			<div className={classes.root}>
 				<AppBar className={(this.props.scrolling) ? classes.appbarScrolling : classes.appbar} >
 					<Toolbar className={classes.toolbar} style={{ maxWidth: "1280px", padding: "0px 8px" }}>
-					<Hidden smDown>
+						<Hidden smDown>
 							{(this.props.pathname !== "/") ? (<div style={{ float: "left", padding: (this.props.compact && this.props.scrolling) ? "4px 0px 0px 0px" : "14px 0px 14px 0px" }}>
 								<Avatar onClick={() => {
 									this.props.history.goBack()
@@ -339,7 +339,7 @@ class MenuAppBar extends React.Component {
 									<img alt="logo splay" className={(this.props.compact && this.props.scrolling) ? classes.logoCompact : classes.logo} src="../logo_demo.png" />
 								</Link>
 							</div>
-							</Hidden>
+						</Hidden>
 						
 						{(!auth) ? (
 							<div style={{ display: "flex", float: "right", marginTop: (this.props.compact && this.props.scrolling) ? "0px" : "10px" }}>
@@ -349,7 +349,7 @@ class MenuAppBar extends React.Component {
 								</Button>
 								<Button style={{ color: "#fff", padding: "0px" }} className='login-button' onClick={this.loginAction}>
 									Đăng nhập
-                  </Button>
+                  				</Button>
 							</div>
 						) : (
 								<div style={{ display: (this.props.compact && this.props.scrolling) ? "none" : "flex", margin:"12px 3px 0px 0px", float:"right"}} >

@@ -14,7 +14,7 @@ class TestGame extends React.Component {
         var user = JSON.parse(localStorage.getItem("user"));
         if (user !== null) {
             console.log('USER:', user);
-            document.getElementById("myIframe").src = 'http://103.252.253.87:8000/?' + user;
+            document.getElementById("myIframe").src = 'http://103.252.253.87:8000/?user='+JSON.stringify(user);
         }
     }
 

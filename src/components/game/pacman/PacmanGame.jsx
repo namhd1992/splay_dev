@@ -8,9 +8,7 @@ class PacmanGame extends React.Component {
 	}
 	componentDidMount() {
 		var el = document.getElementById("pacman");
-		window.setTimeout(function () {
-			PACMAN.init(el, "https://raw.githubusercontent.com/daleharvey/pacman/master/");
-		}, 0);
+		PACMAN.init(el, "https://raw.githubusercontent.com/daleharvey/pacman/master/");
 		// var game = new Game(item);
 		// game.init();
 	}
