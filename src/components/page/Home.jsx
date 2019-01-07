@@ -480,7 +480,7 @@ class HomeComponent extends React.Component {
 												<img className="imgLogoGame" src="../lg-topgame.png"/>
 											</div>
 											<div style={{width:"60%", float:"left", lineHeight:"40px"}}>
-												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi XO / Xu</span></p>
+												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
 											</div>
 										</div>
 									</Link>

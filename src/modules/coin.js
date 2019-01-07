@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
 	}
 }
 
-export const getData = (token, coin) => {
+export const getData = (token, coin, serviceId) => {
 	var header = {
 		headers: {
 			"Content-Type": "application/json",
@@ -52,7 +52,7 @@ export const getData = (token, coin) => {
 		dispatch({
 			type: COIN_REQUEST
 		})
-		var url = Ultilities.base_url() + "scoin/exchange/info?action="+coin;
+		var url = Ultilities.base_url() + "scoin/exchange/info?action="+coin+"&serviceId="+serviceId;
 		return axios.get(url, header).then(function (response) {
 			dispatch({
 				type: COIN_RESPONSE,
@@ -66,7 +66,7 @@ export const getData = (token, coin) => {
 	}
 }
 
-export const changeCoin = (token, packageXO, packageXu, coin) => {
+export const changeCoin = (token, packageXO, packageXu, coin, serviceId) => {
 	var header = {
 		headers: {
 			"Content-Type": "application/json",
@@ -76,7 +76,8 @@ export const changeCoin = (token, packageXO, packageXu, coin) => {
 	var body = {
 		packageExchangeXO: packageXO,
 		packageExchangeXU: packageXu,
-		action: coin
+		action: coin,
+		serviceId:serviceId
 	}
 	return dispatch => {
 		dispatch({

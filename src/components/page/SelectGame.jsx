@@ -41,6 +41,7 @@ class SelectGameComponent extends React.Component {
 	selectGame=(game)=>{
 		if (typeof(Storage) !== "undefined") {
 			localStorage.setItem("id", game.id);
+			localStorage.setItem("serviceId", game.scoinGameId);
 		} else {
 			console.log("Trình duyệt không hỗ trợ localStorage");
 		}
@@ -55,11 +56,11 @@ class SelectGameComponent extends React.Component {
 						<Grid item xs={12} md={8}>
 							<Grid container style={{ width: "100%", margin: "0"}} spacing={8} justify="center">
                                 <p style={{color:"#12cdd4"}}>Chọn Game cần đổi</p>
-                                <Grid item xs={12}>
+                                {/* <Grid item xs={12}>
 									<input type="text" placeholder="Tên Game" style={{width:"100%", height:"40px",float:"left", backgroundColor:"#212933",border:"1px solid #e6e6e6", borderRadius:"5px", color:"#e6e6e6"}} onChange={this.handleChange('searchValue')}/>
 									<div style={{ marginLeft: "-40px",  marginTop:"5px", float:"left"}} onClick={this.searchAction}><img style={{width:"32px", height:"32px"}} src="../search_blue.png"/></div>
 									
-								</Grid>
+								</Grid> */}
                                 <Grid item xs={12}>
 									{this.state.listSearch.map((obj, key) => (
 										<Grid key={key} item xs={12}>

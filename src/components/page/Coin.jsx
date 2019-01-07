@@ -156,7 +156,7 @@ class CoinComponent extends React.Component {
 												<p>Số dư XO:</p>
 											</div>
 											{(data!==null)?(<div className="contentUser">
-												<p>@abc123</p>
+                                                <p>{this.props.dataProfile.fullName}</p>
 												<p><img src="../XO.png" style={{ width: "24px", height:"24px",margin:"0px 5px -4px 0px"}}/>{this.props.data.userBalance ? this.props.data.userBalance.toLocaleString(): "0"} XO</p>
 											</div>):(<div className="contentUser">
 												<p>Chưa có dữ liệu</p>
