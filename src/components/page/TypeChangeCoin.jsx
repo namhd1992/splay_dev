@@ -25,31 +25,29 @@ class TypeChangeCoinComponent extends React.Component {
 	}
 
 	componentWillMount(){
-		var id=localStorage.getItem("id");
-		this.setState({idGame:id});
-		if(+id===76){
+		var scoinGameId=localStorage.getItem("serviceId");
+		this.setState({idGame:scoinGameId});
+		if(+scoinGameId===330281){
 			this.setState({idTopgame:true});
 		}
 	}
 	
 	UNSAFE_componentWillReceiveProps(nextProps){
-		var id=localStorage.getItem("id");
+		var scoinGameId=localStorage.getItem("serviceId");
 		if(this.props.dataGame !== nextProps.dataGame){
-			console.log('id:',id)
-			console.log('game:', nextProps.dataGame)
-			var game=nextProps.dataGame.filter(v=>v.id===+id);
+			var game=nextProps.dataGame.filter(v=>v.scoinGameId===+scoinGameId);
 			var n=nextProps.dataGame.map(v=>{
-				return v.id
-			}).indexOf(+id);
+				return v.scoinGameId
+			}).indexOf(+scoinGameId);
 			nextProps.dataGame.splice(n,1);
 			nextProps.dataGame.unshift(game[0]);
 		}
 	}
 
     selectOptionCoin= (event) =>{
-		var id=localStorage.getItem("id");
-		this.setState({idGame:id});
-		if(+event.target.value===76){
+		var scoinGameId=localStorage.getItem("serviceId");
+		this.setState({idGame:scoinGameId});
+		if(+event.target.value===330281){
 			this.setState({idTopgame:true});
 		}else{
 			this.setState({idTopgame:false});
@@ -77,7 +75,7 @@ class TypeChangeCoinComponent extends React.Component {
 										{/* <option value="" selected disabled hidden>Chọn Game</option> */}
 										{(dataGame !== undefined) ? dataGame.map((obj,key) => {
 												return <option key={key}
-												value={obj.id}>{obj.name}</option>;
+												value={obj.scoinGameId}>{obj.name}</option>;
 											}) : (<div></div>)}
 									</select>
 									{/* <select className="listGame" onClick={this.findGame()}>
