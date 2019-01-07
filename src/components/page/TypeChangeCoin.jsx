@@ -35,6 +35,8 @@ class TypeChangeCoinComponent extends React.Component {
 	UNSAFE_componentWillReceiveProps(nextProps){
 		var id=localStorage.getItem("id");
 		if(this.props.dataGame !== nextProps.dataGame){
+			console.log('id:',id)
+			console.log('game:', nextProps.dataGame)
 			var game=nextProps.dataGame.filter(v=>v.id===+id);
 			var n=nextProps.dataGame.map(v=>{
 				return v.id

@@ -2,8 +2,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-	getData as getDataGame
-} from '../../modules/game'
+	getDataGame
+} from '../../modules/coin'
 
 import { withRouter } from 'react-router-dom'
 import SelectGameComponent from '../../components/page/SelectGame'
@@ -42,7 +42,7 @@ class SelectGame extends React.Component {
 }
 
 const mapStateToProps = state => ({	
-	dataGame: state.game.data,
+	dataGame: state.coin.dataGame,
 	waiting: state.coin.waiting,
 	server:state.server.serverError
 })

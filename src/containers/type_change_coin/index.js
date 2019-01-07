@@ -2,12 +2,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-	getData
+	getData, getDataGame
 } from '../../modules/coin'
-import {
-	getData as getDataGame
-} from '../../modules/game'
-
 import { withRouter } from 'react-router-dom'
 import TypeChangeCoinComponent from '../../components/page/TypeChangeCoin'
 
@@ -55,7 +51,7 @@ class TypeChangeCoin extends React.Component {
 
 const mapStateToProps = state => ({	
 	data: state.coin.data,
-	dataGame: state.game.data,
+	dataGame: state.coin.dataGame,
 	waiting: state.coin.waiting,
 	server:state.server.serverError
 })
