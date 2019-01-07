@@ -476,10 +476,10 @@ class HomeComponent extends React.Component {
 								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
 									<Link to={"./chongame"} >
 										<div style={{height:"40px"}}>
-											<div style={{width:"40%", float:"left"}}>
+											{/* <div style={{width:"40%", float:"left"}}>
 												<img className="imgLogoGame" src="../lg-topgame.png"/>
-											</div>
-											<div style={{width:"60%", float:"left", lineHeight:"40px"}}>
+											</div> */}
+											<div style={{lineHeight:"40px", textAlign:'center'}}>
 												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
 											</div>
 										</div>
