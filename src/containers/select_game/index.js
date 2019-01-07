@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
 	getData as getDataGame
-} from '../../modules/coin'
+} from '../../modules/game'
 
 import { withRouter } from 'react-router-dom'
 import SelectGameComponent from '../../components/page/SelectGame'

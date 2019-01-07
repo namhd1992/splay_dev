@@ -6,7 +6,7 @@ import {
 } from '../../modules/coin'
 import {
 	getData as getDataGame
-} from '../../modules/coin'
+} from '../../modules/game'
 
 import { withRouter } from 'react-router-dom'
 import TypeChangeCoinComponent from '../../components/page/TypeChangeCoin'
