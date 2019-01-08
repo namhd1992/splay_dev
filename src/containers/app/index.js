@@ -38,6 +38,7 @@ import Coin from '../coin';
 import TypeChangeCoin from '../type_change_coin';
 import SelectGame from '../select_game'
 import TestGame from '../test_game';
+import EventGame from '../event_game';
 // import MiniGame from '../mini_game';
 // import MiniGameDetail from '../mini_game_detail';
 
@@ -51,6 +52,7 @@ class App extends React.Component {
 			compact: false,
 			scrolling: false,
 			fullscreen: false,
+			backgroundColor:'#212933',
 			title: "",
 			isMobile: false,
 			scrollPos: 0,
@@ -66,8 +68,8 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin") {
-			this.setState({ fullscreen: true });
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname==="/eventgame") {
+			this.setState({ fullscreen: true, backgroundColor:'#1a1a1a' });
 		} else {
 			this.setState({ fullscreen: false });
 		}
@@ -110,11 +112,11 @@ class App extends React.Component {
 	}
 	render() {
 		return (
-			<div style={{ backgroundColor: "#212933" }}>
-				<div style={{ maxWidth: "1280px", margin: "auto", background: "#212933" }}>
+			<div style={{ backgroundColor: this.state.backgroundColor }}>
+				<div style={{ maxWidth: "1280px", margin: "auto", background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
-					<main ref={(c) => this.main = c} style={(document.location.pathname === "/") ? { padding: "60px 8px 8px 8px" } : { padding: "60px 8px 8px 8px" }}>
+					<main ref={(c) => this.main = c} style={(document.location.pathname === "/eventgame") ? { padding: "30px 8px 8px 8px" } : { padding: "60px 8px 8px 8px" }}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
 						<Route exact path="/loginwidget" component={LoginWidget} />
@@ -145,6 +147,7 @@ class App extends React.Component {
 						<Route exact path="/chongame" component={SelectGame} />
 						<Route exact path="/chitiet" component={Coin} />
 						<Route exact path="/doi" component={TypeChangeCoin} />
+						<Route exact path="/eventgame" component={EventGame} />
 						<Route exact path="/test-game" component={TestGame} />
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}
