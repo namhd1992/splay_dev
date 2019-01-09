@@ -244,25 +244,25 @@ class GameDetailComponent extends React.Component {
 		return (gameData.length === 1) ? (
 			<div style={{ marginTop: "8px", borderRadius: "5px", overflow: "hidden", margin: "auto" }}>
 					{(this.state.showButtonPlay) ? (<Grid>
-									{(this.state.compact) ? (<Grid style={{position:'fixed', paddingLeft:'10px', color:'#fff', zIndex:'1', width:'100%', backgroundColor:"#151c24", marginTop:'-68px', marginLeft:'-10px'}}>
+									{(this.state.compact) ? (<Grid style={{position:'fixed', paddingLeft:'15px', color:'#fff', zIndex:'1', width:'100%', backgroundColor:"#151c24", marginTop:'-68px', marginLeft:'-10px'}}>
 										<p style={{ color: '#fff', float:'left'}}><b>{gameData[0].name}</b></p>
 					
 										<Button
 												variant="raised" style={{
-													borderRadius: "5px",
-													background: "#00ccd4",
+													borderRadius: "20px",
+													background: "linear-gradient(90deg,#22cab5,#3fe28f)",
 													color: "#fff",
-													padding: "7px 15px",
+													padding: "5px 15px",
 													fontSize: "0.8em",
 													whiteSpace: "nowrap",
 													float:'right',
 													marginTop:'12px',
-													marginRight: "5px"
+													marginRight: "10px"
 												}}><a style={{color:'#fff'}} target="_blank"
 												href={(deviceType === "ios") ? gameData[0].urlDownloadIos : gameData[0].urlDownloadAndroid}>Chơi Ngay</a></Button></Grid>):(
 												<div className="infoGame">
-													<img alt="game icon" style={{ width: "40px", float:'left' }} src={gameData[0].defaultImage} />
-													<p style={{ color: '#fff', float:'left',marginLeft:'15px' }}><b>{gameData[0].name}</b></p>
+													<img className='imgLogoGame' alt="game icon" src={gameData[0].defaultImage} />
+													<p className="nameGame"><b>{gameData[0].name}</b></p>
 													<div style={{marginLeft:'15px', float:'left' }}> {gameData[0].downloadTurns + " Lượt tải"}<br /><span
 														onClick={this.openRatingDialog}><Rating point={gameData[0].pointReview}></Rating></span>
 														<span style={{

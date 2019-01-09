@@ -9,8 +9,8 @@
 	margin-top:-10px;
 }
 .btn_playNow{
-	border-radius: 5px;
-	background: #00ccd4;
+	border-radius: 20px;
+	background: linear-gradient(90deg,#22cab5,#3fe28f);
 	color: #fff;
 	padding: 10px 20px;
 	font-size: 0.8em;
@@ -19,8 +19,18 @@
 	margin-right: 80px;
 	border: 0px solid;
 }
+.nameGame{
+	color: #fff;
+	float: left;
+	margin-left:15px;
+	font-size: 18px;
+}
+.imgLogoGame{
+	width: 40px;
+	float: left;
+}
 .btn_playNow:hover{
-	background: #00f7ff;
+	background: linear-gradient(90deg,#3bdecb,#64e8a4);
 }
 
 @media only screen and (min-width:1660px) and (max-width:1910px){
@@ -83,13 +93,24 @@
 		width:100%;
 	}
 	.btn_playNow{
-		margin-right: 15px;
+		margin-right: 30px;
+	}
+	.nameGame{
+		font-size: 20px;
+	}
+	.imgLogoGame{
+		width: 50px;
 	}
 }
  
 
 @media only screen and (max-width:960px){
- 	
+	.nameGame{
+		font-size: 18px;
+	}
+	.imgLogoGame{
+		width: 40px;
+	}
 }
 
 @media only screen and (max-width:667px){
