@@ -357,6 +357,9 @@ class HomeComponent extends React.Component {
 		this.state = {
 			openPopupMission:false,
 			compact:false,
+			speed:10,
+			add:true,
+			close:'block',
 		};
 	}
 
@@ -438,6 +441,20 @@ class HomeComponent extends React.Component {
 		}
 		return {status,color};
 	}
+	getString=()=> {
+		var output = document.getElementById("event");
+		var event='<span style="color:#cc8a86">Công ty cổ phần VTC dịch vụ di động</span>';
+		// for (let i = 0; i < obj.length; i++) {
+		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
+		// }
+		if(output!==null && this.state.add){
+			this.setState({add:false})
+			output.insertAdjacentHTML('beforeend',event)
+		}
+	}
+	closeMarquee=()=>{
+		this.setState({close:'none'})
+	}
 	render() {
 		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
 		const { theme } = this.props;
@@ -447,6 +464,7 @@ class HomeComponent extends React.Component {
 		var sizeImgGame="";
 		var fontsize="";
 		if (data.carousel !== undefined) {
+			this.getString();
 			data.splayGame.map((obj, key) => {
 				if (Ultilities.object_exist(obj.tagsList, "name", "NEW")) {
 					newGames.push(obj);
@@ -465,25 +483,39 @@ class HomeComponent extends React.Component {
 		}
 		
 		return (data.carousel !== undefined) ? (
+
 				<div className={classes.homeRoot + " home-root"}>
 					<Grid container style={{width: "100%", margin: "0px",overflow: "hidden",}} spacing={8}>
+						<Grid item xs={12}>
+							<div style={{display:this.state.close, background:'#f4dede', height:'40px', marginLeft:'3px'}}>
+								<div className="marquee_home">
+									<marquee id="event" scrollamount={this.state.speed} direction="left">
+									</marquee>
+								</div>
+								<div>
+									<img style={{cursor: "pointer"}} alt="just alt" src="../close.png" onClick={this.closeMarquee}/>
+								</div>
+							</div>
+						</Grid>
 						<Grid item xs={12} md={8}>
 							<Grid container style={{width: "100%", margin: "0px", overflow: "hidden",}} spacing={8}>
 								<Grid item xs={12}>
 									<Carousel data={data.carousel[1]}></Carousel>
 									<HeadMenu></HeadMenu>
 								</Grid>
-								<Grid item xs={12} style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer"}}>
-									<Link to={"./chongame"} >
-										<div style={{height:"40px"}}>
-											{/* <div style={{width:"40%", float:"left"}}>
-												<img className="imgLogoGame" src="../lg-topgame.png"/>
-											</div> */}
-											<div style={{lineHeight:"40px", textAlign:'center'}}>
-												<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
+								<Grid item xs={12} >
+									<div style={{border:"1px solid #f23b32", borderRadius:"5px", cursor: "pointer", padding:'5px'}}>
+										<Link to={"./chongame"} >
+											<div style={{height:"40px"}}>
+												{/* <div style={{width:"40%", float:"left"}}>
+													<img className="imgLogoGame" src="../lg-topgame.png"/>
+												</div> */}
+												<div style={{lineHeight:"40px", textAlign:'center'}}>
+													<p style={{display:"inline"}}><span style={{color:"#f23b32"}}>[ĐẶC BIỆT]</span><span  style={{color:"#ffffff"}}> Đổi Xu/ Nạp game từ ví Xu</span></p>
+												</div>
 											</div>
-										</div>
-									</Link>
+										</Link>
+									</div>
 								</Grid>
 								<Grid container className={classes.homeBlock} spacing={8}>
 									<Hidden smDown>
