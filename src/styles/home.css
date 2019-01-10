@@ -172,6 +172,10 @@ button.buttonFull:hover{
     overflow: hidden;
     position: relative;
 }
+.closeMarquee{
+	cursor: pointer;
+	margin-left: 4px;
+}
 @media only screen and (max-width:1280px){
 	.mission_home{
 	   padding: 2px 0px;
@@ -277,7 +281,10 @@ button.buttonFull:hover{
 		margin-left: 3px;
 	}
 	.marquee_home {
-		width: 97%;
+		width: 96%;
+	}
+	.closeMarquee{
+		margin-left: 4px;
 	}
 }
 
@@ -331,6 +338,9 @@ button.buttonFull:hover{
 	.marquee_home {
 		width: 95%;
 	}
+	.closeMarquee{
+		margin-left: 0px;
+	}
 }
 
 @media only screen and (max-width:375px){
@@ -361,6 +371,9 @@ button.buttonFull:hover{
 	}
 	.marquee_home {
 		width: 93%;
+	}
+	.closeMarquee{
+		margin-left: 2px;
 	}
 }
 
