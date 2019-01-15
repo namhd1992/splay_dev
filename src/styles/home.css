@@ -190,7 +190,6 @@ button.buttonFull:hover{
 	box-shadow: 5px;
 	padding: 5px;
 	outline: "none";
-	cursor:'pointer';
 }
 
 @media only screen and (max-width:1366px){

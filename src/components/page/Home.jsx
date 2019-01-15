@@ -1108,10 +1108,10 @@ class HomeComponent extends React.Component {
 						style={{backgroundColor:'rgba(0, 0, 0, 0.7)'}}
 						onClose={this.handleClose}
 						>
-						<div className="popupGame" style={{ backgroundImage: "url(./popup.jpg)"}}
-							onClick={this.openGame}									
-						>
-						<img style={{float:'right'}} src="./close.png" alt="close popup" onClick={this.handleClose} />
+						<div className="popupGame" style={{ backgroundImage: "url(./popup.jpg)"}}>
+							<img style={{float:'right', zIndex:"1", cursor:"pointer"}} src="./close.png" alt="close popup" onClick={this.handleClose} />
+							<div style={{width:"100%", height:"100%", cursor:"pointer"}} onClick={this.openGame}>
+							</div>
 						</div>
 					</Modal>
 				</div >
