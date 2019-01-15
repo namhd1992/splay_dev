@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 import { ListItem, ListItemText } from 'material-ui/List'
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight'
 import ReactResizeDetector from 'react-resize-detector'
-import LikeIcon from 'material-ui-icons/ThumbUp'
 import Dialog, {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
 	withMobileDialog,
 } from 'material-ui/Dialog'
+import Modal from 'material-ui/Modal';
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Ultilities from '../../Ultilities/global'
@@ -360,6 +360,7 @@ class HomeComponent extends React.Component {
 			speed:10,
 			add:true,
 			close:'block',
+			open:true,
 		};
 	}
 
@@ -454,6 +455,16 @@ class HomeComponent extends React.Component {
 	}
 	closeMarquee=()=>{
 		this.setState({close:'none'})
+	}
+	handleOpen = () => {
+		this.setState({ open: true });
+	};
+
+	handleClose = () => {
+		this.setState({ open: false });
+	};
+	openGame=()=>{
+
 	}
 	render() {
 		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
@@ -1088,6 +1099,18 @@ class HomeComponent extends React.Component {
 						reward={this.props.reward}
 						doMission={this.props.doMission}
 					/>
+					<Modal
+						aria-labelledby="simple-modal-title"
+						aria-describedby="simple-modal-description"
+						open={this.state.open}
+						onClose={this.handleClose}
+						>
+						<div className="popupGame" style={{ backgroundImage: "url(./popup.jpg)"}}
+							onClick={this.openGame}									
+						>
+						<img style={{float:'right', cursor:'pointer'}} src="./close.png" alt="close popup" onClick={this.handleClose} />
+						</div>
+					</Modal>
 				</div >
 			) :
 				(<Grid item xs={12} style={{ marginTop: "8px" }}>

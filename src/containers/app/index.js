@@ -39,6 +39,7 @@ import TypeChangeCoin from '../type_change_coin';
 import SelectGame from '../select_game'
 import TestGame from '../test_game';
 import EventGame from '../event_game';
+import '../../styles/app.css'
 // import MiniGame from '../mini_game';
 // import MiniGameDetail from '../mini_game_detail';
 
@@ -113,7 +114,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
-				<div style={{ maxWidth: "1280px", margin: "auto", background: this.state.backgroundColor }}>
+				<div className="banner" >
+					<img className="img_banner" src="./banner.jpg" alt="banner"/>
+				</div>
+				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
 					<main ref={(c) => this.main = c} style={(document.location.pathname === "/eventgame") ? { padding: "30px 8px 8px 8px" } : { padding: "60px 8px 8px 8px" }}>
@@ -157,6 +161,9 @@ class App extends React.Component {
 						<Avatar style={{ opacity: "0.6", background: "#23c9b6", border: "1px solid #23c9b6", width: "32px", height: "32px" }}><KeyboardArrowUp
 							style={{ color: "#fff" }}></KeyboardArrowUp></Avatar>
 					</ScrollToTop>
+				</div>
+				<div className="banner">
+					<img className="img_banner" src="./banner.jpg" alt="banner"/>
 				</div>
 			</div>
 		)

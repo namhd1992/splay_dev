@@ -176,6 +176,31 @@ button.buttonFull:hover{
 	cursor: pointer;
 	margin-left: 4px;
 }
+
+.popupGame{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -300px;
+	width: 600px;
+	height:600px;
+	background-size:contain;
+	background-repeat:no-repeat;
+	box-shadow: 5px;
+	padding: 5px;
+	outline: "none";
+}
+
+@media only screen and (max-width:1366px){
+	.popupGame{
+		margin-top: -250px;
+		margin-left: -250px;
+		width: 500px;
+		height:500px;
+	}
+}
+
 @media only screen and (max-width:1280px){
 	.mission_home{
 	   padding: 2px 0px;
@@ -234,6 +259,12 @@ button.buttonFull:hover{
 	}
 	.marquee_home {
 		width: 97%;
+	}
+	.popupGame{
+		margin-top: -200px;
+		margin-left: -200px;
+		width: 400px;
+		height:400px;
 	}
 }
  
@@ -311,6 +342,12 @@ button.buttonFull:hover{
 	.marquee_home {
 		width: 96%;
 	}
+	.popupGame{
+		margin-top: -175px;
+		margin-left: -175px;
+		width: 350px;
+		height:350px;
+	}
 }
 
 @media only screen and (max-width:600px){
@@ -340,6 +377,12 @@ button.buttonFull:hover{
 	}
 	.closeMarquee{
 		margin-left: 0px;
+	}
+	.popupGame{
+		margin-top: -150px;
+		margin-left: -150px;
+		width: 300px;
+		height:300px;
 	}
 }
 
@@ -374,6 +417,12 @@ button.buttonFull:hover{
 	}
 	.closeMarquee{
 		margin-left: 2px;
+	}
+	.popupGame{
+		margin-top: -150px;
+		margin-left: -150px;
+		width: 300px;
+		height:300px;
 	}
 }
 
@@ -415,5 +464,11 @@ button.buttonFull:hover{
 	}
 	.mission_home .avatar{
 		padding: 2px 8px;
+	}
+	.popupGame{
+		margin-top: -125px;
+		margin-left: -125px;
+		width: 250px;
+		height:250px;
 	}
 }
