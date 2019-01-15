@@ -371,6 +371,14 @@ class HomeComponent extends React.Component {
 			this.setState({ compact: false });
 		}
 	}
+	componentDidMount(){
+		document.addEventListener('click',function(e){
+			if(e.target && e.target.id== 'eventRun'){
+				var win = window.open("http://171.244.14.215:2999/", '_blank');
+				win.focus();
+			}
+		 })
+	}
 
 	onResize=()=>{
 		if (document.body.offsetWidth < 768) {
@@ -444,7 +452,7 @@ class HomeComponent extends React.Component {
 	}
 	getString=()=> {
 		var output = document.getElementById("event");
-		var event='<img style="inline-size:9%; margin-bottom:-3px" src="./lg-topgame.png" /><span style="color:#c3736f">Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span><span style="color:#93bbe8"> Chơi ngay</span>';
+		var event='<img style="inline-size:9%; margin-bottom:-3px" src="./lg-topgame.png" /><span style="color:#c3736f">Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span><span id="eventRun" style="color:#93bbe8; cursor:pointer"> Chơi ngay</span>';
 		// for (let i = 0; i < obj.length; i++) {
 		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
 		// }
@@ -453,6 +461,7 @@ class HomeComponent extends React.Component {
 			output.insertAdjacentHTML('beforeend',event)
 		}
 	}
+
 	closeMarquee=()=>{
 		this.setState({close:'none'})
 	}
