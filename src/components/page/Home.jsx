@@ -444,7 +444,7 @@ class HomeComponent extends React.Component {
 	}
 	getString=()=> {
 		var output = document.getElementById("event");
-		var event='<span style="color:#c3736f">Công ty cổ phần VTC dịch vụ di động</span>';
+		var event='<img style="inline-size:9%; margin-bottom:-3px" src="./lg-topgame.png" /><span style="color:#c3736f">Săn Xu đua Top kiếm QÙA KHỦNG chỉ có tại TOPGame! </span><span style="color:#93bbe8"> Chơi ngay</span>';
 		// for (let i = 0; i < obj.length; i++) {
 		// 	bonus+='<span>Chúc mừng <span style="color:#00bf98">'+ obj[i].userName+'</span>'+' vừa giành được '+ '<span style="color:#ff9d42">'+ obj[i].itemName+'</span>'+' từ sự kiện ' +'<span style="color:#00bf98">'+ obj[i].eventName+'.'+'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;'
 		// }
@@ -463,9 +463,11 @@ class HomeComponent extends React.Component {
 	handleClose = () => {
 		this.setState({ open: false });
 	};
-	openGame=()=>{
-
-	}
+	openGame=()=> {
+        var win = window.open("http://171.244.14.215:2999/", '_blank');
+		win.focus();
+		this.setState({ open: false });
+    }
 	render() {
 		const {data,articleData,dataMission,logged,dialogDetailOpen,dialogContent,server,title_dialog}=this.props;
 		const { theme } = this.props;
@@ -1103,12 +1105,13 @@ class HomeComponent extends React.Component {
 						aria-labelledby="simple-modal-title"
 						aria-describedby="simple-modal-description"
 						open={this.state.open}
+						style={{backgroundColor:'rgba(0, 0, 0, 0.7)'}}
 						onClose={this.handleClose}
 						>
 						<div className="popupGame" style={{ backgroundImage: "url(./popup.jpg)"}}
 							onClick={this.openGame}									
 						>
-						<img style={{float:'right', cursor:'pointer'}} src="./close.png" alt="close popup" onClick={this.handleClose} />
+						<img style={{float:'right'}} src="./close.png" alt="close popup" onClick={this.handleClose} />
 						</div>
 					</Modal>
 				</div >

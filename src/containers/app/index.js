@@ -111,11 +111,14 @@ class App extends React.Component {
 		// 	this.setState({ scrolling: false });
 		// }
 	}
+	linkToGame=()=>{
+		window.location.replace(`${window.location.protocol}//${window.location.host}/article_detail/142`);
+	}
 	render() {
 		return (
 			<div style={{ backgroundColor: this.state.backgroundColor }}>
 				<div className="banner" >
-					<img className="img_banner" src="./banner.jpg" alt="banner"/>
+					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
 				</div>
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
@@ -163,7 +166,7 @@ class App extends React.Component {
 					</ScrollToTop>
 				</div>
 				<div className="banner">
-					<img className="img_banner" src="./banner.jpg" alt="banner"/>
+					<img className="img_banner" src="/../banner.jpg" alt="banner" onClick={this.linkToGame}/>
 				</div>
 			</div>
 		)
