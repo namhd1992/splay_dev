@@ -360,7 +360,7 @@ class HomeComponent extends React.Component {
 			speed:10,
 			add:true,
 			close:'block',
-			open:true,
+			open:false,
 		};
 	}
 
