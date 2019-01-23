@@ -1,346 +1,295 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Hidden from 'material-ui/Hidden'
-import { CircularProgress } from 'material-ui/Progress'
-import RightArea from '../../components/RightArea'
-import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
-import ReactCardFlip from 'react-card-flip'
-import ReactResizeDetector from 'react-resize-detector'
-import Dialog, {
-	DialogActions,
-	DialogContent,
-	DialogTitle,
-	withMobileDialog,
-} from 'material-ui/Dialog'
-import PropTypes from 'prop-types'
-import List, { ListItem, ListItemText } from 'material-ui/List'
-import Notification from '../../components/Notification'
-import LoginRequired from '../../components/LoginRequired'
-import '../../styles/imageServerError.css'
-import '../../styles/luckyDetail.css'
+import '../../styles/lucky.css'
+import {
+	getDetailData,
+	pickCard,
+	buyTurn
+} from '../../modules/lucky'
+import {
+	getData
+} from '../../modules/profile'
+import {
+	changeTitle
+} from '../../modules/global'
+import Ultilities from '../../Ultilities/global'
+import LuckyDetailComponent from '../../components/page/LuckyDetail'
 
-const styles = {
-	paper: {
-		background: "#2b323d"
-	},
-	buttonOrange:{
-		borderRadius: "20px",
-		background: "linear-gradient(90deg,#ff5f27,#ff9019)",
-		color: "#fff",
-		padding: "10px", height:"35px",
-		fontSize: "0.8em",
-		whiteSpace: "nowrap",
-		minWidth: "auto",
-		minHeight: "auto"
-	},
-	buttonGreen:{
-		borderRadius: "20px",
-		background: "linear-gradient(90deg,#22cab5,#3fe28f)",
-		color: "#fff",
-		padding: "10px", height:"40px",
-		fontSize: "0.8em",
-		whiteSpace: "nowrap",
-		minWidth: "auto",
-		minHeight: "auto"
-	}
-};
+class Lucky_detail extends React.Component {
 
-
-
-class LuckyDetailComponent extends React.Component {
-
-	constructor(){
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			intValue:1,
-			whenSelect:"1px solid #00ccd4",
+			message: "",
+			cardWidth: 0,
+			cardHeight: 0,
+			flippedArr: [],
+			collapse: false,
+			cardArr: [],
+			dialogOpen: false,
+			highLightCard: null,
+			canPlay: true,
+			openSnack: false,
+			snackVariant: "info",
+			dialogLoginOpen: false,
+			dialogItemOpen: false,
+			fontSize: "1em",
+			dialogMoreTurnOpen: false
 		};
 	}
-	showItem=()=>{
-		this.props.showItem();
-	}
-	
-	showBuyTurn=()=>{
-		this.props.showBuyTurn();
-	}
-	
-	handleCloseDialogItem=()=>{
-		this.props.handleCloseDialogItem();
-	}
-	
-	handleCloseDialogLogin=()=>{
-		this.props.handleCloseDialogLogin();
-	}
-	
-	handleCloseMoreTurnDialog=()=>{
-		this.props.handleCloseMoreTurnDialog();
-	}
-	
-	handleCloseDialog=()=>{
-		this.props.handleCloseDialog();
-	}
-	
-	buyTurn=()=>{
-		this.props.buyTurn(this.state.intValue);
-		this.setState({whenSelect:""});
-	}
-	
-	pick=(key)=>{
-		this.props.pick(key);
-	}
-	
-	start=()=>{
-		this.props.start();
-	}
-	
-	expand=()=>{
-		this.props.expand();
+	componentWillMount(){
+		for(let i=0; i<100; i++){
+			window.clearInterval(i);
+		}
 	}
 
-	flipCard=(key)=>{
-		this.props.flipCard(key);
-	}
-	
-	swap=(id1, id2)=>{
-		this.props.swap(id1, id2);
-	}
-	
-	unHighLight=()=>{
-		this.props.unHighLight();
-	}
-	
-	highLight=(card_id)=>{
-		this.props.highLight(card_id);
-	}
-	
-	random=()=>{
-		this.props.random();
-	}
-	openCard=(id)=>{
-		this.props.openCard(id);
-	}
-	onResize=()=>{
-		this.props.onResize();
-	}
-	
-	handleCloseSnack=()=>{
-		this.props.handleCloseSnack();
+	componentDidMount() {
+		var _this = this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		if (user !== null) {
+			this.props.getDetailData(user.access_token, this.props.match.params.id).then(function () {
+				if(_this.props.dataDetail!==null){
+					_this.props.changeTitle(_this.props.dataDetail.luckyspin.name);
+					var new_arr = [];
+					_this.props.dataDetail.itemOfSpin.forEach(function (item, key) {
+						new_arr.push({ id: item.item.id, status: true });
+					});
+					_this.setState({ cardArr: _this.props.dataDetail.itemOfSpin, flippedArr: new_arr });
+				}
+			
+			});
+			// this.props.getData(user.access_token, user.scoinAccessToken);
+		} else {
+			_this.setState({ dialogLoginOpen: true });
+		}
 	}
 
-	selectPackage(value){
-		this.setState({intValue:value, whenSelect:"1px solid #00ccd4"});
+	handleCloseSnack = () => {
+		this.setState({ openSnack: false });
 	}
 
-	convettoLocaleString(value){
-		return value.toLocaleString();
+	onResize = () => {
+		if (window.innerWidth <= 480) {
+			this.setState({ cardHeight: 114, cardWidth: 76, fontSize: "0.6em" });
+		}
+		if (window.innerWidth > 480 && window.innerWidth <= 768) {
+			this.setState({ cardHeight: 180, cardWidth: 120, fontSize: "1em" });
+		}
+		if (window.innerWidth > 768) {
+			this.setState({ cardHeight: 180, cardWidth: 120, fontSize: "1em" });
+		}
 	}
+
+	openCard = (id) => {
+		var _this = this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		var new_arr = [];
+		var new_arr_after = [];
+		this.state.flippedArr.forEach(function (item, key) {
+			if (item.id === id) {
+				new_arr.push({ id: item.id, status: false });
+			} else {
+				new_arr.push({ id: item.id, status: true });
+			}
+			new_arr_after.push({ id: item.id, status: false });
+		});
+		_this.setState({ flippedArr: new_arr });
+		setTimeout(function () {
+			_this.setState({ flippedArr: new_arr_after, highLightCard: id, canPlay: true });
+		}, 1000);
+		this.props.getDetailData(user.access_token, this.props.match.params.id)
+	}
+
+	random = () => {
+		this.setState({ cardArr: Ultilities.shuffle(this.state.cardArr) });
+	}
+
+	highLight = (card_id) => {
+		this.setState({ highLightCard: card_id });
+	}
+
+	unHighLight = () => {
+		this.setState({ highLightCard: null });
+	}
+
+	swap = (id1, id2) => {
+		var newCardArr = this.state.cardArr;
+		var key1 = 0;
+		var key2 = 0;
+		this.state.cardArr.forEach(function (item, key) {
+			if (item.item.id === id1) key1 = key;
+			if (item.item.id === id2) key2 = key;
+		});
+		newCardArr[key1] = newCardArr.splice(key2, 1, newCardArr[key1])[0];
+		this.setState({ cardArr: newCardArr });
+	}
+
+	flipCard = (key) => {
+		var newFlippedArr = this.state.flippedArr;
+		newFlippedArr[key] = false;
+		this.setState({ flippedArr: newFlippedArr });
+	}
+
+	collapse = () => {
+		this.setState({ collapse: true });
+	}
+
+	expand = () => {
+		this.setState({ collapse: false });
+	}
+
+	start = () => {
+		if (this.props.dataDetail.userSpinInfo.turnsBuy + this.props.dataDetail.userSpinInfo.turnsFree <= 0) {
+			this.setState({ dialogMoreTurnOpen: true });
+		} else {
+			if (this.state.canPlay) {
+				var _this = this;
+				var new_arr_after = [];
+				this.state.flippedArr.forEach(function (item, key) {
+					new_arr_after.push({ id: item.id, status: true });
+				});
+				_this.setState({ flippedArr: new_arr_after });
+				this.collapse();
+				this.random();
+				this.unHighLight();
+				setTimeout(function () {
+					_this.expand();
+				}, 1000);
+			}
+		}
+	}
+
+	pick = (key) => {
+		if (this.state.canPlay) {
+			var _this = this;
+			this.setState({ canPlay: false });
+			var user = JSON.parse(localStorage.getItem("user"));
+			this.props.pickCard(user.access_token, user.scoinAccessToken, this.props.match.params.id).then(function () {
+				if (_this.props.dataPick === null) {
+					_this.setState({ openSnack: true, message: "Bạn đã hết lượt quay", snackVariant: "error" });
+				} else {
+					_this.swap(key, _this.props.dataPick.item.id);
+					_this.openCard(_this.props.dataPick.item.id);
+					_this.setState({ openSnack: true, message: "Thành công, vào hộp thư để xem vật phẩm trúng thưởng", snackVariant: "success" });
+				}
+				_this.props.getDetailData(user.access_token, _this.props.match.params.id);
+				// _this.props.getData(user.access_token, user.scoinAccessToken);
+			});
+		}
+	}
+
+	buyTurn = (turn) => {
+		var _this = this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		this.props.buyTurn(user.access_token, user.scoinAccessToken, this.props.match.params.id, turn).then(function () {
+			if (_this.props.dataTurn.statusCode === "T") {
+				_this.setState({ openSnack: true, message: "Mua lượt thành công", snackVariant: "success" });
+			} else {
+				_this.setState({ openSnack: true, message: "Số thịt không đủ", snackVariant: "error" });
+			}
+			_this.props.getDetailData(user.access_token, _this.props.match.params.id);
+			// _this.props.getData(user.access_token, user.scoinAccessToken);
+		});
+	}
+
+	handleCloseDialog = () => {
+		this.setState({ dialogOpen: false });
+	};
+	handleCloseMoreTurnDialog = () => {
+		this.setState({ dialogMoreTurnOpen: false });
+	};
+
+	handleCloseDialogLogin = () => {
+		this.setState({ dialogLoginOpen: false });
+	};
+
+	handleCloseDialogItem = () => {
+		this.setState({ dialogItemOpen: false });
+	};
+
+	showBuyTurn = () => {
+		this.setState({ dialogOpen: true });
+	}
+	showItem = () => {
+		this.setState({ dialogItemOpen: true });
+	}
+	notSelectOption=()=>{
+		this.setState({ openSnack: true, message: "Bạn chưa chọn gói", snackVariant: "error" });
+	}
+	
 
 	render() {
-		const {dataDetail, dataProfile,message,cardWidth,cardHeight,flippedArr,collapse,cardArr,
-			dialogOpen,highLightCard,openSnack,snackVariant,dialogLoginOpen,dialogItemOpen,fontSize,dialogMoreTurnOpen,server,waiting }=this.props;
+		
+		return (
+			<div>
+				<LuckyDetailComponent
+					showItem={this.showItem}
+					showBuyTurn={this.showBuyTurn}
+					handleCloseDialogItem={this.handleCloseDialogItem}
+					handleCloseDialogLogin={this.handleCloseDialogLogin}
+					handleCloseMoreTurnDialog={this.handleCloseMoreTurnDialog}
+					handleCloseDialog={this.handleCloseDialog}
+					buyTurn={this.buyTurn}
+					pick={this.pick}
+					start={this.start}
+					expand={this.expand}
+					flipCard={this.flipCard}
+					swap={this.swap}
+					unHighLight={this.unHighLight}
+					highLight={this.highLight}
+					random={this.random}
+					openCard={this.openCard}
+					onResize={this.onResize}
+					handleCloseSnack={this.handleCloseSnack}
+					notSelectOption={this.notSelectOption}
 
-					
-		const { classes } = this.props;
-		const { theme } = this.props;
-		const { secondary } = theme.palette;
-		var splayPoint=dataProfile.splayPoint;
-		if(splayPoint !== undefined){
-			splayPoint=this.convettoLocaleString(splayPoint);
-		}
-		var _this = this;
-		return (cardArr.length > 0) ? (
-			<div className="lucky-detail-root" style={{ marginTop: "8px" }}>
-				<Grid container spacing={8}>
-					<Grid item xs={12} md={8}>
-						<Grid container className="lucky-detail-root" spacing={8}>
-							<Grid item xs={12}>
-								<div className="lucky-wrap"
-									style={{ margin: "auto", width: (cardWidth * 4) + "px", height: (cardHeight * 3) + "px", position: "relative" }}>
-									{cardArr.map((obj, key) => {
-										var top = "0px";
-										var left = "0px";
-										if (!collapse) {
-											left = (key % 4) * cardWidth + "px";
-											top = (Math.floor(key / 4)) * cardHeight + "px"
-										}
-										return (<div key={key} className="lucky-card lucky-card-collapse"
-											style={{
-												transition: "0.5s",
-												WebkitTransition: "0.5s",
-												width: cardWidth,
-												height: cardHeight + "px",
-												left: left,
-												top: top
-											}}>
-											<ReactCardFlip style={{ height: '100%' }} isFlipped={flippedArr.find(x => x.id === obj.item.id).status}>
-												<div key="front" style={{
-													opacity: (highLightCard === null || highLightCard === obj.item.id) ? "1" : "0.5",
-													backgroundSize: "contain",
-													backgroundRepeat: "no-repeat",
-													backgroundPosition: "center",
-													backgroundImage: "url(../cardfront1.png)",
-													width: "100%",
-													height: cardHeight + "px",
-													textAlign: "center"
-												}}>
-													<div style={{ paddingTop: cardHeight * 0.3 + "px" }}><img alt="just alt" style={{ width: (cardWidth * 0.5) + "px" }}
-														src={obj.item.urlImage} /></div>
-													<div style={{ fontSize: fontSize }}>{obj.item.name}</div>
-												</div>
-												<div key="back" onClick={() => this.pick(obj.item.id)} style={{
-													backgroundSize: "contain",
-													backgroundRepeat: "no-repeat",
-													backgroundPosition: "center",
-													backgroundImage: "url(../cardback1.png)",
-													width: "100%",
-													height: cardHeight + "px",
-													textAlign: "center"
-												}}>
-												</div>
-											</ReactCardFlip>
-										</div>)
-									}
-									)}
-								</div>
-							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonGreen" onClick={this.start}>CHƠI ({dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree})</button>
-							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonOrange" onClick={this.showItem}>PHẦN THƯỞNG</button>
-							</Grid>
-							<Grid item xs={12} sm={4} className="lucky-button">
-								<button className="buttonOrange" onClick={this.showBuyTurn}>MUA LƯỢT</button>
-							</Grid>
-						</Grid>
-					</Grid>
-					<Hidden smDown>
-						<Grid item xs={12} md={4}>
-							<RightArea></RightArea>
-						</Grid>
-					</Hidden>
-				</Grid>
+					dataDetail={this.props.dataDetail}
+					server={this.props.server}
+					dataPick={this.props.dataPick}
+					waiting={this.props.waiting}
+					dataProfile={this.props.dataProfile}
+					dataTurn={this.props.dataTurn}
+					message={this.state.message}
+					cardWidth={this.state.cardWidth}
+					cardHeight={this.state.cardHeight}
+					flippedArr={this.state.flippedArr}
+					collapse={this.state.collapse}
+					cardArr={this.state.cardArr}
+					dialogOpen={this.state.dialogOpen}
+					highLightCard={this.state.highLightCard}
+					openSnack={this.state.openSnack}
+					snackVariant={this.state.snackVariant}
+					dialogLoginOpen={this.state.dialogLoginOpen}
+					dialogItemOpen={this.state.dialogItemOpen}
+					fontSize={this.state.fontSize}
+					dialogMoreTurnOpen={this.state.dialogMoreTurnOpen}
 
-				<ReactResizeDetector handleWidth={true} handleHeight={true} onResize={this.onResize} />
-				<Dialog
-					fullScreen={false}
-					open={dialogMoreTurnOpen}
-					onClose={this.handleCloseMoreTurnDialog}
-					aria-labelledby="responsive-dialog-title"
-					classes={{ paper: classes.paper }}
-				>
-					<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }} >Bạn đã hết lượt quay</span></DialogTitle>
-					<DialogContent>
-						<div style={{ color: "#fff" }}>
-							Mua thêm lượt quay để tiếp tục
-						</div>
-					</DialogContent>
-					<DialogActions>
-						<div>
-							<Button className={classes.buttonOrange} onClick={this.showBuyTurn}>Mua lượt</Button>
-							<Button onClick={this.handleCloseMoreTurnDialog} style={{ color: "#888787", borderRadius:"20px", marginRight:"15px" }}>Đóng</Button>
-						</div>
-					</DialogActions>
-				</Dialog>
-				<Dialog
-					open={dialogOpen}
-					onClose={this.handleCloseDialog}
-					aria-labelledby="responsive-dialog-title"
-					classes={{ paper: classes.paper }}
-				>
-					<DialogContent style={{background:"#232936"}}>
-						<div style={{width:"100%"}}>
-							<div className="infoTitle">
-								<div className="takeTurn">
-									<span>Mua lượt quay</span>
-								</div>
-								<div className="valueUser">
-									<span className="global-thit" style={{color:"#fff"}}>Còn &nbsp;&nbsp;<img alt="just alt"src="../thit.png" /> <span style={{ color: "#fff" }} >{this.convettoLocaleString(dataDetail.userSpinInfo.rewardPoint) + " Thịt"}</span >&nbsp;&nbsp; {dataDetail.userSpinInfo.turnsBuy + dataDetail.userSpinInfo.turnsFree} lượt quay</span>
-								</div>
-							</div>
-							<div>
-								<div className="optionLeft">
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 1)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(1)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>1 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 2,000 Thịt</span></span></div>
-									</div>
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 5)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(5)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>5 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 10,000 Thịt</span></span></div>
-									</div>
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 10)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(10)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>10 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 20,000 Thịt</span></span></div>
-									</div>
-								</div>
-								<div className="optionRight">
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 20)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(20)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>20 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 40,000 Thịt</span></span></div>
-									</div>
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(50)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>50 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 100,000 Thịt</span></span></div>
-									</div>
-									<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100)?this.state.whenSelect:""}} onClick={()=>this.selectPackage(100)}>
-										<div style={{color:"#fff", padding:"5px 10px"}}>100 lượt</div>
-										<div style={{color:"#fff", padding:"5px 10px", textAlign:"right"}}><span className="global-thit"><img alt="just alt" src="../thit.png" /> <span style={{ color: "#fff" }} > 200,000 Thịt</span></span></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="action">
-						
-							<button className="closeBuy" onClick={this.handleCloseDialog}>
-								ĐÓNG
-							</button>
-							<button className="buy" onClick={() => this.buyTurn()}>
-								MUA
-							</button>
-						</div>
-					</DialogContent>
-				</Dialog>
-				<LoginRequired open={dialogLoginOpen}></LoginRequired>
-				<Dialog
-					open={dialogItemOpen}
-					onClose={this.handleCloseDialogItem}
-					aria-labelledby="responsive-dialog-title"
-					classes={{ paper: classes.paper }}
-				>
-					<DialogTitle id="responsive-dialog-title"><span style={{ color: secondary.main }} >Phần thưởng</span></DialogTitle>
-					<DialogContent>
-						<List className="lucky-detail-root">
-							{dataDetail.itemOfSpin.map((obj, key) => (
-								<ListItem key={key} style={{ minWidth: "120px" }}>
-									<div>
-										<img alt="just alt" className="lucky-item-img" src={obj.item.urlImage} />
-									</div>
-									<ListItemText primary={obj.item.name} />
-								</ListItem>
-							))}
-						</List>
-					</DialogContent>
-					<DialogActions>
-						<div>
-							<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>Đóng</Button>
-						</div>
-					</DialogActions>
-				</Dialog>
-				<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
+				/>
 			</div>
-		) : (<div className="global-loading">
-			{(waiting === true) ? (												
-				<CircularProgress style={{ color: "#fff" }} size={50} />):((server===true)?(<img className="error" alt="just alt"
-				src="../baotri.png" />):(<div style={{color:"#fff", fontSize:"20px"}}>Không có dữ liệu!</div>))}
-			<LoginRequired open={dialogLoginOpen}></LoginRequired>
-		</div>)
+		)
 	}
 }
 
-LuckyDetailComponent.propTypes = {
-	fullScreen: PropTypes.bool.isRequired,
-};
+const mapStateToProps = state => ({
+	dataDetail: state.lucky.dataDetail,
+	dataPick: state.lucky.dataPick,
+	waiting: state.lucky.waiting,
+	dataProfile: state.profile.data,
+	dataTurn: state.lucky.dataTurn,
+	server:state.server.serverError
+})
 
-export default connect()(withMobileDialog()(withStyles(styles, { withTheme: true })(LuckyDetailComponent)))
+const mapDispatchToProps = dispatch => bindActionCreators({
+	getDetailData,
+	pickCard,
+	buyTurn,
+	getData,
+	changeTitle,
+}, dispatch)
+
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Lucky_detail)
