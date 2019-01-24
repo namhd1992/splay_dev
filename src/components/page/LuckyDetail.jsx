@@ -110,7 +110,7 @@ class LuckyDetailComponent extends React.Component {
 	
 	start=()=>{
 		if(this.props.dataDetail.userSpinInfo.turnsBuy + this.props.dataDetail.userSpinInfo.turnsFree >0){
-			this.setState({btnPlay:'none',div1:'front', div2:'back', guide1:'Mời bạn lật thẻ để nhận phần thưởng.'})
+			this.setState({btnPlay:'none',div1:'front', div2:'back', guide1:'Mời bạn lật thẻ để nhận phần thưởng.', guide2:''})
 		}
 		this.props.start();
 	}

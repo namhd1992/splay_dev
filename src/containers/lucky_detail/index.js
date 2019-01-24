@@ -212,7 +212,7 @@ class Lucky_detail extends React.Component {
 	};
 
 	showBuyTurn = () => {
-		this.setState({ dialogOpen: true });
+		this.setState({ dialogOpen: true, dialogMoreTurnOpen: false});
 	}
 	showItem = () => {
 		this.setState({ dialogItemOpen: true });
