@@ -96,6 +96,7 @@ class EventComponent extends React.Component {
 		return (
 			<div>
 				<MetaTags>
+					<meta property="og:url" content={this.props.link} />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content="Triệu hồi lệnh - Mộng Chinh Đồ" />
 					<meta property="og:image" content="https://i.postimg.cc/HxZ16Qpw/skshare-mcd.png" />
