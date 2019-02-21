@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import EventComponent from '../../components/page/Event'
 import {
-	changePoint
+	changePoint, getLink
 } from '../../modules/event'
 
 class EventGame extends React.Component {
@@ -13,6 +13,10 @@ class EventGame extends React.Component {
 		this.state = {
 			status:'',
 			statusColor:'#12cdd4',
+			openSnack: false,
+			message: "",
+			snackVariant: "info",
+			link:'',
 		};
 	}
 
@@ -22,41 +26,71 @@ class EventGame extends React.Component {
 		}
 	}
 
-	selectPackage=()=>{
-		this.setState({status:''})
-	}
-	changePoint=(scoinToken, point)=>{
-		if(scoinToken!==""){
+	// selectPackage=()=>{
+	// 	this.setState({status:''})
+	// }
+	changePoint=(point)=>{
+		var _this=this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		if(user !== null){
 			if(point!==0){
-				this.props.changePoint(scoinToken, 1, point).then(v=>{
-					if(v.status==="01"){
-						this.setState({status:'Đổi thành công, Xu được cộng vào tài khoản',statusColor:'#12cdd4',})
-					}else if(v.status==="04"){
-						this.setState({status:'Số điểm của bạn không đủ để đổi',statusColor:'#f24726',})
-					}else if(v.status==="05"){
-						this.setState({status:'Hiện tại số quà đã hết',statusColor:'#f24726',})
-					}else if(v.status==="-3"){
-						this.setState({status:'Tài khoản không tồn tại',statusColor:'#f24726',})
+				this.props.changePoint(user.access_token, 1, point).then(() => {
+					
+					var data= _this.props.data;
+					if(data.status==="01"){
+						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'#12cdd4',})
+					}else if(data.status==="04"){
+						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
+					}else if(data.status==="05"){
+						this.setState({openSnack:true, message:'Hiện tại số quà đã hết',snackVariant:'info',})
+					}else if(data.status==="-3"){
+						this.setState({openSnack:true, message:'Tài khoản không tồn tại',snackVariant:'info',})
 					}else{
-						this.setState({status:'Đã có lỗi, liên hệ admin',statusColor:'#f24726',})
+						this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
 					}
 				})
 			}else{
-				this.setState({status:'Bạn chưa chọn gói',statusColor:'#f24726',})
+				this.setState({openSnack:true, message:'Bạn chưa chọn gói',snackVariant:'info',})
 			}
 		}else{
-			this.setState({status:'Bạn chưa đăng nhập',statusColor:'#f24726',})
+			
 		}
+	}
+
+	handleCloseSnack = () => {
+		this.setState({ openSnack: false });
+	};
+
+	getLink=()=>{
+		var _this=this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		if(user !== null){
+			this.props.getLink(user.access_token).then(()=>{
+				var data= _this.props.dataLink;
+				if(data.status==="01"){
+					this.setState({link:data.data.linkUserEvent})
+				}else{
+					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
+				}
+			})
+		}else{
+			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info',})
+		}
+		
 	}
 
 	render() {
 		return (
 			<div>
 				<EventComponent 
-					status={this.state.status}
-					statusColor={this.state.statusColor}
+					message={this.state.message}
+					snackVariant={this.state.snackVariant}
+					openSnack={this.state.openSnack}
+					link={this.state.link}
 					changePoint={this.changePoint}
-					selectPackage={this.selectPackage}
+					handleCloseSnack={this.handleCloseSnack}
+					getLink={this.getLink}
+					// selectPackage={this.selectPackage}
 				/>
 			</div>
 		)
@@ -67,10 +101,12 @@ class EventGame extends React.Component {
 
 const mapStateToProps = state => ({
 	data: state.event.data,
+	dataLink: state.event.dataLink,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	changePoint
+	changePoint,
+	getLink,
 }, dispatch)
 
 
