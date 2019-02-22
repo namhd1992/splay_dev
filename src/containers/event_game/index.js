@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {Helmet} from "react-helmet";
+import MetaTags from 'react-meta-tags';
 import EventComponent from '../../components/page/Event'
 import {
 	changePoint, getLink
@@ -83,15 +83,15 @@ class EventGame extends React.Component {
 	render() {
 		return (
 			<div>
-				<Helmet>
-					<title>My EVENT GAME</title>
+				<MetaTags>
+					<title>My Title</title>
 					<meta id="og-url" property="og:url" content={this.state.link} />
 					<meta id="og-type" property="og:type" content="website" />
 					<meta id="og-title" property="og:title" content="Triệu hồi lệnh - Mộng Chinh Đồ" />
 					<meta id="og-image" property="og:image" content="https://i.postimg.cc/HxZ16Qpw/skshare-mcd.png" />
 					<meta id="meta-description" property="og:description" content="Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019" />
 					<meta id="og-site_name" property="og:site_name" content="mongchinhdo.vn" />
-				</Helmet>
+				</MetaTags>
 				<EventComponent 
 					message={this.state.message}
 					snackVariant={this.state.snackVariant}
