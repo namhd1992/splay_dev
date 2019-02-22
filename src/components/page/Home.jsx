@@ -261,8 +261,8 @@ class TitleContainer extends React.Component {
 			<div className="mission_home_container">
 				{data.slice(0, 8).map((obj, key) => (
 					// <div className={(obj.highLights === true) ? "mission": ""}>
-						<div className="mission_home_content">
-							<Grid key={key}> 
+						<div className="mission_home_content" key={key}>
+							<Grid> 
 								<ListItem key={key} className={classes.giftcodeItem}>
 									{/* <div className={(obj.highLights === true) ? "highLights": ""}> */}
 										<div id={this.setId(key)} className="avatar">
@@ -693,7 +693,7 @@ class HomeComponent extends React.Component {
 													"marginLeft": "5px",
 												}}>{obj.subTitle}</span>) : (<span></span>)}</span>)}
 													secondary={(<span fontSize={fontsize}>{"Hơn " + obj.downloadTurns + " lượt tải"}<br />
-													<div style={{marginTop:"5px"}}>
+													<span style={{marginTop:"5px"}}>
 														<Rating point={obj.pointReview}></Rating>
 														<span style={{
 																marginLeft:"10px",
@@ -703,7 +703,7 @@ class HomeComponent extends React.Component {
 																borderRadius: "20px"}}>
 																<label style={{color:"#23c9b6"}}>{this.getTheLoai(obj)}</label>
 														</span>
-														</div>
+														</span>
 													</span>)} />
 														<button className="buttonGhost">Chơi</button>
 											</ListItem>

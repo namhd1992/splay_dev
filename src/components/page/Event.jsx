@@ -5,7 +5,6 @@ import {
 	FacebookShareButton,
 } from 'react-share';
 import copy from 'copy-to-clipboard';
-import MetaTags from 'react-meta-tags';
 import '../../styles/event.css'
 
 
@@ -95,15 +94,6 @@ class EventComponent extends React.Component {
 		const { openSnack,message,snackVariant, link}=this.props;
 		return (
 			<div>
-				<MetaTags>
-					<meta property="og:url" content={this.props.link} />
-					<meta property="og:type" content="website" />
-					<meta property="og:title" content="Triệu hồi lệnh - Mộng Chinh Đồ" />
-					<meta property="og:image" content="https://i.postimg.cc/HxZ16Qpw/skshare-mcd.png" />
-					<meta property="og:description" content="Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019" />
-					<meta property="og:site_name" content="mongchinhdo.vn" />
-				</MetaTags>
-				<div>
 					<div className="logo" style={{ backgroundImage: "url(/../background_event.png)"}}>
 						<div className="social">
 							<span>
@@ -231,7 +221,6 @@ class EventComponent extends React.Component {
 						</div>
 					</Modal>
 					<Notification message={message} variant={snackVariant} openSnack={openSnack} closeSnackHandle={this.handleCloseSnack} ></Notification>
-				</div>
 			</div>
 			
 		)
