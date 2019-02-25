@@ -123,7 +123,7 @@ class App extends React.Component {
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
-					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1) ? { padding: "0px 8px 8px 8px"} : { padding: "60px 8px 8px 8px" }}>
+					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
 						<Route exact path="/loginwidget" component={LoginWidget} />
