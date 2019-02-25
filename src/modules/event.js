@@ -36,17 +36,22 @@ export default (state = initialState, action) => {
 }
 
 export const changePoint = (scoinToken, eventGameId, giftValue) => {
+	var header = {
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "bearer " + scoinToken,
+		}
+	}
 	return dispatch => {
 		dispatch({
 			type: EVENT_REQUEST
 		})
 		var data = {
-			"scoinToken": scoinToken,
 			"eventGameId": eventGameId,
 			"giftValue": giftValue
 		}
-		var url = Ultilities.base_url() + "/anonymous/event-game/exchange-gift";
-		return axios.post(url, data).then(function (response) {
+		var url = Ultilities.base_url() + "/exchange-gift";
+		return axios.post(url, data, header).then(function (response) {
 			dispatch({
 				type: EVENT_ACTION,
 				data: response.data

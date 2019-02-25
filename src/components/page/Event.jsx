@@ -209,7 +209,7 @@ class EventComponent extends React.Component {
 							<div style={{padding:"0px 20px"}}>
 								<input style={{width: "100%", height: "40px", border: "0px solid", borderRadius: "10px", backgroundColor: "#1a1a1a", color: "#3578ff"}} type="text" value={link}/>
 								<div style={{width: "100%", margin: "20px 0px"}}>
-								<button style={{color:"#fff", backgroundColor: "#12cdd4", border: "0px solid", borderRadius: "10px", textAlign: "center", width: "45%", height: "40px", cursor: "pointer"}}><FacebookShareButton url={link}>SHARE</FacebookShareButton></button>
+								<button style={{backgroundColor: "#12cdd4", border: "0px solid", borderRadius: "10px", width: "45%"}}><FacebookShareButton url={link}><button style={{color:"#fff", backgroundColor: "#12cdd4",borderRadius: "10px", border: "0px solid", width: "100%", height: "40px", cursor: "pointer"}}>SHARE</button></FacebookShareButton></button>
 									<button style={{color:"#fff", backgroundColor: "#f24726", border: "0px solid", borderRadius: "10px", textAlign: "center", width: "45%", height: "40px", float:"right", cursor: "pointer"}} onClick={this.copyText}>COPY LINK</button>
 								</div>
 								<ul style={{marginLeft: "-20px"}}>
