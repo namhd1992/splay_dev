@@ -16,7 +16,8 @@ class EventGame extends React.Component {
 			openSnack: false,
 			message: "",
 			snackVariant: "info",
-			link:'',
+			data:'',
+			openModalLink:false
 		};
 	}
 
@@ -29,16 +30,29 @@ class EventGame extends React.Component {
 	// selectPackage=()=>{
 	// 	this.setState({status:''})
 	// }
-	changePoint=(point)=>{
+	componentDidMount(){
 		var _this=this;
 		var user = JSON.parse(localStorage.getItem("user"));
 		if(user !== null){
-			if(point!==0){
-				this.props.changePoint(user.access_token, 1, point).then(() => {
-					
+			this.props.getLink(user.access_token).then(()=>{
+				var data= _this.props.dataLink;
+				if(data.status==="01"){
+					this.setState({data:data.data})
+				}else{
+					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
+				}
+			})
+		}
+	}
+	changePoint=(pakageXu)=>{
+		var _this=this;
+		var user = JSON.parse(localStorage.getItem("user"));
+		if(user !== null){
+			if(pakageXu!==0){
+				this.props.changePoint(user.access_token, this.state.data.eventGameId, pakageXu).then(() => {
 					var data= _this.props.data;
 					if(data.status==="01"){
-						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'#12cdd4',})
+						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'info',})
 					}else if(data.status==="04"){
 						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
 					}else if(data.status==="05"){
@@ -53,7 +67,7 @@ class EventGame extends React.Component {
 				this.setState({openSnack:true, message:'Bạn chưa chọn gói',snackVariant:'info',})
 			}
 		}else{
-			
+			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info',})
 		}
 	}
 
@@ -61,22 +75,17 @@ class EventGame extends React.Component {
 		this.setState({ openSnack: false });
 	};
 
-	getLink=()=>{
-		var _this=this;
+	handleCloseModalLink=()=>{
+		this.setState({openModalLink:false});
+	}
+
+	handleOpenModalLink=()=>{
 		var user = JSON.parse(localStorage.getItem("user"));
 		if(user !== null){
-			this.props.getLink(user.access_token).then(()=>{
-				var data= _this.props.dataLink;
-				if(data.status==="01"){
-					this.setState({link:data.data.linkUserEvent})
-				}else{
-					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
-				}
-			})
+			this.setState({openModalLink:true});
 		}else{
 			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info',})
 		}
-		
 	}
 
 	render() {
@@ -86,10 +95,13 @@ class EventGame extends React.Component {
 					message={this.state.message}
 					snackVariant={this.state.snackVariant}
 					openSnack={this.state.openSnack}
-					link={this.state.link}
+					data={this.state.data}
+					openModalLink={this.state.openModalLink}
 					changePoint={this.changePoint}
 					handleCloseSnack={this.handleCloseSnack}
-					getLink={this.getLink}
+					handleCloseModalLink={this.handleCloseModalLink}
+					handleOpenModalLink={this.handleOpenModalLink}
+					// getData={this.getData}
 					// selectPackage={this.selectPackage}
 				/>
 			</div>

@@ -5,9 +5,9 @@ import {
 	FacebookShareButton,
 } from 'react-share';
 import copy from 'copy-to-clipboard';
-import '../../styles/event.css'
+import '../../styles/event.css';
 
-
+const FB = window.FB;
 
 class EventComponent extends React.Component {
 
@@ -15,6 +15,7 @@ class EventComponent extends React.Component {
 		super(props);
 		this.state={
 			point:0,
+			pakageXu:0,
 			auth:false,
 			fullName:'',
 			openModalLink:false,
@@ -27,6 +28,27 @@ class EventComponent extends React.Component {
 			this.setState({auth:true, fullName:user.fullName});
 		}
 	}
+
+	// componentDidMount(){
+	// 	window.fbAsyncInit = function () {
+	// 		FB.init({
+	// 			appId: '254750115436704',
+	// 			autoLogAppEvents: true,
+	// 			xfbml: true,
+	// 			version: 'v3.2'
+	// 		});
+	// 		FB.api('/me', function(response) {
+	// 			console.log("Response:",response);
+	// 		}.bind(this));
+	// 	}.bind(this);
+	// 	(function(d, s, id) {
+	// 		var js, fjs = d.getElementsByTagName(s)[0];
+	// 		if (d.getElementById(id)) return;
+	// 		js = d.createElement(s); js.id = id;
+	// 		js.src = "//connect.facebook.net/en_US/sdk.js";
+	// 		fjs.parentNode.insertBefore(js, fjs);
+	// 	}(document, 'script', 'facebook-jssdk'));
+	// }
 
 	loginAction = () => {
 		if (typeof(Storage) !== "undefined") {
@@ -48,13 +70,12 @@ class EventComponent extends React.Component {
 
 	selectOptionCoin= (event) =>{
         var pakageXu=+event.target.value;
-		this.setState({point: pakageXu/1000})
+		this.setState({point: pakageXu/1000, pakageXu:pakageXu})
 		// this.props.selectPackage()
     }
 
 	changePoint=()=>{
-		// var scoinToken=this.getScoinToken('token');
-		this.props.changePoint(this.state.point)
+		this.props.changePoint(this.state.pakageXu)
 	}
 
 	getScoinToken=(paramName)=>{
@@ -70,15 +91,11 @@ class EventComponent extends React.Component {
 	}
 
 	handleCloseModalLink=()=>{
-		this.setState({openModalLink:false});
+		this.props.handleCloseModalLink();
 	}
 
 	handleOpenModalLink=()=>{
-		var user = JSON.parse(localStorage.getItem("user"));
-		this.props.getLink();
-		if(user !== null){
-			this.setState({openModalLink:true});
-		}
+		this.props.handleOpenModalLink();
 	}
 
 	handleCloseSnack=()=>{
@@ -86,12 +103,12 @@ class EventComponent extends React.Component {
 	}
 
 	copyText=()=>{
-		copy(this.props.link);
+		copy(this.props.data.linkUserEvent);
 	}
 
 	render() {
 		var arr=[20000,50000,100000,200000]
-		const { openSnack,message,snackVariant, link}=this.props;
+		const { openSnack,message,snackVariant, data, openModalLink}=this.props;
 		return (
 			<div>
 					<div className="logo" style={{ backgroundImage: "url(/../background_event.png)"}}>
@@ -108,9 +125,9 @@ class EventComponent extends React.Component {
 					<div className="genlink">
 						<div className="div_link">
 						<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
-										<a href="http://mongchinhdo.vn/" target="_blank">
-							<img onClick="playGame()" className="img_play_game" src="/../event_choigame.png" alt="" />
-										</a>
+						<a href="http://mongchinhdo.vn/" target="_blank">
+							<img className="img_play_game" src="/../event_choigame.png" alt="" />
+						</a>
 						</div>
 						<div className="info_user">
 										{(this.state.auth)?(	<div>
@@ -119,7 +136,7 @@ class EventComponent extends React.Component {
 														<span style={{color:"red", cursor:"pointer"}} onClick={this.logoutAction}>[Thoát]</span>
 												</div>
 												<div>
-														<span>Điểm triệu hồi hiện tại:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: "#fac710"}}>1000 điểm</span>
+														<span>Điểm triệu hồi hiện tại:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color: "#fac710"}}>{(data.eventPoint)? (data.eventPoint):0} điểm</span>
 												</div>
 										</div>):(	<div id="login">
 												<span>Đại hiệp cần đăng nhập để tạo link triệu hồi</span>
@@ -164,7 +181,7 @@ class EventComponent extends React.Component {
 					<div className="changePoint">
 						<div style={{textAlign: "center", marginBottom: "50px"}}>
 							<img className="img_shop" src="/../shopdoiqua_event.png" alt="" />
-							<p className="point">Đang có 1000 điểm</p>
+							<p className="point">Đang có {(data.eventPoint)? (data.eventPoint):0} điểm</p>
 						</div>
 									<p style={{textAlign: "center", color:"#fac710"}}>Xu có thể nạp vào game từ Scoin.vn: Chọn phương thức Nạp > Ví Xu</p>
 							
@@ -197,7 +214,7 @@ class EventComponent extends React.Component {
 					<Modal
 						aria-labelledby="simple-modal-title"
 						aria-describedby="simple-modal-description"
-						open={this.state.openModalLink}
+						open={openModalLink}
 						style={{backgroundColor:'rgba(0, 0, 0, 0.7)'}}
 						onClose={this.handleCloseModalLink}
 						>
@@ -207,9 +224,9 @@ class EventComponent extends React.Component {
 								<img style={{float:'right', zIndex:"1", cursor:"pointer"}} src="/../close.png" alt="close popup" onClick={this.handleCloseModalLink} />
 							</div>
 							<div style={{padding:"0px 20px"}}>
-								<input style={{width: "100%", height: "40px", border: "0px solid", borderRadius: "10px", backgroundColor: "#1a1a1a", color: "#3578ff"}} type="text" value={link}/>
+								<input style={{width: "100%", height: "40px", border: "0px solid", borderRadius: "10px", backgroundColor: "#1a1a1a", color: "#3578ff"}} type="text" value={data.linkUserEvent}/>
 								<div style={{width: "100%", margin: "20px 0px"}}>
-								<button style={{backgroundColor: "#12cdd4", border: "0px solid", borderRadius: "10px", width: "45%"}}><FacebookShareButton url={link}><button style={{color:"#fff", backgroundColor: "#12cdd4",borderRadius: "10px", border: "0px solid", width: "100%", height: "40px", cursor: "pointer"}}>SHARE</button></FacebookShareButton></button>
+								<button style={{backgroundColor: "#12cdd4", border: "0px solid", borderRadius: "10px", width: "45%"}}><FacebookShareButton url={data.linkUserEvent}><button style={{color:"#fff", backgroundColor: "#12cdd4",borderRadius: "10px", border: "0px solid", width: "100%", height: "40px", cursor: "pointer"}}>SHARE</button></FacebookShareButton></button>
 									<button style={{color:"#fff", backgroundColor: "#f24726", border: "0px solid", borderRadius: "10px", textAlign: "center", width: "45%", height: "40px", float:"right", cursor: "pointer"}} onClick={this.copyText}>COPY LINK</button>
 								</div>
 								<ul style={{marginLeft: "-20px"}}>
