@@ -439,7 +439,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/MCD-trieuhoi');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Triệu hồi lệnh - Mộng Chinh Đồ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019");
@@ -454,7 +454,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/MCD-trieuhoi/');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Triệu hồi lệnh - Mộng Chinh Đồ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019");
