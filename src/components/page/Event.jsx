@@ -57,7 +57,8 @@ class EventComponent extends React.Component {
 		} else {
 			console.log("Trình duyệt không hỗ trợ localStorage");
 		}
-		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		// window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 	}
 
 	logoutAction = () => {
@@ -105,10 +106,14 @@ class EventComponent extends React.Component {
 	copyText=()=>{
 		copy(this.props.data.linkUserEvent);
 	}
+	
+	handleOpenGame=()=>{
+		this.props.handleOpenGame()
+	}
 
 	render() {
 		var arr=[20000,50000,100000,200000]
-		const { openSnack,message,snackVariant, data, openModalLink}=this.props;
+		const { openSnack,message,snackVariant, data, openModalLink, packageGift}=this.props;
 		return (
 			<div>
 					<div className="logo" style={{ backgroundImage: "url(/../background_event.png)"}}>
@@ -119,15 +124,14 @@ class EventComponent extends React.Component {
 							</span>
 						</div>
 						<div>
-							<p className="title">SK Triệu hồi lệnh - Mộng Chinh Đồ H5</p>
+							<p className="title_event">SK Triệu hồi lệnh - Mộng Chinh Đồ H5</p>
 						</div>
 					</div>
 					<div className="genlink">
 						<div className="div_link">
 						<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
-						<a href="http://mongchinhdo.vn/" target="_blank">
-							<img className="img_play_game" src="/../event_choigame.png" alt="" />
-						</a>
+
+							<img className="img_play_game" onClick={this.handleOpenGame} src="/../event_choigame.png" alt="" />
 						</div>
 						<div className="info_user">
 										{(this.state.auth)?(	<div>
@@ -162,7 +166,10 @@ class EventComponent extends React.Component {
 								shop:
 								<ul>
 									<li>
-										Cứ 1 người click vào link và tạo nhân vật thành công: bạn sẽ được 1 điểm!
+										B1. Click CHƠI GAME và tạo nhân vật thành công
+									</li>
+									<li>
+										B2. Quay lại trang sự kiện
 									</li>
 								</ul>
 							</li>
@@ -190,10 +197,10 @@ class EventComponent extends React.Component {
 									<div className="divOptionXu">
 										<select className="selectOptionXu" onChange={(event)=>this.selectOptionCoin(event)}>
 											<option value="" selected disabled hidden>Chọn gói Xu muốn nhận</option>
-													{arr.map((obj,key) => {
+													{(packageGift !==null) ? packageGift.map((obj,key) => {
 															return <option key={key}
 														value={obj}>{obj.toLocaleString()}</option>;
-													})}
+													}):(<div></div>)}
 										</select>
 									</div>
 									<div className="divPrice">

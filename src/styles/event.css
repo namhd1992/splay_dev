@@ -28,8 +28,8 @@
     cursor: pointer;
 }
 
-.title{
-    justify-content: center;
+.title_event{
+    text-align: center;
     font-weight: 800;
     font-size: 28px;
     margin-top: 300px;
@@ -297,7 +297,7 @@ select {
     .content{
         width: 100%;
     }
-    .title{
+    .title_event{
         font-size: 24px
     }
     .btn_login{
@@ -319,7 +319,7 @@ select {
 	.logo{
         height: 310px;
     }
-    .title{
+    .title_event{
         margin-top: 220px;
         font-size: 18px
     }
@@ -390,7 +390,7 @@ select {
     .logo{
         height: 290px;
     }
-    .title{
+    .title_event{
         margin-top: 200px;
         font-size: 24px;
     }
@@ -432,7 +432,7 @@ select {
 	.logo{
         height: 255px;
     }
-    .title{
+    .title_event{
         margin-top: 175px;
         font-size: 16px
     }
@@ -493,7 +493,7 @@ select {
 	.logo{
         height: 215px;
     }
-    .title{
+    .title_event{
         margin-top: 140px;
         font-size: 14px
     }
@@ -573,7 +573,7 @@ select {
 	.logo{
         height: 145px;
     }
-    .title{
+    .title_event{
         margin-top: 80px;
         font-size: 18px
     }
@@ -687,7 +687,7 @@ select {
         border: 0px solid; 
         cursor: pointer;
     }
-    .title{
+    .title_event{
         margin-top: 65px;
         font-size: 12px
     }
