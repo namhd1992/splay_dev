@@ -42,16 +42,21 @@ class EventGame extends React.Component {
 			}
 		});
 		if(user !== null){
-			this.props.getLink(user.access_token).then(()=>{
-				var data= _this.props.dataLink;
-				if(data.status==="01"){
-					this.setState({data:data.data})
-				}else{
-					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
-				}
-			});
+			this.getLink(user);
 			this.addPoint(user.access_token);
 		}
+	}
+
+	getLink=(user)=>{
+		var _this=this;
+		this.props.getLink(user.access_token).then(()=>{
+			var data= _this.props.dataLink;
+			if(data.status==="01"){
+				this.setState({data:data.data})
+			}else{
+				this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
+			}
+		});
 	}
 	changePoint=(pakageXu)=>{
 		var _this=this;
@@ -61,7 +66,8 @@ class EventGame extends React.Component {
 				this.props.changePoint(user.access_token, this.state.data.eventGameId, pakageXu).then(() => {
 					var data= _this.props.data;
 					if(data.status==="01"){
-						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'success',})
+						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'success'})
+						_this.getLink(user);
 					}else if(data.status==="04"){
 						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
 					}else if(data.status==="05"){
@@ -93,7 +99,7 @@ class EventGame extends React.Component {
 		if(user !== null){
 			this.setState({openModalLink:true});
 		}else{
-			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info',})
+			window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 		}
 	}
 
@@ -103,7 +109,7 @@ class EventGame extends React.Component {
 			var win = window.open('http://mongchinhdo.vn/', '_blank');
 			win.focus();
 		}else{
-			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info',})
+			window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 		}
 	}
 
