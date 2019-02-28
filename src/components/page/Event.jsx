@@ -27,28 +27,28 @@ class EventComponent extends React.Component {
 		if (user !== null) {
 			this.setState({auth:true, fullName:user.fullName});
 		}
-		FB.login(function(response) {
-			if (response.authResponse) {
-					console.log('Authenticated!');
-					// location.reload(); //or do whatever you want
-				} else {
-						console.log('User cancelled login or did not fully authorize.');
-				}
-			},{
-					scope: 'id,email'
-			});
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					var uid = response.authResponse.userID;
-					// var email = response.authResponse.userEmail;
-					console.log('UID', uid)
+			// FB.login(function(response) {
+			// 	if (response.authResponse) {
+			// 			console.log('Authenticated!');
+			// 			// location.reload(); //or do whatever you want
+			// 		} else {
+			// 				console.log('User cancelled login or did not fully authorize.');
+			// 		}
+			// 	},{
+			// 			scope: 'id,email'
+			// });
+			// FB.getLoginStatus(function(response) {
+			// 	if (response.status === 'connected') {
+			// 		var uid = response.authResponse.userID;
+			// 		// var email = response.authResponse.userEmail;
+			// 		console.log('UID', uid)
 					 
-				} else if (response.status === 'not_authorized') {
-					console.log('not_authorized')
-				} else {
-					console.log('unknow')
-				}
-			 });
+			// 	} else if (response.status === 'not_authorized') {
+			// 		console.log('not_authorized')
+			// 	} else {
+			// 		console.log('unknow')
+			// 	}
+			//  });
 		}
 
 	// componentDidMount(){
@@ -133,6 +133,21 @@ class EventComponent extends React.Component {
 		this.props.handleOpenGame()
 	}
 
+	facebookLogin=()=> {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            console.log('Authenticated!');
+            // location.reload(); //or do whatever you want
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+        }
+    },
+    {
+        scope: 'email,user_checkins'
+    });
+}
+
+
 	render() {
 		var arr=[20000,50000,100000,200000]
 		const { openSnack,message,snackVariant, data, openModalLink, packageGift}=this.props;
@@ -151,7 +166,7 @@ class EventComponent extends React.Component {
 					</div>
 					<div className="genlink">
 						<div className="div_link">
-						<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
+						<img onClick={this.facebookLogin} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
 
 							<img className="img_play_game" onClick={this.handleOpenGame} src="/../event_choigame.png" alt="" />
 						</div>
