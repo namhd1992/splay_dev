@@ -99,6 +99,12 @@ class EventGame extends React.Component {
 		if(user !== null){
 			this.setState({openModalLink:true});
 		}else{
+			if (typeof(Storage) !== "undefined") {
+				var currentPath = window.location.pathname;
+				localStorage.setItem("currentPath", currentPath);
+			} else {
+				console.log("Trình duyệt không hỗ trợ localStorage");
+			}
 			window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 		}
 	}
@@ -109,6 +115,12 @@ class EventGame extends React.Component {
 			var win = window.open('http://mongchinhdo.vn/', '_blank');
 			win.focus();
 		}else{
+			if (typeof(Storage) !== "undefined") {
+				var currentPath = window.location.pathname;
+				localStorage.setItem("currentPath", currentPath);
+			} else {
+				console.log("Trình duyệt không hỗ trợ localStorage");
+			}
 			window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 		}
 	}

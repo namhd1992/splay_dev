@@ -27,7 +27,29 @@ class EventComponent extends React.Component {
 		if (user !== null) {
 			this.setState({auth:true, fullName:user.fullName});
 		}
-	}
+		FB.login(function(response) {
+			if (response.authResponse) {
+					console.log('Authenticated!');
+					// location.reload(); //or do whatever you want
+				} else {
+						console.log('User cancelled login or did not fully authorize.');
+				}
+			},{
+					scope: 'id,email'
+			});
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					var uid = response.authResponse.userID;
+					// var email = response.authResponse.userEmail;
+					console.log('UID', uid)
+					 
+				} else if (response.status === 'not_authorized') {
+					console.log('not_authorized')
+				} else {
+					console.log('unknow')
+				}
+			 });
+		}
 
 	// componentDidMount(){
 	// 	window.fbAsyncInit = function () {
