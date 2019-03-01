@@ -167,7 +167,7 @@ class EventComponent extends React.Component {
 					</div>
 					<div className="genlink">
 						<div className="div_link">
-						<img onClick={this.facebookLogin} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
+						<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
 
 							<img className="img_play_game" onClick={this.handleOpenGame} src="/../event_choigame.png" alt="" />
 						</div>
