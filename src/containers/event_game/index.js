@@ -142,9 +142,13 @@ class EventGame extends React.Component {
 			this.props.addPoint(token, str, faceId).then(()=>{
 				var data= _this.props.dataPoint;
 				if(data.status==="03"){
-					this.setState({openSnack:true, message:'Người chơi chưa tham gia sự kiện hoặc sự kiện không tồn tại',snackVariant:'info',})
-				}else if(data.status==="-05"){
-					this.setState({openSnack:true, message:'Hết phần thưởng sự kiện',snackVariant:'info',})
+					this.setState({openSnack:true, message:'Không tìm thấy sự kiện hiện tại',snackVariant:'info',})
+				}else if(data.status==="-02"){
+					this.setState({openSnack:true, message:'Chưa chơi game',snackVariant:'info',})
+				}else if(data.status==="-03"){
+					this.setState({openSnack:true, message:'Tài khoản đã dùng cho người chơi khác',snackVariant:'info',})
+				}else if(data.status==="-04"){
+					this.setState({openSnack:true, message:'Không dùng link của chính mình',snackVariant:'info',})
 				}else{
 					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
 				}
