@@ -27,6 +27,12 @@ class EventGame extends React.Component {
 		for(let i=0; i<100; i++){
 			window.clearInterval(i);
 		}
+		if (typeof(Storage) !== "undefined") {
+			var currentPath = window.location.pathname;
+			localStorage.setItem("currentPath", currentPath);
+		} else {
+			console.log("Trình duyệt không hỗ trợ localStorage");
+		}
 	}
 
 	// selectPackage=()=>{
