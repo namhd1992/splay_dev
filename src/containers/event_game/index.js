@@ -27,12 +27,6 @@ class EventGame extends React.Component {
 		for(let i=0; i<100; i++){
 			window.clearInterval(i);
 		}
-		if (typeof(Storage) !== "undefined") {
-			var currentPath = window.location.pathname;
-			localStorage.setItem("currentPath", currentPath);
-		} else {
-			console.log("Trình duyệt không hỗ trợ localStorage");
-		}
 	}
 
 	// selectPackage=()=>{
@@ -41,6 +35,12 @@ class EventGame extends React.Component {
 	componentDidMount(){
 		var _this=this;
 		var user = JSON.parse(localStorage.getItem("user"));
+		if (typeof(Storage) !== "undefined") {
+			var currentPath = window.location.pathname;
+			localStorage.setItem("currentPath", currentPath);
+		} else {
+			console.log("Trình duyệt không hỗ trợ localStorage");
+		}
 		this.props.eventGame().then(()=>{
 			var data= _this.props.dataEventGame;
 			if(data.status==="01"){
