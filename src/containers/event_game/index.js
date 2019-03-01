@@ -132,7 +132,7 @@ class EventGame extends React.Component {
 		var n=path.lastIndexOf('/');
 		var str=path.substring(n+1,len);
 		var faceId='';
-		if(str.indexOf("trieuhoi")===-1 || str===""){
+		if(str.indexOf("trieuhoi")===-1 && str!==""){
 			this.props.addPoint(token, str, faceId).then(()=>{
 				var data= _this.props.dataPoint;
 				if(data.status==="03"){
