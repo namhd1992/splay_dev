@@ -7,6 +7,7 @@ import {
 import copy from 'copy-to-clipboard';
 import '../../styles/event.css';
 
+
 const FB = window.FB;
 
 class EventComponent extends React.Component {
@@ -37,18 +38,18 @@ class EventComponent extends React.Component {
 			// 	},{
 			// 			scope: 'id,email'
 			// });
-			FB.getLoginStatus(function(response) {
-				if (response.status === 'connected') {
-					var uid = response.authResponse.userID;
-					// var email = response.authResponse.userEmail;
-					console.log('UID', uid)
+			// FB.getLoginStatus(function(response) {
+			// 	if (response.status === 'connected') {
+			// 		var uid = response.authResponse.userID;
+			// 		// var email = response.authResponse.userEmail;
+			// 		console.log('UID', uid)
 					 
-				} else if (response.status === 'not_authorized') {
-					console.log('not_authorized')
-				} else {
-					console.log('unknow')
-				}
-			 });
+			// 	} else if (response.status === 'not_authorized') {
+			// 		console.log('not_authorized')
+			// 	} else {
+			// 		console.log('unknow')
+			// 	}
+			//  });
 		}
 
 	// componentDidMount(){
