@@ -285,6 +285,13 @@ select {
 }
 
 @media only screen and (max-width:1024px){
+    .logo{
+        width: 100%;
+        height: 380px;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 	.sidebar{
         width: 0%;
     }
@@ -317,7 +324,7 @@ select {
 
 @media only screen and (max-width:820px){
 	.logo{
-        height: 310px;
+        height: 300px;
     }
     .title_event{
         margin-top: 220px;
@@ -346,7 +353,7 @@ select {
     }
     .play{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 16px;
     }
     .img_play{
@@ -366,7 +373,7 @@ select {
     }
     .changePoint{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 16px;
     }
     
@@ -388,7 +395,7 @@ select {
 
 @media only screen and (max-width:780px){
     .logo{
-        height: 290px;
+        height: 270px;
     }
     .title_event{
         margin-top: 200px;
@@ -430,7 +437,7 @@ select {
 
 @media only screen and (max-width:700px){
 	.logo{
-        height: 255px;
+        height: 245px;
     }
     .title_event{
         margin-top: 175px;
@@ -446,7 +453,7 @@ select {
     }
     .play{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 14px;
     }
     .img_play{
@@ -466,7 +473,7 @@ select {
     }
     .changePoint{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 14px;
     }
     .item_tag{
@@ -491,7 +498,7 @@ select {
 
 @media only screen and (max-width:600px){
 	.logo{
-        height: 215px;
+        height: 210px;
     }
     .title_event{
         margin-top: 140px;
@@ -509,7 +516,7 @@ select {
     }
     .play{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 13px;
     }
     .img_play{
@@ -529,7 +536,7 @@ select {
     }
     .changePoint{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 13px;
     }
     .item_tag{
@@ -571,7 +578,7 @@ select {
 
 @media only screen and (max-width:420px){
 	.logo{
-        height: 145px;
+        height: 135px;
     }
     .title_event{
         margin-top: 80px;
@@ -602,7 +609,7 @@ select {
     }
     .play{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 13px;
     }
     .img_play{
@@ -622,7 +629,7 @@ select {
     }
     .changePoint{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 13px;
     }
     .item_tag{
@@ -659,7 +666,7 @@ select {
 @media only screen and (max-width:320px){
 
     .logo{
-        height: 125px;
+        height: 115px;
     }
     .img_link{
         inline-size: 50%;
@@ -703,7 +710,7 @@ select {
     }
     .play{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 11px;
     }
     .img_play{
@@ -723,7 +730,7 @@ select {
     }
     .changePoint{
         border-radius: 20px;
-        margin: 40px 20px;
+        margin: 40px 10px;
         font-size: 11px;
     }
     .item_tag{
