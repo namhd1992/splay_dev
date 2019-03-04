@@ -142,6 +142,7 @@ class EventComponent extends React.Component {
 	}
 
 	facebookLogin=()=> {
+		// console.log('AA', FB)
 		FB.login(function(response) {
 			if (response.authResponse) {
 				console.log('Authenticated!');
@@ -177,7 +178,7 @@ class EventComponent extends React.Component {
 							<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
 							<img className="img_play_game" onClick={this.handleOpenGame} src="/../event_choigame.png" alt="" />
 						</div>
-						<button onClick={this.facebookLogin}>TEST FACEBOOK</button>
+						{/* <button onClick={this.facebookLogin}>TEST FACEBOOK</button> */}
 						<div className="info_user">
 										{(this.state.auth)?(	<div>
 												<div style={{marginBottom: "15px"}}>
