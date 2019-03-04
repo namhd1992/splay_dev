@@ -142,18 +142,18 @@ class EventComponent extends React.Component {
 	}
 
 	facebookLogin=()=> {
-    FB.login(function(response) {
-        if (response.authResponse) {
-            console.log('Authenticated!');
-            // location.reload(); //or do whatever you want
-        } else {
-            console.log('User cancelled login or did not fully authorize.');
-        }
-    },
-    {
-        scope: 'email,id'
-    });
-}
+		FB.login(function(response) {
+			if (response.authResponse) {
+				console.log('Authenticated!');
+				// location.reload(); //or do whatever you want
+			} else {
+				console.log('User cancelled login or did not fully authorize.');
+			}
+		},
+		{
+			scope: 'email,id'
+		});
+	}
 
 
 	render() {
@@ -174,10 +174,10 @@ class EventComponent extends React.Component {
 					</div>
 					<div className="genlink">
 						<div className="div_link">
-						<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
-
+							<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
 							<img className="img_play_game" onClick={this.handleOpenGame} src="/../event_choigame.png" alt="" />
 						</div>
+						<button onClick={this.facebookLogin}>TEST FACEBOOK</button>
 						<div className="info_user">
 										{(this.state.auth)?(	<div>
 												<div style={{marginBottom: "15px"}}>
