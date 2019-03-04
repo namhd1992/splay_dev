@@ -199,7 +199,8 @@ class EventComponent extends React.Component {
 								<img className="img_play" src="/../cachchoi_event.png" alt="" />
 							</div>
 						<div>
-								<img className="img_step" src="/../cacbuocthuchien_event.png" alt="" />
+							<p style={{textAlign:"center"}}>👉TẠO LINK TRIỆU HỒI 👉 KIẾM ĐIỂM 👉 ĐỔI ĐIỂM LẤY XU</p>
+								{/* <img className="img_step" src="/../cacbuocthuchien_event.png" alt="" /> */}
 						</div>
 						</div>
 						<ul>
