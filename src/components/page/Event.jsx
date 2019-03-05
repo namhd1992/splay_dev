@@ -158,7 +158,6 @@ class EventComponent extends React.Component {
 
 
 	render() {
-		var arr=[20000,50000,100000,200000]
 		const { openSnack,message,snackVariant, data, openModalLink, packageGift}=this.props;
 		return (
 			<div>
@@ -200,7 +199,7 @@ class EventComponent extends React.Component {
 								<img className="img_play" src="/../cachchoi_event.png" alt="" />
 							</div>
 						<div>
-							<p style={{textAlign:"center"}}>👉TẠO LINK TRIỆU HỒI 👉 KIẾM ĐIỂM 👉 ĐỔI ĐIỂM LẤY XU</p>
+							<p style={{textAlign:"center"}}>👉TẠO LINK TRIỆU HỒI👉 KIẾM ĐIỂM 👉 ĐỔI ĐIỂM LẤY XU</p>
 								{/* <img className="img_step" src="/../cacbuocthuchien_event.png" alt="" /> */}
 						</div>
 						</div>
@@ -216,7 +215,7 @@ class EventComponent extends React.Component {
 										B1. Click CHƠI GAME và tạo nhân vật thành công
 									</li>
 									<li>
-										B2. Quay lại trang sự kiện
+										B2. Quay lại link triệu hồi & Đăng nhập.
 									</li>
 								</ul>
 							</li>
