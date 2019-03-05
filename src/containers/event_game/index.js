@@ -49,13 +49,13 @@ class EventGame extends React.Component {
 		});
 		if(user !== null){
 			this.getLink(user);
-			this.addPoint(user.access_token);
 		}
 	}
 
 	getLink=(user)=>{
 		var _this=this;
 		this.props.getLink(user.access_token).then(()=>{
+			_this.addPoint(user.access_token);
 			var data= _this.props.dataLink;
 			if(data.status==="01"){
 				this.setState({data:data.data})
