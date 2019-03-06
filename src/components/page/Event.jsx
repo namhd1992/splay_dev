@@ -5,6 +5,7 @@ import {
 	FacebookShareButton,
 } from 'react-share';
 import copy from 'copy-to-clipboard';
+import Hidden from 'material-ui/Hidden'
 import '../../styles/event.css';
 
 
@@ -15,6 +16,8 @@ class EventComponent extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={
+			intValue:0,
+			whenSelect:"",
 			point:0,
 			pakageXu:0,
 			auth:false,
@@ -26,7 +29,7 @@ class EventComponent extends React.Component {
 	componentWillMount() {
 		var user = JSON.parse(localStorage.getItem("user"));
 		if (user !== null) {
-			this.setState({auth:true, fullName:user.fullName});
+			this.setState({auth:true, fullName:user.fullName, intValue:20000,whenSelect:"1px solid #00ccd4"});
 		}
 			// FB.login(function(response) {
 			// 	if (response.authResponse) {
@@ -80,8 +83,8 @@ class EventComponent extends React.Component {
 		} else {
 			console.log("Trình duyệt không hỗ trợ localStorage");
 		}
-		// window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
-		window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
+		// window.location.replace(`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&agencyid=0&redirect_uri=${window.location.protocol}//${window.location.host}/`);
 	}
 
 	logoutAction = () => {
@@ -94,19 +97,21 @@ class EventComponent extends React.Component {
 			console.log("Trình duyệt không hỗ trợ localStorage");
 		}
 		window.location.replace(
-			// `https://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}&action=logout&agencyid=0`,
-			`http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&redirect_uri=${window.location.protocol}//${window.location.host}${currentPath}&action=logout&agencyid=0`
+			`https://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}${currentPath}&action=logout&agencyid=0`,
+			// `http://sandbox.graph.vtcmobile.vn/oauth/authorize?client_id=4e7549789b14693eda4e019faaa0c446&redirect_uri=${window.location.protocol}//${window.location.host}${currentPath}&action=logout&agencyid=0`
 		);
 	}
 
 	selectOptionCoin= (event) =>{
-        var pakageXu=+event.target.value;
-		this.setState({point: pakageXu/1000, pakageXu:pakageXu})
+		this.setState({point: event/1000, pakageXu:event, intValue:event, whenSelect:"1px solid #00ccd4"})
 		// this.props.selectPackage()
     }
 
 	changePoint=()=>{
-		this.props.changePoint(this.state.pakageXu)
+		if(this.state.intValue!==0){
+			this.props.changePoint(this.state.pakageXu)
+			this.setState({intValue:0, whenSelect:""});
+		}
 	}
 
 	getScoinToken=(paramName)=>{
@@ -240,7 +245,7 @@ class EventComponent extends React.Component {
 							
 						<div>
 								<div className="xu_event">
-									<div className="divOptionXu">
+									{/* <div className="divOptionXu">
 										<select className="selectOptionXu" onChange={(event)=>this.selectOptionCoin(event)}>
 											<option value="" selected disabled hidden>Chọn gói Xu muốn nhận</option>
 													{(packageGift !==null) ? packageGift.map((obj,key) => {
@@ -251,7 +256,49 @@ class EventComponent extends React.Component {
 									</div>
 									<div className="divPrice">
 										<span style={{marginRight:"20px"}}>Giá:</span><span>{this.state.point.toLocaleString()} điểm</span> 
-									</div>
+									</div> */}
+									<Hidden xsDown>
+										<div className="optionLeft">
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"65px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 20000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(20000)}>
+												<div style={{color:"#fff", padding:"5px 10px"}}>20,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} >Giá: 200 điểm</span></div>
+											</div>
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"65px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(100000)}>
+												<div style={{color:"#fff", padding:"5px 10px"}}>100,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 1,000 điểm</span></div>
+											</div>
+										</div>
+										<div className="optionRight">
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"65px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(50000)}>
+												<div style={{color:"#fff", padding:"5px 10px"}}>50,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 500 điểm</span></div>
+											</div>
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"65px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 200000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(200000)}>
+												<div style={{color:"#fff", padding:"5px 10px"}}>200,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 2,000 điểm</span></div>
+											</div>
+										</div>
+									</Hidden>
+									<Hidden smUp>
+										<div className="optionLeft">
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer", border:(this.state.intValue === 20000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(20000)}>
+												<div style={{color:"#fff", padding:"10px 10px"}}>20,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} >Giá: 200 điểm</span></div>
+											</div>
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 50000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(50000)}>
+												<div style={{color:"#fff", padding:"10px 10px"}}>50,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 500 điểm</span></div>
+											</div>
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 100000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(100000)}>
+												<div style={{color:"#fff", padding:"10px 10px"}}>100,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 1,000 điểm</span></div>
+											</div>
+											<div style={{background:"#2b303b", borderRadius:"10px", height:"60px", marginBottom:"15px", cursor:"pointer",  border:(this.state.intValue === 200000)?this.state.whenSelect:""}} onClick={()=>this.selectOptionCoin(200000)}>
+												<div style={{color:"#fff", padding:"10px 10px"}}>200,000 Xu</div>
+												<div style={{color:"#fff", textAlign:"right"}}><span style={{ color: "#df0000", paddingRight:"15px" }} > Giá: 2,000 điểm</span></div>
+											</div>
+										</div>
+									</Hidden>
 								</div>
 								<button className="btnChangePoint" onClick={this.changePoint}>ĐỔI</button>
 								{/* <p className="statusChangePoint" style={{ color:statusColor}}>{status}</p> */}
