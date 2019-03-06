@@ -143,7 +143,8 @@ class EventGame extends React.Component {
 		if(str.indexOf("trieuhoi")===-1 && str!==""){
 			this.props.addPoint(token, str, faceId).then(()=>{
 				var data= _this.props.dataPoint;
-				if(data.status==="03"){
+				if(data.status==="01"){
+				}else if(data.status==="03"){
 					this.setState({openSnack:true, message:'Không tìm thấy sự kiện hiện tại',snackVariant:'info',})
 				}else if(data.status==="-02"){
 					this.setState({openSnack:true, message:'Chưa chơi game',snackVariant:'info',})
