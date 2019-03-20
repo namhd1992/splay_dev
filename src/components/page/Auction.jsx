@@ -13,7 +13,8 @@ import { Avatar } from 'material-ui'
 import { ListItem } from 'material-ui/List'
 import { Link } from 'react-router-dom'
 import { CircularProgress } from 'material-ui/Progress'
-import PopupDetailBonus from '../../components/PopupDetailBonus'
+import PopupDetailBonus from '../../components/PopupDetailBonus';
+import ReactResizeDetector from 'react-resize-detector'
 import { withStyles } from 'material-ui/styles'
 import { withTheme } from 'material-ui/styles'
 import '../../styles/auction.css'
@@ -52,10 +53,25 @@ class AuctionComponent extends React.Component {
 		super(props);
 		this.state = {
 			openDetailBonus:false,
-			speed:10
+			speed:10,
+			compact:false
 		};
 	}
 
+	componentWillMount(){
+		if (document.body.offsetWidth < 768) {
+			this.setState({ compact: true });
+		} else {
+			this.setState({ compact: false });
+		}
+	}
+	onResize=()=>{
+		if (document.body.offsetWidth < 768) {
+			this.setState({ compact: true });
+		} else {
+			this.setState({ compact: false });
+		}
+	}
 	handleChange=(event, value)=>{
 		this.props.handleChange(event,value);
 	}
@@ -117,6 +133,31 @@ class AuctionComponent extends React.Component {
 	}
 	handleMouseOver=()=>{
 		this.setState({speed:0});
+	}
+
+	setImage=(type)=>{
+		if(type==="XU"){
+			return <img src={"../Xu.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+		}else if(type==="THIT"){
+			return <img src={"../thit.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+		}else if(type==="SCOIN"){
+			return <img src={"../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+		}else{
+			return <img src={"../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+		}
+	}
+
+	getNameObject=(v)=>{
+		const {compact}=this.state;
+		var l=25;
+		if(compact){
+			l=15
+		}
+		if(v.length>l){
+			return v.substring(0, l)+'...';
+		}else{
+			return v;
+		}
 	}
 
 	render() {
@@ -213,11 +254,13 @@ class AuctionComponent extends React.Component {
 									<Grid container spacing={8}>
 										{dataAll.map((obj, key) => (
 											<Grid key={key} item xs={12} sm={6}>
-												<Link to={(obj.objectType === "auction") ? "/auctiondetail/" + obj.id : "itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
+												<Link to={(obj.objectType === "auction") ? "/auctiondetail/" + obj.shopingItemAndAuction.id : "itemgiftcodedetail/" + obj.shopingItemAndAuction.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auctionNameWhite">{obj.name}</div>
-															<div className="auctionNameBlack"><img src={(obj.objectType === "auction") ? "../thit.png" : "../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.price.toLocaleString()}</span></div>
+														{(obj.shopingItemAndAuction.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItemAndAuction.name)}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItemAndAuction.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItemAndAuction.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItemAndAuction.name}</div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItemAndAuction.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItemAndAuction.price.toLocaleString()}</span></div></div>)}
+															<div style={{paddingTop:"5px"}}><span style={{color:"#12cdd4", borderRadius:"5px", padding:"1px 7px", border:"1px solid #12cdd4", fontSize:"12px"}}>{obj.shopingItemAndAuction.objectType}</span></div>
 														</div>
 														<div style={{
 															width: "80px",
@@ -254,11 +297,13 @@ class AuctionComponent extends React.Component {
 									<Grid container spacing={8} >
 										{dataShopItemGiftcode.map((obj, key) => (
 											<Grid key={key} item xs={12} sm={6}>
-												<Link to={"/itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
+												<Link to={"/itemgiftcodedetail/" + obj.shopingItem.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auctionNameWhite">{obj.name}</div>
-														 	<div className="auctionNameBlack"><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
+															{(obj.shopingItem.hasPromotion)?(<div><div className="auctionNameWhite"><span >{obj.shopingItem.name}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}</span></div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItem.name}</div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>)}
+															
 														</div>
 														<div style={{
 															width: "80px",
@@ -299,7 +344,7 @@ class AuctionComponent extends React.Component {
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
 															<div className="auctionNameWhite">{obj.name}</div>
-															<div className="auctionNameBlack"><img src="../thit.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
+															<div className="auctionNameBlack">{this.setImage(obj.coinType)} <span style={{ color: "#fe8731" }}>{obj.topPrice.toLocaleString()}</span></div>
 															<div className="auction-name" style={{
 																	textAlign: "left",
 																	width: "100%",
@@ -346,13 +391,15 @@ class AuctionComponent extends React.Component {
 									<Grid container spacing={8} >
 										{dataShopItem.map((obj, key) => (
 											<Grid key={key} item xs={12} sm={6}>
-												<Link to={"/itemgiftcodedetail/" + obj.id} key={key} className={classes.gridLink}>
+												<Link to={"/itemgiftcodedetail/" + obj.shopingItem.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															<div className="auctionNameWhite">{obj.name}</div>
-															<div className="auctionNameBlack"><img src="../scoin.png" style={{ width: "24px", verticalAlign: "text-bottom" }} /> <span style={{ color: "#fe8731" }}>{obj.priceScoin.toLocaleString()}</span></div>
+															{(obj.shopingItem.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItem.name)}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItem.name}</div>
+														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>)}
 														</div>
 														<div style={{
+
 															width: "80px",
 															paddingBottom: "80px",
 															backgroundImage: "url(" + obj.defaultImage + ")",
@@ -389,6 +436,7 @@ class AuctionComponent extends React.Component {
 						</Grid>
 					</Hidden>
 				</Grid>
+				<ReactResizeDetector handleWidth={true} handleHeight={true} onResize={this.onResize} />
 				<LoginRequired open={dialogLoginOpen}></LoginRequired>
 				<PopupDetailBonus
 					handleCloseBonus={this.handleCloseBonus}
