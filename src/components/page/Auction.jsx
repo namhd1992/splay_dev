@@ -54,22 +54,26 @@ class AuctionComponent extends React.Component {
 		this.state = {
 			openDetailBonus:false,
 			speed:10,
-			compact:false
+			device:false
 		};
 	}
 
 	componentWillMount(){
 		if (document.body.offsetWidth < 768) {
-			this.setState({ compact: true });
-		} else {
-			this.setState({ compact: false });
+			this.setState({ device: 'mobile' });
+		} else if(document.body.offsetWidth >= 768 && document.body.offsetWidth < 1366){
+			this.setState({ device: 'tablet' });
+		}else {
+			this.setState({ device: 'destop' });
 		}
 	}
 	onResize=()=>{
 		if (document.body.offsetWidth < 768) {
-			this.setState({ compact: true });
-		} else {
-			this.setState({ compact: false });
+			this.setState({ device: 'mobile' });
+		} else if(document.body.offsetWidth >= 768 && document.body.offsetWidth < 1366){
+			this.setState({ device: 'tablet' });
+		}else {
+			this.setState({ device: 'destop' });
 		}
 	}
 	handleChange=(event, value)=>{
@@ -137,21 +141,25 @@ class AuctionComponent extends React.Component {
 
 	setImage=(type)=>{
 		if(type==="XU"){
-			return <img src={"../Xu.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+			return <img src={"../Xu.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
 		}else if(type==="THIT"){
-			return <img src={"../thit.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+			return <img src={"../thit.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
 		}else if(type==="SCOIN"){
-			return <img src={"../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+			return <img src={"../scoin.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
 		}else{
-			return <img src={"../scoin.png"} style={{ width: "24px", verticalAlign: "text-bottom" }} />
+			return <img src={"../scoin.png"} style={{ width: "22px", verticalAlign: "text-bottom" }} />
 		}
 	}
 
 	getNameObject=(v)=>{
-		const {compact}=this.state;
-		var l=25;
-		if(compact){
-			l=15
+		const {device}=this.state;
+		var l=0;
+		if(device==="mobile"){
+			l=16
+		}else if(device==="tablet"){
+			l=19
+		}else{
+			l=25;
 		}
 		if(v.length>l){
 			return v.substring(0, l)+'...';
@@ -257,13 +265,13 @@ class AuctionComponent extends React.Component {
 												<Link to={(obj.objectType === "auction") ? "/auctiondetail/" + obj.shopingItemAndAuction.id : "itemgiftcodedetail/" + obj.shopingItemAndAuction.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-														{(obj.shopingItemAndAuction.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItemAndAuction.name)}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
+														{(obj.shopingItemAndAuction.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItemAndAuction.name)}</span>&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItemAndAuction.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItemAndAuction.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItemAndAuction.name}</div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItemAndAuction.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItemAndAuction.price.toLocaleString()}</span></div></div>)}
 															<div style={{paddingTop:"5px"}}><span style={{color:"#12cdd4", borderRadius:"5px", padding:"1px 7px", border:"1px solid #12cdd4", fontSize:"12px"}}>{obj.shopingItemAndAuction.objectType}</span></div>
 														</div>
 														<div style={{
-															width: "80px",
+															width: "70px",
 															paddingBottom: "80px",
 															backgroundImage: "url(" + obj.defaultImage + ")",
 															backgroundSize: "contain",
@@ -300,13 +308,13 @@ class AuctionComponent extends React.Component {
 												<Link to={"/itemgiftcodedetail/" + obj.shopingItem.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															{(obj.shopingItem.hasPromotion)?(<div><div className="auctionNameWhite"><span >{obj.shopingItem.name}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}</span></div>
+															{(obj.shopingItem.hasPromotion)?(<div><div className="auctionNameWhite"><span >{obj.shopingItem.name}</span>&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}</span></div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItem.name}</div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>)}
 															
 														</div>
 														<div style={{
-															width: "80px",
+															width: "70px",
 															paddingBottom: "80px",
 															backgroundImage: "url(" + obj.defaultImage + ")",
 															backgroundSize: "contain",
@@ -357,7 +365,7 @@ class AuctionComponent extends React.Component {
 																}}>{this.getStatusAuction(obj).status}</div>
 														</div>
 														<div style={{
-															width: "80px",
+															width: "70px",
 															paddingBottom: "80px",
 															backgroundImage: "url(" + obj.defaultImage + ")",
 															backgroundSize: "contain",
@@ -394,13 +402,13 @@ class AuctionComponent extends React.Component {
 												<Link to={"/itemgiftcodedetail/" + obj.shopingItem.id} key={key} className={classes.gridLink}>
 													<div className={classes.gridItem}>
 														<div style={{ width: "70%", position: "relative" }}>
-															{(obj.shopingItem.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItem.name)}</span>&nbsp;&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
+															{(obj.shopingItem.hasPromotion)?(<div><div><span className="auctionNameWhite">{this.getNameObject(obj.shopingItem.name)}</span>&nbsp;&nbsp;<span style={{color:"#fff", padding:"2px 5px", backgroundColor:"#f24726", border:"0px solid", borderRadius:"5px"}}>{obj.promotion.tagView.toLocaleString()}% OFF</span></div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.promotion.newPrice.toLocaleString()}</span>&nbsp;&nbsp;&nbsp;<span style={{ color: "#fff", textDecoration:"line-through" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>):(<div><div className="auctionNameWhite">{obj.shopingItem.name}</div>
 														 	<div className="auctionNameBlack">{this.setImage(obj.shopingItem.coinType)} <span style={{ color: "#fe8731" }}>{obj.shopingItem.price.toLocaleString()}</span></div></div>)}
 														</div>
 														<div style={{
 
-															width: "80px",
+															width: "70px",
 															paddingBottom: "80px",
 															backgroundImage: "url(" + obj.defaultImage + ")",
 															backgroundSize: "contain",
