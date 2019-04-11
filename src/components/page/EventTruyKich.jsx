@@ -32,6 +32,10 @@ class EventTruyKichComponent extends React.Component {
 			dialogItemOpen: false,
 			dialogUserEmpty: false,
 			idServer:0,
+			day:0,
+			hour:0, 
+			minute:0, 
+			second:0,
 		}
 	}
 
@@ -150,6 +154,7 @@ class EventTruyKichComponent extends React.Component {
 
 	render() {
 		const { openSnack,message,snackVariant, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents}=this.props;
+		const {day, hour, minute, second}=this.state;
 		var arrLeft=[];
 		var arrRight=[];
 		var arr=[];
@@ -177,7 +182,7 @@ class EventTruyKichComponent extends React.Component {
 					backgroundPosition: "center top",
 					backgroundRepeat: "no-repeat"}} justify="center">
 					<Grid item xs={12} style={{textAlign:"center"}}>
-						<span>
+						<span style={{border:"1px solid #fff", padding:"5px", borderRadius:"0px 0px 5px 5px"}}>
 							<a className="a_home" href="http://mongchinhdo.vn/">Trang chủ</a>
 							<a className="a_face" href="https://www.facebook.com/mongchinhdo.vn/">Fanpage</a>
 						</span>
@@ -185,6 +190,9 @@ class EventTruyKichComponent extends React.Component {
 					<Grid item xs={12} style={{ paddingTop: "50%" }}>
 					</Grid>
 					
+				</Grid>
+				<Grid item xs={12} style={{ textAlign:'center', marginTop:"10px", marginBottom:"20px" }}>
+					<span style={{color:"#fff"}}>Thời gian sự kiện:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style={{color:"#fac710"}}>CÒN {day} NGÀY - {hour} GIỜ - {minute} PHÚT - {second} GIÂY</span>
 				</Grid>
 				<Grid item xs={12} style={{ textAlign:'center' }}>
 							<img onClick={this.handleOpenModalLink} className="img_link" src="/../event_taolinktrieuhoi.png" alt="" />
@@ -260,6 +268,7 @@ class EventTruyKichComponent extends React.Component {
 											width: "100%",
 											backgroundImage: "url('/../truykich.jpg')",
 											backgroundSize: "100% auto",
+											cursor:"pointer",
 											backgroundPosition: "center top",
 											marginBottom:"20px",
 											backgroundRepeat: "no-repeat",
@@ -279,6 +288,7 @@ class EventTruyKichComponent extends React.Component {
 												width: "100%",
 												backgroundImage: "url('/../truykich.jpg')",
 												backgroundSize: "100% auto",
+												cursor:"pointer",
 												backgroundPosition: "center top",
 												marginBottom:"20px",
 												backgroundRepeat: "no-repeat",
@@ -300,6 +310,7 @@ class EventTruyKichComponent extends React.Component {
 												width: "100%",
 												backgroundImage: "url('/../truykich.jpg')",
 												backgroundSize: "100% auto",
+												cursor:"pointer",
 												backgroundPosition: "center top",
 												marginBottom:"20px",
 												backgroundRepeat: "no-repeat",

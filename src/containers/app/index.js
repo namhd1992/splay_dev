@@ -70,7 +70,8 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/Sự-Kiện-Truy-Kích-Bùng-Nổ")!==-1) {
+		console.log('AAAAA',document.location.pathname)
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95")!==-1) {
 			this.setState({ fullscreen: true});
 		} else {
 			this.setState({ fullscreen: false });
@@ -124,7 +125,7 @@ class App extends React.Component {
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
-					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/Sự-Kiện-Truy-Kích-Bùng-Nổ")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
+					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
 						<Route exact path="/loginwidget" component={LoginWidget} />
