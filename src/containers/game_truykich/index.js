@@ -25,6 +25,7 @@ class GameTruyKich extends React.Component {
 			serverGameId:0,
 			itemId:0,
 			eventGameId:0,
+			toDate:0
 
 		};
 	}
@@ -51,13 +52,21 @@ class GameTruyKich extends React.Component {
 			var data= _this.props.dataEventGame;
 			if(data!==undefined){
 				if(data.status==="01"){
-					this.setState({itemEvents:data.data.itemEvents});
+					this.setState({itemEvents:data.data.itemEvents, toDate:data.data.eventGame.toDate});
 				}
 			}
 		});
 		if(user !== null){
 			this.getLink(user);
 		}
+	}
+
+	timeRemain=(toDate)=>{
+		var _this=this;
+		setInterval(()=>{
+			var time=toDate-Date.now();
+
+		}, 1000);
 	}
 
 	getLink=(user)=>{
@@ -218,6 +227,7 @@ class GameTruyKich extends React.Component {
 					itemEvents={this.state.itemEvents}
 					dialogUserEmpty={this.state.dialogUserEmpty}
 					isOpenListUser={this.state.isOpenListUser}
+					toDate={this.s}
 
 
 					handleCloseSnack={this.handleCloseSnack}

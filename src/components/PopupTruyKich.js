@@ -147,7 +147,7 @@ class PopupTruyKich extends React.Component {
 			length=rows.length;
 			emptyRows = rowsPerPage - Math.min(rowsPerPage, length - page * rowsPerPage);
 		}
-		return (
+		return (userChildents !==undefined && userChildents.length>0)?(
 			<div>
 				<Dialog
 					fullScreen={false}
@@ -206,8 +206,7 @@ class PopupTruyKich extends React.Component {
 						</div>
 					</DialogActions>
 				</Dialog>
-			</div>
-		);
+			</div>):(<div></div>);
 	}
 }
 
