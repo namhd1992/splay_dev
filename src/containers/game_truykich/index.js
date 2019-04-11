@@ -25,12 +25,29 @@ class GameTruyKich extends React.Component {
 			serverGameId:0,
 			itemId:0,
 			eventGameId:0,
-			toDate:0
+			toDate:0,
+			day:0,
+			hour:0, 
+			minute:0, 
+			second:0,
+			dialogLoginOpen:false,
 
 		};
 	}
 
+
 	componentWillMount(){
+		var user = JSON.parse(localStorage.getItem("user"));
+		var path=window.location.pathname;
+		var len=path.length;
+		var n=path.lastIndexOf('/');
+		var str=path.substring(n+1,len);
+		
+		if (user === null) {
+			if(str.indexOf("-Truy-")===-1 && str!==""){
+				this.setState({dialogLoginOpen:true});
+			}
+		}
 		for(let i=0; i<100; i++){
 			window.clearInterval(i);
 		}
@@ -52,6 +69,7 @@ class GameTruyKich extends React.Component {
 			var data= _this.props.dataEventGame;
 			if(data!==undefined){
 				if(data.status==="01"){
+					this.timeRemain(data.data.eventGame.toDate)
 					this.setState({itemEvents:data.data.itemEvents, toDate:data.data.eventGame.toDate});
 				}
 			}
@@ -64,8 +82,13 @@ class GameTruyKich extends React.Component {
 	timeRemain=(toDate)=>{
 		var _this=this;
 		setInterval(()=>{
-			var time=toDate-Date.now();
-
+			var time=(toDate-Date.now())/1000;
+			var day=Math.floor(time/86400);
+			var hour=Math.floor((time%86400)/3600);
+			var minute=Math.floor(((time%86400)%3600)/60);
+			var second=Math.ceil(((time%86400)%3600)%60);
+			_this.setState({day:day, hour: hour, minute: minute, second:second})
+			// console.log('TIME:',time,"DAY:",day,"HOUR:",hour,"MINUTE:",minute,"SECOND:", second)
 		}, 1000);
 	}
 
@@ -76,7 +99,7 @@ class GameTruyKich extends React.Component {
 			if(data!==undefined){
 				if(data.status==="01"){
 					this.setState({data:data.data})
-					_this.addPoint(user.access_token, data);
+					_this.addPoint(user.access_token);
 				}else{
 					this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
 				}
@@ -154,12 +177,12 @@ class GameTruyKich extends React.Component {
 
 	addPoint=(token, data)=>{
 		var _this=this;
-		var path=data.data.linkUserEvent;
+		var path=window.location.pathname;
 		var len=path.length;
 		var n=path.lastIndexOf('/');
 		var str=path.substring(n+1,len);
 		var faceId='';
-		if(str.indexOf("Sự-Kiện-Truy-Kích-Bùng-Nổ")===-1 && str!==""){
+		if(str.indexOf("-Truy-")===-1 && str!==""){
 			this.props.addPoint(token, str, faceId).then(()=>{
 				var data= _this.props.dataPoint;
 				if(data!==undefined){
@@ -213,6 +236,9 @@ class GameTruyKich extends React.Component {
 		this.setState({dialogUserEmpty:false})
 
 	}
+	handleCloseDialogLogin=()=>{
+		this.setState({dialogLoginOpen:false});
+	}
 
 	render() {
 		return (
@@ -227,7 +253,10 @@ class GameTruyKich extends React.Component {
 					itemEvents={this.state.itemEvents}
 					dialogUserEmpty={this.state.dialogUserEmpty}
 					isOpenListUser={this.state.isOpenListUser}
-					toDate={this.s}
+					day={this.state.day}
+					hour={this.state.hour}
+					minute={this.state.minute}
+					second={this.state.second}
 
 
 					handleCloseSnack={this.handleCloseSnack}
@@ -240,7 +269,8 @@ class GameTruyKich extends React.Component {
 					closeListUser={this.closeListUser}
 					openDialogUserEmpty={this.openDialogUserEmpty}
 					closeDialogUserEmpty={this.closeDialogUserEmpty}
-
+					dialogLoginOpen={this.state.dialogLoginOpen}
+					handleCloseDialogLogin={this.handleCloseDialogLogin}
 					buyItem={this.buyItem}
 					// getData={this.getData}
 					// selectPackage={this.selectPackage}

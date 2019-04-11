@@ -9,7 +9,7 @@ import {
 import PopupTruyKich from '../../components/PopupTruyKich'
 import copy from 'copy-to-clipboard';
 import Hidden from 'material-ui/Hidden';
-import Button from 'material-ui/Button'
+import Button from 'material-ui/Button';
 import Dialog, {
 	DialogActions,
 	DialogContent,
@@ -32,10 +32,8 @@ class EventTruyKichComponent extends React.Component {
 			dialogItemOpen: false,
 			dialogUserEmpty: false,
 			idServer:0,
-			day:0,
-			hour:0, 
-			minute:0, 
-			second:0,
+			serverName:'',
+			nameItem:'',
 		}
 	}
 
@@ -73,6 +71,8 @@ class EventTruyKichComponent extends React.Component {
 	}
 
 	selectOptionCoin= (option) =>{
+		console.log(option)
+		this.setState({nameItem:option.item.name})
 		this.props.selectOptionCoin(option.item.id);
   	}
 
@@ -133,6 +133,12 @@ class EventTruyKichComponent extends React.Component {
 	}
 
 	openComfirm=()=>{
+		const {idServer}=this.state;
+		if(idServer===0){
+			this.setState({serverName:"Miền Bắc"})
+		}else{
+			this.setState({serverName:"Miền Nam"})
+		}
 		this.setState({dialogItemOpen:true})
 		this.handleCloseModalInfoGame();
 	}
@@ -151,10 +157,22 @@ class EventTruyKichComponent extends React.Component {
 		this.props.closeDialogUserEmpty();
 	}
 
+	handleCloseDialogLogin=()=>{
+		this.props.handleCloseDialogLogin();
+	}
+	login=()=>{
+		if (typeof(Storage) !== "undefined") {
+			var currentPath = window.location.pathname;
+			localStorage.setItem("currentPath", currentPath);
+		} else {
+			console.log("Trình duyệt không hỗ trợ localStorage");
+		}
+		window.location.replace(`http://graph.vtcmobile.vn/oauth/authorize?client_id=707fece431a0948c498d43e881acd2c5&redirect_uri=${window.location.protocol}//${window.location.host}/login&agencyid=0`)
+	}
+
 
 	render() {
-		const { openSnack,message,snackVariant, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents}=this.props;
-		const {day, hour, minute, second}=this.state;
+		const { openSnack,message,snackVariant,dialogLoginOpen, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents, day, hour, minute, second}=this.props;
 		var arrLeft=[];
 		var arrRight=[];
 		var arr=[];
@@ -248,17 +266,17 @@ class EventTruyKichComponent extends React.Component {
 						</ul>
 					</div>
 				</Grid>
-				<Grid item xs={12} style={{ textAlign:'center' }}>
+				<Grid item xs={12} >
 					<div className='changePoint'>
 						<div style={{textAlign: "center"}}>
-							<img className="img_shop" src="/../shopdoiqua_event.png" alt="" />
+							<img className="img_shop" src="/../doiquatruykich_event.png" alt="" />
 						</div>
-						<p style={{textAlign: "center", color:"#fac710"}}>Hướng dẫn: Chọn vật phẩm muốn đổi > Chọn server > Chọn nhân vật</p>
+						<p style={{textAlign: "center", color:"#fac710"}}>Hướng dẫn: Chọn vật phẩm muốn đổi > Chọn server > Xác nhận</p>
 						<div>
 							<p>Danh sách phần thưởng <span style={{color:"red", float:"right", marginRight:"10px"}}>Đang có {(data !==null && data.eventPoint)? (data.eventPoint):0} điểm</span></p>
 						</div>
 							
-						<div>
+						<div style={{ textAlign:'center' }}>
 							<div className="xu_event">
 								<Hidden xsDown>
 									<div className="optionLeft">
@@ -362,7 +380,7 @@ class EventTruyKichComponent extends React.Component {
 							</div>
 						</div>
 					</Modal>
-					<Modal
+					{/* <Modal
 						aria-labelledby="simple-modal-title"
 						aria-describedby="simple-modal-description"
 						open={openModalInfoGame}
@@ -380,39 +398,79 @@ class EventTruyKichComponent extends React.Component {
 													}):(<div></div>)}
 										</select>
 								</div>
-								{/* <p style={{color:"#fff", fontSize:"18px"}}>Chọn nhân vật</p>
-								<div className="divObject">
-										<select className="selectObject" onChange={(event)=>this.selectObject(event)}>
-													{(listObject !==null) ? listObject.map((obj,key) => {
-															return <option key={key}
-														value={obj}>{obj.toLocaleString()}</option>;
-													}):(<div></div>)}
-										</select>
-								</div> */}
 							</div>
 							<div style={{marginTop: "30px", float:"right", paddingRight:"20px"}}>
-								<Button onClick={this.handleCloseModalInfoGame} style={{ color: "#888787", borderRadius:"20px" }}>
+								<Button onClick={this.handleCloseModalInfoGame} style={{ color: "#888787", marginRight:"10px"}}>
 										Đóng
 								</Button>
-								<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"20px"}} onClick={this.openComfirm}>XÁC NHẬN</Button>					
+								<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.openComfirm}>XÁC NHẬN</Button>					
 							</div>
 						</div>
 					</Modal>
+ */}
+
+					<Dialog
+							open={openModalInfoGame}
+							onClose={this.handleCloseModalInfoGame}
+							aria-labelledby="responsive-dialog-title"
+					>
+							<DialogContent style={{padding:"10px 20px"}}>
+								<div>
+									<p style={{color:"#fff", fontSize:"18px"}}>Chọn Server</p>
+									<div className="divServer">
+											<select className="selectServer" onChange={(event)=> this.selectServer(event)}>
+														{(listServer !==null) ? listServer.map((obj,key) => {
+																return <option key={key}
+															value={obj. serverGameId}>{obj.name.toLocaleString()}</option>;
+														}):(<div></div>)}
+											</select>
+									</div>
+								</div>
+							</DialogContent>
+							<DialogActions style={{padding:"10px 15px"}}>
+								<div>
+									<Button onClick={this.handleCloseModalInfoGame} style={{ color: "#888787", marginRight:"10px"}}>Đóng</Button>
+									<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.openComfirm}>XÁC NHẬN</Button>	
+											
+								</div>
+							</DialogActions>
+					</Dialog>
+
 					<Dialog
 							open={this.state.dialogItemOpen}
 							onClose={this.handleCloseDialogItem}
 							aria-labelledby="responsive-dialog-title"
 					>
 							<DialogContent>
-								<p style={{color:"#fff"}}>Xác nhận đổi vật phẩm</p>
-								<p style={{color:"#808080"}}>Vật phẩm này sẽ được thêm vào nhân vật</p>	
+								<p style={{color:"#fff"}}>Xác nhận đổi vật phẩm '{this.state.nameItem}'</p>
+								<p style={{color:"#808080"}}>Vật phẩm này sẽ được thêm vào nhân vật tại server '{this.state.serverName}'</p>	
 							</DialogContent>
 							<DialogActions>
 									<div>
-											<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", borderRadius:"20px" }}>
+											<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", marginRight:"10px"}}>
 													Đóng
 											</Button>
-											<Button style={{ color: "#fff", background:"#00ccd4",borderRadius:"20px"}} onClick={this.buyItem}>XÁC NHẬN</Button>
+											<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.buyItem}>XÁC NHẬN</Button>
+											
+									</div>
+							</DialogActions>
+					</Dialog>
+
+					<Dialog
+							open={dialogLoginOpen}
+							onClose={this.handleCloseDialogLogin}
+							aria-labelledby="responsive-dialog-title"
+					>
+							<DialogContent>
+								<p style={{color:"#28b5a5"}}>Đăng nhập</p>
+								<p style={{color:"#fff"}}>Tính năng này yêu cầu đăng nhập</p>	
+							</DialogContent>
+							<DialogActions>
+									<div>
+											<Button onClick={this.handleCloseDialogLogin} style={{ color: "#888787", marginRight:"10px"}}>
+													Đóng
+											</Button>
+											<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.login}>ĐĂNG NHẬP</Button>
 											
 									</div>
 							</DialogActions>
@@ -428,7 +486,7 @@ class EventTruyKichComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 									<div>
-											<Button onClick={this.closeDialogUserEmpty} style={{ color: "#888787", borderRadius:"20px" }}>
+											<Button onClick={this.closeDialogUserEmpty} style={{ color: "#888787"}}>
 													Đóng
 											</Button>
 											
