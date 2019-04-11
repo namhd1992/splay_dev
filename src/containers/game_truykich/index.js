@@ -159,7 +159,6 @@ class GameTruyKich extends React.Component {
 
 	handleOpenGame=()=>{
 		var user = JSON.parse(localStorage.getItem("user"));
-		console.log(user)
 		if(user !== null){
 			var win = window.open('http://mongchinhdo.vn/', '_blank');
 			win.focus();
