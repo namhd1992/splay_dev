@@ -70,7 +70,7 @@ class App extends React.Component {
 			this.setState({ isMobile: true });
 		}
 		window.addEventListener('scroll', this.handleScroll);
-		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/truykich")!==-1) {
+		if (document.location.pathname === "/giftcodepluginlogin" || document.location.pathname === "/giftcodeplugin" || document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/Sự-Kiện-Truy-Kích-Bùng-Nổ")!==-1) {
 			this.setState({ fullscreen: true});
 		} else {
 			this.setState({ fullscreen: false });
@@ -124,7 +124,7 @@ class App extends React.Component {
 				<div className="content" style={{ background: this.state.backgroundColor }}>
 					{(!this.state.fullscreen) ? (<MenuAppBar isMobile={this.state.isMobile} pathname={document.location.pathname} compact={this.state.compact} scrolling={this.state.scrolling}
 						data={[{ url: "home", label: "home" }, { url: "about", label: "about" }]}></MenuAppBar>) : (<div></div>)}
-					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/truykich")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
+					<main ref={(c) => this.main = c} style={(document.location.pathname.indexOf("/MCD-trieuhoi")!==-1 || document.location.pathname.indexOf("/Sự-Kiện-Truy-Kích-Bùng-Nổ")!==-1) ? { padding: "0px 8px 8px 8px", marginTop:"-20px"} : { padding: "40px 8px 8px 8px"}}>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/about-us" component={About} />
 						<Route exact path="/loginwidget" component={LoginWidget} />
@@ -158,7 +158,8 @@ class App extends React.Component {
 						<Route exact path="/MCD-trieuhoi" component={EventGame} />
 						<Route exact path="/MCD-trieuhoi/:id" component={EventGame} />
 
-						<Route exact path="/truykich" component={GameTruyKich} />
+						<Route exact path="/Sự-Kiện-Truy-Kích-Bùng-Nổ" component={GameTruyKich} />
+						<Route exact path="/Sự-Kiện-Truy-Kích-Bùng-Nổ/:id" component={GameTruyKich} />
 						<Route exact path="/test-game" component={TestGame} />
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}

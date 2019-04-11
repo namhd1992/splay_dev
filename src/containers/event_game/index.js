@@ -43,9 +43,9 @@ class EventGame extends React.Component {
 		}
 		this.props.eventGame().then(()=>{
 			var data= _this.props.dataEventGame;
-			if(data.status==="01"){
-				this.setState({packageGift:data.data.packageGift.split(',')});
-			}
+			// if(data.status==="01"){
+			// 	this.setState({packageGift:data.data.packageGift.split(',')});
+			// }
 		});
 		if(user !== null){
 			this.getLink(user);

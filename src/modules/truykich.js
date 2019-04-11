@@ -49,7 +49,7 @@ export default (state = initialState, action) => {
 	}
 }
 
-export const changePoint = (scoinToken, eventGameId, giftValue) => {
+export const buyItem = (eventGameId, itemId, serverGameId, scoinToken) => {
 	var header = {
 		headers: {
 			"Content-Type": "application/json",
@@ -62,9 +62,10 @@ export const changePoint = (scoinToken, eventGameId, giftValue) => {
 		})
 		var data = {
 			"eventGameId": eventGameId,
-			"giftValue": giftValue
+			"itemId": itemId,
+			"serverGameId":serverGameId
 		}
-		var url = Ultilities.base_url() + "/exchange-gift";
+		var url = Ultilities.base_url() + "/buy-item";
 		return axios.post(url, data, header).then(function (response) {
 			dispatch({
 				type: EVENT_ACTION,
