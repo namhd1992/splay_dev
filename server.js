@@ -17,7 +17,7 @@ app.get('/', function(request, response) {
     if (err) {
       return console.log(err);
     }
-    data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+    data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -32,7 +32,7 @@ app.get('/about-us', function(request, response) {
     if (err) {
       return console.log(err);
     }
-    data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+    data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -48,7 +48,7 @@ app.get('/login', function(request, response) {
     if (err) {
       return console.log(err);
     }
-    data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+    data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -63,7 +63,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -78,7 +78,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -93,7 +93,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -108,7 +108,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -123,7 +123,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -138,7 +138,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -153,7 +153,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -168,7 +168,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -183,7 +183,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -198,7 +198,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -213,7 +213,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -228,7 +228,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -243,7 +243,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -259,7 +259,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -274,7 +274,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -289,7 +289,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -304,7 +304,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -319,7 +319,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -334,7 +334,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -349,7 +349,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -364,7 +364,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
     data = data.replace(/\$OG_TYPE/g, "Game");
     data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
     data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -379,7 +379,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -394,7 +394,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -409,7 +409,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -424,7 +424,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
@@ -439,7 +439,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/MCD-trieuhoi');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/MCD-trieuhoi');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Triệu hồi lệnh - Mộng Chinh Đồ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019");
@@ -454,7 +454,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/MCD-trieuhoi/');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/MCD-trieuhoi/');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Triệu hồi lệnh - Mộng Chinh Đồ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tham gia sự kiện Mời bạn cùng chơi > nhận Xu > chuyển thành KNB nhanh chóng. Game H5 chiến quốc mới nhất từ VTC Mobile năm 2019");
@@ -469,7 +469,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
@@ -485,7 +485,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ/');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ/');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
@@ -500,7 +500,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn');
       data = data.replace(/\$OG_TYPE/g, "Game");
       data = data.replace(/\$OG_TITLE/g, 'Cổng game SPLAY - VTC Mobile');
       data = data.replace(/\$OG_DESCRIPTION/g, "Tổng hợp các game HOT nhất trên thị trường & đa nền tảng.");
