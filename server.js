@@ -462,7 +462,7 @@ app.get('/history', function(request, response) {
       response.send(result);
     });
   });
-  app.get('/Sự-Kiện-Truy-Kích-Bùng-Nổ', function(request, response) {
+  app.get('/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95', function(request, response) {
     
     const filePath = path.resolve(__dirname, './build', 'index.html')
     fs.readFile(filePath, 'utf8', function (err,data) {
@@ -478,7 +478,7 @@ app.get('/history', function(request, response) {
     });
   });
 
-  app.get('/Sự-Kiện-Truy-Kích-Bùng-Nổ/:id', function(request, response) {
+  app.get('/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95/:id', function(request, response) {
     
     const filePath = path.resolve(__dirname, './build', 'index.html')
     fs.readFile(filePath, 'utf8', function (err,data) {
