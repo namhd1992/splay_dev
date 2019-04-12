@@ -356,6 +356,7 @@ class EventTruyKichComponent extends React.Component {
 					<Modal
 						aria-labelledby="simple-modal-title"
 						aria-describedby="simple-modal-description"
+						disableAutoFocus={true}
 						open={openModalLink}
 						style={{backgroundColor:'rgba(0, 0, 0, 0.7)'}}
 						onClose={this.handleCloseModalLink}
