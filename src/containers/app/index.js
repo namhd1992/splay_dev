@@ -158,8 +158,8 @@ class App extends React.Component {
 						<Route exact path="/MCD-trieuhoi" component={EventGame} />
 						<Route exact path="/MCD-trieuhoi/:id" component={EventGame} />
 
-						<Route exact path="/Sự-Kiện-Truy-Kích-Bùng-Nổ" component={GameTruyKich} />
-						<Route exact path="/Sự-Kiện-Truy-Kích-Bùng-Nổ/:id" component={GameTruyKich} />
+						<Route exact path="/Su-Kien-Truy-Kich-Bung-No" component={GameTruyKich} />
+						<Route exact path="/Su-Kien-Truy-Kich-Bung-No/:id" component={GameTruyKich} />
 						<Route exact path="/test-game" component={TestGame} />
 						{/* <Route exact path="/mini-game" component={MiniGame} /> */}
 						{/* <Route exact path="/mini-game-detail" component={MiniGameDetail} /> */}

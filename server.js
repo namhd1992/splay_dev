@@ -462,14 +462,14 @@ app.get('/history', function(request, response) {
       response.send(result);
     });
   });
-  app.get('/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95', function(request, response) {
+  app.get('/Su-Kien-Truy-Kich-Bung-No', function(request, response) {
     
     const filePath = path.resolve(__dirname, './build', 'index.html')
     fs.readFile(filePath, 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Su-Kien-Truy-Kich-Bung-No');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
@@ -478,14 +478,14 @@ app.get('/history', function(request, response) {
     });
   });
 
-  app.get('/S%E1%BB%B1-Ki%E1%BB%87n-Truy-K%C3%ADch-B%C3%B9ng-N%E1%BB%95/:id', function(request, response) {
+  app.get('/Su-Kien-Truy-Kich-Bung-No/:id', function(request, response) {
     
     const filePath = path.resolve(__dirname, './build', 'index.html')
     fs.readFile(filePath, 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ/');
+      data = data.replace(/\$OG_URL/g, 'https://sandbox.splay.vn/Su-Kien-Truy-Kich-Bung-No/');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
