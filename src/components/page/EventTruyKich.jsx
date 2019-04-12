@@ -171,7 +171,7 @@ class EventTruyKichComponent extends React.Component {
 
 
 	render() {
-		const { openSnack,message,snackVariant,dialogLoginOpen, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents, day, hour, minute, second}=this.props;
+		const { openSnack,message,snackVariant,dialogLoginOpen, data, openModalLink, openModalInfoGame, dialogUserEmpty, isOpenListUser, itemEvents, day, hour, minute, second, isLogin}=this.props;
 		var arrLeft=[];
 		var arrRight=[];
 		var arr=[];
@@ -200,8 +200,8 @@ class EventTruyKichComponent extends React.Component {
 					backgroundRepeat: "no-repeat"}} justify="center">
 					<Grid item xs={12} style={{textAlign:"center"}}>
 						<span style={{border:"1px solid #fff", padding:"5px", borderRadius:"0px 0px 5px 5px"}}>
-							<a className="a_home" href="http://mongchinhdo.vn/">Trang chủ</a>
-							<a className="a_face" href="https://www.facebook.com/mongchinhdo.vn/">Fanpage</a>
+							<a className="a_home" href="http://truykich.vn/">Trang chủ</a>
+							<a className="a_face" href="https://www.facebook.com/truykich.vn/">Fanpage</a>
 						</span>
 					</Grid>
 					<Grid item xs={12} style={{ paddingTop: "50%" }}>
@@ -418,9 +418,10 @@ class EventTruyKichComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 									<div>
-											<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", marginRight:"10px"}}>
+										<Button onClick={this.handleCloseDialogItem} style={{ color: "#888787", marginRight:"10px"}}>
 													Đóng
 											</Button>
+											
 											<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.buyItem}>XÁC NHẬN</Button>
 											
 									</div>
@@ -438,9 +439,9 @@ class EventTruyKichComponent extends React.Component {
 							</DialogContent>
 							<DialogActions>
 									<div>
-											{/* <Button onClick={this.handleCloseDialogLogin} style={{ color: "#888787", marginRight:"10px"}}>
+									{(isLogin)?(<div></div>):(<Button onClick={this.handleCloseDialogLogin} style={{ color: "#888787", marginRight:"10px"}}>
 													Đóng
-											</Button> */}
+											</Button>)}
 											<Button style={{ color: "#fff", background:"#00ccd4"}} onClick={this.login}>ĐĂNG NHẬP</Button>
 											
 									</div>

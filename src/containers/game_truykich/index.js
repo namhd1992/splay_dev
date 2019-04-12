@@ -31,6 +31,7 @@ class GameTruyKich extends React.Component {
 			minute:0, 
 			second:0,
 			dialogLoginOpen:false,
+			isLogin:false,
 
 		};
 	}
@@ -45,7 +46,7 @@ class GameTruyKich extends React.Component {
 		
 		if (user === null) {
 			if(str.indexOf("-Truy-")===-1 && str!==""){
-				this.setState({dialogLoginOpen:true});
+				this.setState({dialogLoginOpen:true, isLogin:true});
 			}
 		}
 		for(let i=0; i<100; i++){
@@ -115,21 +116,21 @@ class GameTruyKich extends React.Component {
 				var data= _this.props.data;
 				if(data!==undefined){
 					if(data.status==="01"){
-						this.setState({openSnack:true, message:'Đổi thành công, Xu được cộng vào tài khoản',snackVariant:'success'})
+						this.setState({openSnack:true, message:'Đổi thành công, vật phẩm thêm vào nhân vật',snackVariant:'success'})
 						_this.getLink(user);
-					}else if(data.status==="04"){
-						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
 					}else if(data.status==="05"){
-						this.setState({openSnack:true, message:'Hiện tại số quà đã hết',snackVariant:'info',})
-					}else if(data.status==="-3"){
-						this.setState({openSnack:true, message:'Tài khoản không tồn tại',snackVariant:'info',})
+						this.setState({openSnack:true, message:'Số điểm của bạn không đủ để đổi',snackVariant:'info',})
+					}else if(data.status==="04"){
+						this.setState({openSnack:true, message:'Người dùng chưa tham gia sự kiện',snackVariant:'info',})
+					}else if(data.status==="02"){
+						this.setState({openSnack:true, message:'Dữ liệu không đúng',snackVariant:'info',})
 					}else{
 						this.setState({openSnack:true, message:'Đã có lỗi, liên hệ admin',snackVariant:'info',})
 					}
 				}
 			})
 		}else{
-			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info'})
+			this.setState({dialogLoginOpen:true, isLogin:false});
 		}
 	}
 
@@ -160,7 +161,7 @@ class GameTruyKich extends React.Component {
 	handleOpenGame=()=>{
 		var user = JSON.parse(localStorage.getItem("user"));
 		if(user !== null){
-			var win = window.open('http://mongchinhdo.vn/', '_blank');
+			var win = window.open('http://truykich.vn/', '_blank');
 			win.focus();
 		}else{
 			if (typeof(Storage) !== "undefined") {
@@ -207,7 +208,7 @@ class GameTruyKich extends React.Component {
 		if(user !== null){
 			this.setState({openModalInfoGame:true, itemId:itemId})
 		}else{
-			this.setState({openSnack:true, message:'Bạn chưa đăng nhập',snackVariant:'info'})
+			this.setState({dialogLoginOpen:true, isLogin:false});
 		}
 	}
 
@@ -256,6 +257,7 @@ class GameTruyKich extends React.Component {
 					hour={this.state.hour}
 					minute={this.state.minute}
 					second={this.state.second}
+					isLogin={this.state.isLogin}
 
 
 					handleCloseSnack={this.handleCloseSnack}

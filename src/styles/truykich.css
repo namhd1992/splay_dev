@@ -790,6 +790,9 @@ select.selectServer {
 	.logo_truykich{
         height: 250px;
     }
+    .selectServer{
+        width:300px;
+    }
 }
 @media only screen and (max-width:420px){
 	.logo_truykich{
@@ -877,6 +880,9 @@ select.selectServer {
     .btnChangePoint{
         font-size: 14px
      }
+     .selectServer{
+        width:230px;
+    }
 }
 
 @media only screen and (max-width:320px){
@@ -980,5 +986,8 @@ select.selectServer {
     }
     .btnChangePoint{
        font-size: 14px
+    }
+    .selectServer{
+        width:215px;
     }
 }
