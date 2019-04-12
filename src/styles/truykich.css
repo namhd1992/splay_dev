@@ -348,6 +348,12 @@ select.selectServer {
     padding: 5px 10px;
 }
 
+.footerTryKich{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+}
+
 @media only screen and (max-width:1850px){
     .logo_truykich{
         height: 640px;
@@ -792,6 +798,9 @@ select.selectServer {
     }
     .selectServer{
         width:300px;
+    }
+    .footerTryKich{
+        font-size: 10px;
     }
 }
 @media only screen and (max-width:420px){

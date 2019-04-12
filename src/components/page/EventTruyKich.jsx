@@ -333,7 +333,7 @@ class EventTruyKichComponent extends React.Component {
 												backgroundRepeat: "no-repeat",
 												border:"1px solid #808080"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
-													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.newPrice} XU</div>
+													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.name}</div>
 													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
 												</Grid>
 												
@@ -347,7 +347,7 @@ class EventTruyKichComponent extends React.Component {
 						</div>
 					</div>
 				</Grid>
-				<Grid item xs={12} style={{ textAlign:'center', color:'#fff' }}>
+				<Grid item xs={12} className="footerTryKich">
 					<img src="/../logo_vtc.png" alt="" />
 					<p>Copyright 2013 VTCMobile - Công ty Cổ phần VTC Dịch Vụ Di Động</p>
 					<p>Địa chỉ: Tầng 11 - Tòa nhà VTC Online - 18 Tam Trinh - Hà Nội.</p>

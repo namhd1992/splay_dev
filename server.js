@@ -469,7 +469,7 @@ app.get('/history', function(request, response) {
       if (err) {
         return console.log(err);
       }
-      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn//Sự-Kiện-Truy-Kích-Bùng-Nổ');
+      data = data.replace(/\$OG_URL/g, 'http://sandbox.splay.vn/Sự-Kiện-Truy-Kích-Bùng-Nổ');
       data = data.replace(/\$OG_TYPE/g, "website");
       data = data.replace(/\$OG_TITLE/g, 'Sự Kiện Truy Kích Bùng Nổ');
       data = data.replace(/\$OG_DESCRIPTION/g, "Share Liền Tay Nhận Ngay Súng Khủng");
