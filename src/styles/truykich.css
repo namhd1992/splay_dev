@@ -323,20 +323,20 @@ select.selectServer {
     background-size:100%;
     height: 190px; margin-bottom: 15px;
     cursor: pointer;
-    border: 1px solid #808080;
+    border: 1px solid #4bb525;
 }
 
 .nameItemTruyKich{
-    color: #808080;
+    color: #fac710;
     padding: 5px 10px;
 }
 .priceItemTruyKich{
     float: right;
     margin-top: 120px;
     height: 35px;
-    border: 1px solid #808080;
+    border: 1px solid #4bb525;
     padding: 5px 1px;
-    background-color: #808080;
+    background-color: #4bb525;
 }
 .priceItem{
     color: #808080;

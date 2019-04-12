@@ -289,7 +289,7 @@ class EventTruyKichComponent extends React.Component {
 											backgroundPosition: "center top",
 											marginBottom:"20px",
 											backgroundRepeat: "no-repeat",
-											border:"1px solid #808080"}} justify="center"  onClick={()=>this.selectOptionCoin(obj)}>
+											border:"1px solid #4bb525"}} justify="center"  onClick={()=>this.selectOptionCoin(obj)}>
 
 											<Grid item xs={12} style={{textAlign:"center"}}>
 													<div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
@@ -309,7 +309,7 @@ class EventTruyKichComponent extends React.Component {
 												backgroundPosition: "center top",
 												marginBottom:"20px",
 												backgroundRepeat: "no-repeat",
-												border:"1px solid #808080"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
+												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
 													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
 													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
@@ -331,7 +331,7 @@ class EventTruyKichComponent extends React.Component {
 												backgroundPosition: "center top",
 												marginBottom:"20px",
 												backgroundRepeat: "no-repeat",
-												border:"1px solid #808080"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
+												border:"1px solid #4bb525"}} justify="center" onClick={()=>this.selectOptionCoin(obj)}>
 												<Grid item xs={12} style={{textAlign:"center"}}>
 													 <div className="nameItemTruyKich" style={{textAlign:'left'}}>{obj.item.name}</div>
 													 <span className="priceItemTruyKich"><span className="priceItem">{obj.newPrice} ĐIỂM</span><span className="statusItem">ĐÃ ĐỔI</span></span>
